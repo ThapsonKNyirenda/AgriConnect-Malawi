@@ -246,8 +246,7 @@ foreach ($result as $row) {
 	<div class="container">
 		<div class="row inner">
 			<div class="col-md-4 logo">
-				<!-- <a href="index.php"><img src="assets/uploads/<?php echo $logo; ?>" alt="logo image"></a> -->
-				<h2><i>AgriConnect-Malawi</i></h2>
+				<a href="index.php"><img src="assets/img/logo6.jpeg" alt="logo image"></a>	
 			</div>
 			
 			<div class="col-md-5 right">
