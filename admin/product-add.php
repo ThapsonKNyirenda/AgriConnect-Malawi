@@ -232,13 +232,13 @@ if(isset($_POST['form1'])) {
 							</div>
 						</div>	
 						<div class="form-group">
-							<label for="" class="col-sm-3 control-label">Old Price <br><span style="font-size:10px;font-weight:normal;">(In USD)</span></label>
+							<label for="" class="col-sm-3 control-label">Old Price <br><span style="font-size:10px;font-weight:normal;">(In MWK)</span></label>
 							<div class="col-sm-4">
 								<input type="text" name="p_old_price" class="form-control">
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="" class="col-sm-3 control-label">Current Price <span>*</span><br><span style="font-size:10px;font-weight:normal;">(In USD)</span></label>
+							<label for="" class="col-sm-3 control-label">Current Price <span>*</span><br><span style="font-size:10px;font-weight:normal;">(In MWK)</span></label>
 							<div class="col-sm-4">
 								<input type="text" name="p_current_price" class="form-control">
 							</div>
@@ -249,40 +249,7 @@ if(isset($_POST['form1'])) {
 								<input type="text" name="p_qty" class="form-control">
 							</div>
 						</div>
-						<div class="form-group">
-							<label for="" class="col-sm-3 control-label">Select Size</label>
-							<div class="col-sm-4">
-								<select name="size[]" class="form-control select2" multiple="multiple">
-									<?php
-									$statement = $pdo->prepare("SELECT * FROM tbl_size ORDER BY size_id ASC");
-									$statement->execute();
-									$result = $statement->fetchAll(PDO::FETCH_ASSOC);			
-									foreach ($result as $row) {
-										?>
-										<option value="<?php echo $row['size_id']; ?>"><?php echo $row['size_name']; ?></option>
-										<?php
-									}
-									?>
-								</select>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="" class="col-sm-3 control-label">Select Color</label>
-							<div class="col-sm-4">
-								<select name="color[]" class="form-control select2" multiple="multiple">
-									<?php
-									$statement = $pdo->prepare("SELECT * FROM tbl_color ORDER BY color_id ASC");
-									$statement->execute();
-									$result = $statement->fetchAll(PDO::FETCH_ASSOC);			
-									foreach ($result as $row) {
-										?>
-										<option value="<?php echo $row['color_id']; ?>"><?php echo $row['color_name']; ?></option>
-										<?php
-									}
-									?>
-								</select>
-							</div>
-						</div>
+						
 						<div class="form-group">
 							<label for="" class="col-sm-3 control-label">Featured Photo <span>*</span></label>
 							<div class="col-sm-4" style="padding-top:4px;">
