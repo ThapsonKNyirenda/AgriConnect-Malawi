@@ -72,38 +72,38 @@ DROP TABLE IF EXISTS `tbl_customer`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tbl_customer` (
   `cust_id` int NOT NULL AUTO_INCREMENT,
-  `cust_name` varchar(100) NOT NULL,
-  `cust_cname` varchar(100) NOT NULL,
-  `cust_email` varchar(100) NOT NULL,
-  `cust_phone` varchar(50) NOT NULL,
-  `cust_country` int NOT NULL,
-  `cust_address` text NOT NULL,
-  `cust_city` varchar(100) NOT NULL,
-  `cust_state` varchar(100) NOT NULL,
-  `cust_zip` varchar(30) NOT NULL,
-  `cust_b_name` varchar(100) NOT NULL,
-  `cust_b_cname` varchar(100) NOT NULL,
-  `cust_b_phone` varchar(50) NOT NULL,
-  `cust_b_country` int NOT NULL,
-  `cust_b_address` text NOT NULL,
-  `cust_b_city` varchar(100) NOT NULL,
-  `cust_b_state` varchar(100) NOT NULL,
-  `cust_b_zip` varchar(30) NOT NULL,
-  `cust_s_name` varchar(100) NOT NULL,
-  `cust_s_cname` varchar(100) NOT NULL,
-  `cust_s_phone` varchar(50) NOT NULL,
-  `cust_s_country` int NOT NULL,
-  `cust_s_address` text NOT NULL,
-  `cust_s_city` varchar(100) NOT NULL,
-  `cust_s_state` varchar(100) NOT NULL,
-  `cust_s_zip` varchar(30) NOT NULL,
-  `cust_password` varchar(100) NOT NULL,
-  `cust_token` varchar(255) NOT NULL,
-  `cust_datetime` varchar(100) NOT NULL,
-  `cust_timestamp` varchar(100) NOT NULL,
-  `cust_status` int NOT NULL,
+  `cust_name` varchar(100) DEFAULT NULL,
+  `cust_cname` varchar(100) DEFAULT NULL,
+  `cust_email` varchar(100) DEFAULT NULL,
+  `cust_phone` varchar(50) DEFAULT NULL,
+  `cust_country` int DEFAULT NULL,
+  `cust_address` text,
+  `cust_city` varchar(100) DEFAULT NULL,
+  `cust_state` varchar(100) DEFAULT NULL,
+  `cust_zip` varchar(30) DEFAULT NULL,
+  `cust_b_name` varchar(100) DEFAULT NULL,
+  `cust_b_cname` varchar(100) DEFAULT NULL,
+  `cust_b_phone` varchar(50) DEFAULT NULL,
+  `cust_b_country` int DEFAULT NULL,
+  `cust_b_address` text,
+  `cust_b_city` varchar(100) DEFAULT NULL,
+  `cust_b_state` varchar(100) DEFAULT NULL,
+  `cust_b_zip` varchar(30) DEFAULT NULL,
+  `cust_s_name` varchar(100) DEFAULT NULL,
+  `cust_s_cname` varchar(100) DEFAULT NULL,
+  `cust_s_phone` varchar(50) DEFAULT NULL,
+  `cust_s_country` int DEFAULT NULL,
+  `cust_s_address` text,
+  `cust_s_city` varchar(100) DEFAULT NULL,
+  `cust_s_state` varchar(100) DEFAULT NULL,
+  `cust_s_zip` varchar(30) DEFAULT NULL,
+  `cust_password` varchar(100) DEFAULT NULL,
+  `cust_token` varchar(255) DEFAULT NULL,
+  `cust_datetime` varchar(100) DEFAULT NULL,
+  `cust_timestamp` varchar(100) DEFAULT NULL,
+  `cust_status` int DEFAULT NULL,
   PRIMARY KEY (`cust_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -112,7 +112,7 @@ CREATE TABLE `tbl_customer` (
 
 LOCK TABLES `tbl_customer` WRITE;
 /*!40000 ALTER TABLE `tbl_customer` DISABLE KEYS */;
-INSERT INTO `tbl_customer` VALUES (1,'Liam Moore','WV Company','liam@mail.com','7458965410',230,'788 Cottonwood Lane','Nashville','TN','37072','','','',0,'','','','','','','',0,'','','','','5f4dcc3b5aa765d61d8327deb882cf99','0081e99a29cacd4b553db15c5c5c047e','2022-03-17 11:09:34','1647544174',1),(2,'Chad N. Carney','none','chad@mail.com','4785690000',230,'469 Diamond Street','Charlotte','NC','28808','Chad N. Carney','none','7477474440',230,'469 Diamond Street','Charlotte','NC','28808','Chad N. Carney','none','7477474440',230,'469 Diamond Street','Charlotte','NC','28808','5f4dcc3b5aa765d61d8327deb882cf99','ca87666426f4bc5c5128a96dabfecefb','2022-03-17 11:15:26','1647544526',1),(3,'Jean Collins','none','jean@mail.com','1478523698',230,'1508 Crosswind Drive','Owensboro','KY','13040','Jean Collins','none','1478523698',230,'1508 Crosswind Drive','Owensboro','KY','13040','Jean Collins','none','1478523698',230,'1508 Crosswind Drive','Owensboro','KY','13040','5f4dcc3b5aa765d61d8327deb882cf99','6b3439bf95644a36a1ed92bef374ebb7','2022-03-20 10:29:39','1647797379',1),(4,'Annie Young','XYZ Company','annie@mail.com','7770001144',230,'79 Burwell Heights Road','Beaumont','TX','77400','','','',0,'','','','','','','',0,'','','','','5f4dcc3b5aa765d61d8327deb882cf99','fc8f07537cdd6b3f89eb94f1cad78060','2022-03-20 10:31:35','1647797495',1),(5,'Matthew Morales','ABC Company','matthew@mail.com','7896587450',230,'81 Felosa Drive','Mira Loma','CA','91002','Matthew Morales','ABC Company','7896587450',230,'81 Felosa Drive','Mira Loma','CA','91002','Matthew Morales','ABC Company','7896587450',230,'81 Felosa Drive','Mira Loma','CA','91002','5f4dcc3b5aa765d61d8327deb882cf99','c391105908fe01a636bfa5fc39eed33d','2022-03-20 10:33:15','1647797595',1),(6,'August F. Freels','none','august@mail.com','1478547850',230,'96 Johnny Lane','Milwaukee','WI','55550','August F. Freels','none','1478547850',230,'96 Johnny Lane','Milwaukee','WI','55550','August F. Freels','none','1478547850',230,'96 Johnny Lane','Milwaukee','WI','55550','5f4dcc3b5aa765d61d8327deb882cf99','decc1fc2c5dd9935df82c0233002ce66','2022-03-20 10:34:08','1647797648',1),(7,'Carl M. Dineen','none','carl@mail.com','789878987',230,'77 Lyndon Street','Kutztown','PA','19855','','','',0,'','','','','','','',0,'','','','','5f4dcc3b5aa765d61d8327deb882cf99','c79bac688e70cc9665a2164c57ec172c','2022-03-20 10:35:02','1647797702',1),(8,'Benjamin B. Louque','none','benjamin@mail.com','7777889955',230,'32 Bridge Street','Tulsa','OK','74220','','','',0,'','','','','','','',0,'','','','','5f4dcc3b5aa765d61d8327deb882cf99','5a0e096368f9669508af7b7203382b07','2022-03-20 10:36:31','1647797791',1),(9,'Joe K. Richardson','none','joe@mail.com','4444445555',230,'17 Derek Drive','Youngstown','OH','44500','','','',0,'','','','','','','',0,'','','','','5f4dcc3b5aa765d61d8327deb882cf99','e74ac0178d7833988d4b1625c42ba26e','2022-03-20 10:37:18','1647797838',1),(10,'Will Williams','Test Company','williams@mail.com','7410000000',230,'39 Marcus Street','Anniston','AL','37207','Will Williams','Test Company','7410000000',230,'39 Marcus Street','Anniston','AL','37207','Will Williams','Test Company','7410000000',230,'39 Marcus Street','Anniston','AL','37207','5f4dcc3b5aa765d61d8327deb882cf99','941c9265fb920f691cf01b12a15f80f8','2022-03-20 11:15:59','1647800159',1);
+INSERT INTO `tbl_customer` VALUES (1,'Liam Moore','WV Company','liam@mail.com','7458965410',230,'788 Cottonwood Lane','Nashville','TN','37072','','','',0,'','','','','','','',0,'','','','','5f4dcc3b5aa765d61d8327deb882cf99','4d16fbf499a20f8d0f0af8d9e1669810','2022-03-17 11:09:34','1710831717',1),(2,'Chad N. Carney','none','chad@mail.com','4785690000',230,'469 Diamond Street','Charlotte','NC','28808','Chad N. Carney','none','7477474440',230,'469 Diamond Street','Charlotte','NC','28808','Chad N. Carney','none','7477474440',230,'469 Diamond Street','Charlotte','NC','28808','5f4dcc3b5aa765d61d8327deb882cf99','ca87666426f4bc5c5128a96dabfecefb','2022-03-17 11:15:26','1647544526',1),(3,'Jean Collins','none','jean@mail.com','1478523698',230,'1508 Crosswind Drive','Owensboro','KY','13040','Jean Collins','none','1478523698',230,'1508 Crosswind Drive','Owensboro','KY','13040','Jean Collins','none','1478523698',230,'1508 Crosswind Drive','Owensboro','KY','13040','5f4dcc3b5aa765d61d8327deb882cf99','6b3439bf95644a36a1ed92bef374ebb7','2022-03-20 10:29:39','1647797379',1),(4,'Annie Young','XYZ Company','annie@mail.com','7770001144',230,'79 Burwell Heights Road','Beaumont','TX','77400','','','',0,'','','','','','','',0,'','','','','5f4dcc3b5aa765d61d8327deb882cf99','fc8f07537cdd6b3f89eb94f1cad78060','2022-03-20 10:31:35','1647797495',1),(5,'Matthew Morales','ABC Company','matthew@mail.com','7896587450',230,'81 Felosa Drive','Mira Loma','CA','91002','Matthew Morales','ABC Company','7896587450',230,'81 Felosa Drive','Mira Loma','CA','91002','Matthew Morales','ABC Company','7896587450',230,'81 Felosa Drive','Mira Loma','CA','91002','5f4dcc3b5aa765d61d8327deb882cf99','c391105908fe01a636bfa5fc39eed33d','2022-03-20 10:33:15','1647797595',1),(6,'August F. Freels','none','august@mail.com','1478547850',230,'96 Johnny Lane','Milwaukee','WI','55550','August F. Freels','none','1478547850',230,'96 Johnny Lane','Milwaukee','WI','55550','August F. Freels','none','1478547850',230,'96 Johnny Lane','Milwaukee','WI','55550','5f4dcc3b5aa765d61d8327deb882cf99','decc1fc2c5dd9935df82c0233002ce66','2022-03-20 10:34:08','1647797648',1),(7,'Carl M. Dineen','none','carl@mail.com','789878987',230,'77 Lyndon Street','Kutztown','PA','19855','','','',0,'','','','','','','',0,'','','','','5f4dcc3b5aa765d61d8327deb882cf99','c79bac688e70cc9665a2164c57ec172c','2022-03-20 10:35:02','1647797702',1),(26,'Thapson Nyirenda','none','thapsonknyirenda@gmail.com','0880218905',132,'kafukule, box 56','Mzuzu','none','none','','','',0,'','','','','','','',0,'','','','','c4ca4238a0b923820dcc509a6f75849b','dcf944a622ea613a54d4442607aaf4d6','2024-03-19 05:46:24','1710905557',1);
 /*!40000 ALTER TABLE `tbl_customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -154,7 +154,7 @@ CREATE TABLE `tbl_end_category` (
   `ecat_name` varchar(255) NOT NULL,
   `mcat_id` int NOT NULL,
   PRIMARY KEY (`ecat_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=80 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -163,7 +163,7 @@ CREATE TABLE `tbl_end_category` (
 
 LOCK TABLES `tbl_end_category` WRITE;
 /*!40000 ALTER TABLE `tbl_end_category` DISABLE KEYS */;
-INSERT INTO `tbl_end_category` VALUES (1,'Headwear ',1),(2,'Sunglasses',1),(3,'Watches',1),(4,'Sandals',2),(5,'Boots',2),(6,'Tops',3),(7,'T-Shirt',3),(8,'Watches',4),(9,'Sunglasses',4),(11,'Sports Shoes',2),(12,'Sandals',6),(13,'Flat Shoes',6),(14,'Hoodies',7),(15,'Coats & Jackets',7),(16,'Pants',8),(17,'Jeans',8),(18,'Joggers',8),(19,'Shorts',8),(20,'T-shirts',9),(21,'Casual Shirts',9),(22,'Formal Shirts',9),(23,'Polo Shirts',9),(24,'Vests',9),(25,'Casual Shoes',2),(26,'Boys',10),(27,'Girls',10),(28,'Boys',11),(29,'Girls',11),(30,'Boys',12),(31,'Girls',12),(32,'Dresses',7),(33,'Tops',7),(34,'T-Shirts & Vests',7),(35,'Pants & Leggings',7),(36,'Sportswear',7),(37,'Plus Size Clothing',7),(38,'Socks & Hosiery',7),(39,'Fragrance',3),(40,'Skincare',3),(41,'Hair Care',3),(42,'Jewellery',4),(43,'Eyes Care',3),(44,'Lips',3),(45,'Face Care',3),(46,'Gift Sets',3),(47,'Scarves & Headwear',4),(48,'Multipacks',4),(49,'Other Accessories',4),(50,'Pumps',6),(51,'Sneakers',6),(52,'Sports Shoes',6),(53,'Boots',6),(54,'Comfort Shoes',6),(55,'Slippers & Casual Shoes',6),(56,'Formal Shoes',2),(57,'Belts',1),(58,'Multipacks',1),(59,'Other Accessories',1),(60,'Bags',4),(61,'Cell Phone and Accessories',14),(62,'Headphones',14),(63,'Security and Surveillance',14),(64,'Television and Video',14),(65,'GPS and Navigation',14),(66,'Home Audio',14),(67,'Computer Components',15),(68,'Computers and Tablets',15),(69,'Laptop Accessories',15),(70,'Printer and Monitors',15),(71,'External Components',15),(72,'Networking Products',15),(73,'Medical Supplies and Equipment',16),(74,'Oral Care',16),(75,'Vision Care',16),(76,'Vitamins and Dietary Supplements',16),(77,'Baby and Child Care',17),(78,'Household Supplies',17),(79,'Stationery and Gift Wrapping Supplies',17);
+INSERT INTO `tbl_end_category` VALUES (1,'Headwear ',1),(2,'Sunglasses',1),(3,'Watches',1),(4,'Sandals',2),(5,'Boots',2),(6,'Tops',3),(7,'T-Shirt',3),(8,'Watches',4),(9,'Sunglasses',4),(11,'Sports Shoes',2),(12,'Sandals',6),(13,'Flat Shoes',6),(14,'Hoodies',7),(15,'Coats & Jackets',7),(16,'Pants',8),(17,'Jeans',8),(18,'Joggers',8),(19,'Shorts',8),(20,'T-shirts',9),(21,'Casual Shirts',9),(22,'Formal Shirts',9),(23,'Polo Shirts',9),(24,'Vests',9),(25,'Casual Shoes',2),(26,'Boys',10),(27,'Girls',10),(28,'Boys',11),(29,'Girls',11),(30,'Boys',12),(31,'Girls',12),(32,'Dresses',7),(33,'Tops',7),(34,'T-Shirts & Vests',7),(35,'Pants & Leggings',7),(36,'Sportswear',7),(37,'Plus Size Clothing',7),(38,'Socks & Hosiery',7),(39,'Fragrance',3),(40,'Skincare',3),(41,'Hair Care',3),(42,'Jewellery',4),(43,'Eyes Care',3),(44,'Lips',3),(45,'Face Care',3),(46,'Gift Sets',3),(47,'Scarves & Headwear',4),(48,'Multipacks',4),(49,'Other Accessories',4),(50,'Pumps',6),(51,'Sneakers',6),(52,'Sports Shoes',6),(53,'Boots',6),(54,'Comfort Shoes',6),(55,'Slippers & Casual Shoes',6),(56,'Formal Shoes',2),(57,'Belts',1),(58,'Multipacks',1),(59,'Other Accessories',1),(60,'Bags',4),(61,'Cell Phone and Accessories',14),(62,'Headphones',14),(63,'Security and Surveillance',14),(64,'Television and Video',14),(65,'GPS and Navigation',14),(66,'Home Audio',14),(67,'Computer Components',15),(68,'Computers and Tablets',15),(69,'Laptop Accessories',15),(70,'Printer and Monitors',15),(71,'External Components',15),(72,'Networking Products',15),(73,'Medical Supplies and Equipment',16),(74,'Oral Care',16),(75,'Vision Care',16),(76,'Vitamins and Dietary Supplements',16),(77,'Baby and Child Care',17),(78,'Household Supplies',17),(79,'Stationery and Gift Wrapping Supplies',17),(80,'Mangoes',18),(81,'Apples',18),(82,'Chicken',22),(83,'Chicken',23),(84,'Local',24);
 /*!40000 ALTER TABLE `tbl_end_category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -229,7 +229,7 @@ CREATE TABLE `tbl_mid_category` (
   `mcat_name` varchar(255) NOT NULL,
   `tcat_id` int NOT NULL,
   PRIMARY KEY (`mcat_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -238,7 +238,7 @@ CREATE TABLE `tbl_mid_category` (
 
 LOCK TABLES `tbl_mid_category` WRITE;
 /*!40000 ALTER TABLE `tbl_mid_category` DISABLE KEYS */;
-INSERT INTO `tbl_mid_category` VALUES (1,'All',2);
+INSERT INTO `tbl_mid_category` VALUES (18,'Fruit Products',1),(19,'Dairy',1),(20,'Grains and Legumes',1),(21,'Meat',1),(22,'Eggs',1),(23,'Poultry',5),(24,'Goat',5),(25,'Cattle',5);
 /*!40000 ALTER TABLE `tbl_mid_category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -444,7 +444,7 @@ CREATE TABLE `tbl_product` (
   `p_is_active` int NOT NULL,
   `ecat_id` int NOT NULL,
   PRIMARY KEY (`p_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=103 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=111 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -453,6 +453,7 @@ CREATE TABLE `tbl_product` (
 
 LOCK TABLES `tbl_product` WRITE;
 /*!40000 ALTER TABLE `tbl_product` DISABLE KEYS */;
+INSERT INTO `tbl_product` VALUES (103,'Local mangoes','110','150',30,'product-featured-103.jpg','<p>Malawian Mangoes</p>','Malawian Mangoes Short','','<p>Fresh</p>','<p>No any</p>',24,1,1,80),(104,'indian','180','200',50,'product-featured-104.png','<p>Mongies, indian variety</p>','<p>Indian Mangoes</p>','<p>N/A</p>','<p>Fresh</p>','<p>No any</p>',0,1,1,80),(105,'kensington Mangoes','120','140',74,'product-featured-105.jpg','<p>kensington, Indian mango variety<br></p>','<p>Indian Mangoes</p>','','<p>fresh</p>','<p>No any</p>',4,1,1,80),(109,'Tanzania Apples','130','150',70,'product-featured-104.jpg','<p>Tanzanian apples</p>','<p>Tanzania Apples</p>','','<p>fresh</p>','<p>No any</p>',1,0,1,81),(110,'British apples','180','200',64,'product-featured-110.jpg','<p>British apple variety</p>','<p>British apples</p>','','<p>No any</p>','<p>no any</p>',4,0,1,81);
 /*!40000 ALTER TABLE `tbl_product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -493,7 +494,7 @@ CREATE TABLE `tbl_product_photo` (
   `photo` varchar(255) NOT NULL,
   `p_id` int NOT NULL,
   PRIMARY KEY (`pp_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=133 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=137 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -502,6 +503,7 @@ CREATE TABLE `tbl_product_photo` (
 
 LOCK TABLES `tbl_product_photo` WRITE;
 /*!40000 ALTER TABLE `tbl_product_photo` DISABLE KEYS */;
+INSERT INTO `tbl_product_photo` VALUES (133,'132.jpg',103),(134,'132.jpg',103),(135,'132.jpg',103),(136,'132.jpg',103);
 /*!40000 ALTER TABLE `tbl_product_photo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -661,7 +663,7 @@ CREATE TABLE `tbl_settings` (
   `ads_above_testimonial_on_off` int NOT NULL,
   `ads_category_sidebar_on_off` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=MYISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPRESSED;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -670,7 +672,7 @@ CREATE TABLE `tbl_settings` (
 
 LOCK TABLES `tbl_settings` WRITE;
 /*!40000 ALTER TABLE `tbl_settings` DISABLE KEYS */;
-INSERT INTO `tbl_settings` VALUES (1,'logo.jpeg','favicon.png','<p>Lorem ipsum dolor sit amet, omnis signiferumque in mei, mei ex enim concludaturque. Senserit salutandi euripidis no per, modus maiestatis scribentur est an.Â Ea suas pertinax has.</p>\r\n','Copyright Â© 2022 - AgriConnect-Malawi','93 Simpson Avenue\r\nHarrisburg, PA','support@ecommercephp.com','+001 10 101 0010','','<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3094.020958405712!2d-84.39261378514685!3d39.151504939531584!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8841acfb8da30203%3A0x193175e741781f21!2s4293%20Simpson%20Ave%2C%20Cincinnati%2C%20OH%2045227%2C%20USA!5e0!3m2!1sen!2snp!4v1647796779407!5m2!1sen!2snp\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\"></iframe>','support@ecommercephp.com','Visitor Email Message from Ecommerce Site PHP','Thank you for sending email. We will contact you shortly.','A confirmation link is sent to your email address. You will get the password reset information in there.',4,4,5,5,5,6,8,'AgriConnect-Malawi','AgriConnect-Malawi','AgriConnect-Malawi','banner_login.jpg','banner_registration.jpg','banner_forget_password.jpg','banner_reset_password.jpg','banner_search.jpg','banner_cart.jpg','banner_checkout.jpg','banner_product_category.jpg','banner_blog.jpg','Welcome To Our Ecommerce Website','Lorem ipsum dolor sit amet, an labores explicari qui, eu nostrum copiosae argumentum has. Latine propriae quo no, unum ridens expetenda id sit, \r\nat usu eius eligendi singulis. Sea ocurreret principes ne. At nonumy aperiri pri, nam quodsi copiosae intellegebat et, ex deserunt euripidis usu. ','Read More','#','cta.jpg','Featured Products','Our list on Top Featured Products','Latest Products','Our list of recently added products','Popular Products','Popular products based on customer\'s choice','Testimonials','See what our clients tell about us','testimonial.jpg','Latest Blog','See all our latest articles and news from below','Sign-up to our newsletter for latest promotions and discounts.','admin@ecom.com','pk_test_0SwMWadgu8DwmEcPdUPRsZ7b','sk_test_TFcsLJ7xxUtpALbDo1L5c1PN','Bank Name: WestView Bank\r\nAccount Number: CA100270589600\r\nBranch Name: CA Branch\r\nCountry: USA','','<div id=\"fb-root\"></div>\r\n<script>(function(d, s, id) {\r\n  var js, fjs = d.getElementsByTagName(s)[0];\r\n  if (d.getElementById(id)) return;\r\n  js = d.createElement(s); js.id = id;\r\n  js.src = \"//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10&appId=323620764400430\";\r\n  fjs.parentNode.insertBefore(js, fjs);\r\n}(document, \'script\', \'facebook-jssdk\'));</script>','<!--Start of Tawk.to Script-->\r\n<script type=\"text/javascript\">\r\nvar Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();\r\n(function(){\r\nvar s1=document.createElement(\"script\"),s0=document.getElementsByTagName(\"script\")[0];\r\ns1.async=true;\r\ns1.src=\'https://embed.tawk.to/5ae370d7227d3d7edc24cb96/default\';\r\ns1.charset=\'UTF-8\';\r\ns1.setAttribute(\'crossorigin\',\'*\');\r\ns0.parentNode.insertBefore(s1,s0);\r\n})();\r\n</script>\r\n<!--End of Tawk.to Script-->',1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+INSERT INTO `tbl_settings` VALUES (1,'logo.jpeg','favicon.png','<p>Lorem ipsum dolor sit amet, omnis signiferumque in mei, mei ex enim concludaturque. Senserit salutandi euripidis no per, modus maiestatis scribentur est an.Â Ea suas pertinax has.</p>\r\n','Copyright © 2024 - AgriConnect-Malawi','Free market \r\nBlantyre','support@agriconnect-malawi.com','+265880218905','','<iframe src=\"https://www.google.com/maps/place/6254%2BWX3+Blantyre+Market,+Market+Street,+Blantyre/@-15.7895743,35.004898,17.02z/data=!4m6!3m5!1s0x18d845a7b76ce68d:0x9de528f83fb4b182!8m2!3d-15.7906358!4d35.0073189!16s%2Fg%2F11b8tgs1x2?authuser=0&entry=ttu\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\"></iframe>','support@ecommercephp.com','Visitor Email Message from Ecommerce Site PHP','Thank you for sending email. We will contact you shortly.','A confirmation link is sent to your email address. You will get the password reset information in there.',4,4,5,5,5,5,6,'AgriConnect-Malawi','AgriConnect-Malawi','AgriConnect-Malawi','banner_login.jpg','banner_registration.jpg','banner_forget_password.jpg','banner_reset_password.jpg','banner_search.jpg','banner_cart.jpg','banner_checkout.jpg','banner_product_category.jpg','banner_blog.jpg','Welcome To Our Ecommerce Website','Lorem ipsum dolor sit amet, an labores explicari qui, eu nostrum copiosae argumentum has. Latine propriae quo no, unum ridens expetenda id sit, \r\nat usu eius eligendi singulis. Sea ocurreret principes ne. At nonumy aperiri pri, nam quodsi copiosae intellegebat et, ex deserunt euripidis usu. ','Read More','#','cta.jpg','Featured Products','Our list on Top Featured Products','Latest Products','Our list of recently added products','Popular Products','Popular products based on customer\'s choice','Testimonials','See what our clients tell about us','testimonial.jpg','Latest Blog','See all our latest articles and news from below','Sign-up to our newsletter for latest promotions and discounts.','admin@ecom.com','pk_test_0SwMWadgu8DwmEcPdUPRsZ7b','sk_test_TFcsLJ7xxUtpALbDo1L5c1PN','Bank Name: National Bank of Malawi\r\nAccount Number: 1002398543\r\nBranch Name: Henderson Street, Blantyre\r\nCountry: Blantyre','','<div id=\"fb-root\"></div>\r\n<script>(function(d, s, id) {\r\n  var js, fjs = d.getElementsByTagName(s)[0];\r\n  if (d.getElementById(id)) return;\r\n  js = d.createElement(s); js.id = id;\r\n  js.src = \"//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10&appId=323620764400430\";\r\n  fjs.parentNode.insertBefore(js, fjs);\r\n}(document, \'script\', \'facebook-jssdk\'));</script>','<!--Start of Tawk.to Script-->\r\n<script type=\"text/javascript\">\r\nvar Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();\r\n(function(){\r\nvar s1=document.createElement(\"script\"),s0=document.getElementsByTagName(\"script\")[0];\r\ns1.async=true;\r\ns1.src=\'https://embed.tawk.to/5ae370d7227d3d7edc24cb96/default\';\r\ns1.charset=\'UTF-8\';\r\ns1.setAttribute(\'crossorigin\',\'*\');\r\ns0.parentNode.insertBefore(s1,s0);\r\n})();\r\n</script>\r\n<!--End of Tawk.to Script-->',0,1,0,1,1,1,1,1,1,1,1,1,1,1);
 /*!40000 ALTER TABLE `tbl_settings` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -763,7 +765,7 @@ CREATE TABLE `tbl_slider` (
   `button_url` varchar(255) NOT NULL,
   `position` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -772,7 +774,7 @@ CREATE TABLE `tbl_slider` (
 
 LOCK TABLES `tbl_slider` WRITE;
 /*!40000 ALTER TABLE `tbl_slider` DISABLE KEYS */;
-INSERT INTO `tbl_slider` VALUES (1,'slider-1.jpg','Welcome to AgriConnect-Malawi','Shop Online All farm Product','View more products','index.php','Center'),(2,'slider-2.png','50% Discount on All Products','Buy more Enjoy high discounts','Read More','#','Center'),(3,'slider-3.png','24 Hours Customer Support','Lorem ipsum dolor sit amet, an labores explicari qui, eu nostrum copiosae argumentum has.','Read More','#','Right');
+INSERT INTO `tbl_slider` VALUES (4,'slider-4.jpg','Welcome to AgriConnect-Malawi','Shop online farm Products','','','Center'),(5,'slider-4.jpeg','50% Discount on all Products','Buy more enjoy high Discounts','','','Center'),(6,'slider-6.jpg','24 Hours Customer Support','Anytime we are available for you','','','Right');
 /*!40000 ALTER TABLE `tbl_slider` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -850,7 +852,7 @@ CREATE TABLE `tbl_top_category` (
 
 LOCK TABLES `tbl_top_category` WRITE;
 /*!40000 ALTER TABLE `tbl_top_category` DISABLE KEYS */;
-INSERT INTO `tbl_top_category` VALUES (1,'Fruits',1),(2,'Vegetables',1),(3,'Meat',1),(4,'Dairy and Eggs',1),(5,'Prepared foods',1),(6,'Honey',1),(7,'Non-foods',1);
+INSERT INTO `tbl_top_category` VALUES (1,'Food Products',1),(2,'Non-Food Products',1),(3,'Prepared Products',1),(4,'Health and Wellness',1),(5,'Livestock',1);
 /*!40000 ALTER TABLE `tbl_top_category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -908,7 +910,7 @@ LOCK TABLES `tbl_video` WRITE;
 INSERT INTO `tbl_video` VALUES (1,'Video 1','<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/L3XAFSMdVWU\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen></iframe>'),(2,'Video 2','<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/sinQ06YzbJI\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen></iframe>'),(4,'Video 3','<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/ViZNgU-Yt-Y\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen></iframe>');
 /*!40000 ALTER TABLE `tbl_video` ENABLE KEYS */;
 UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
@@ -918,4 +920,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-12 22:21:21
+-- Dump completed on 2024-03-20 10:54:34

@@ -16,13 +16,13 @@ $dbname = 'ecommerceweb';
 $dbuser = 'root';
 
 // Database Password
-$dbpass = 'Mysql@2024';
+$dbpass = '';
 
 // Defining base url
 define("BASE_URL", "");
 
 //port number
-$port = '3307';
+$port = '3306';
 
 // Getting Admin url
 define("ADMIN_URL", BASE_URL . "admin" . "/");
