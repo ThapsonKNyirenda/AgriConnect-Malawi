@@ -215,7 +215,7 @@ if (isset($_POST['form1'])) {
                                     <input type="text" class="form-control" name="cust_name" value="<?php if(isset($_POST['cust_name'])){echo $_POST['cust_name'];} ?>">
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <label for=""><?php echo LANG_VALUE_103; ?></label>
+                                    <label for="">Farming Type</label>
                                     <input type="text" class="form-control" name="cust_cname" value="<?php if(isset($_POST['cust_cname'])){echo $_POST['cust_cname'];} ?>">
                                 </div>
                                 <div class="col-md-6 form-group">
@@ -231,19 +231,11 @@ if (isset($_POST['form1'])) {
                                     <textarea name="cust_address" class="form-control" cols="30" rows="10" style="height:70px;"><?php if(isset($_POST['cust_address'])){echo $_POST['cust_address'];} ?></textarea>
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <label for=""><?php echo LANG_VALUE_106; ?> *</label>
-                                    <select name="cust_country" class="form-control select2">
-                                        <option value="">Select country</option>
-                                    <?php
-                                    $statement = $pdo->prepare("SELECT * FROM tbl_country ORDER BY country_name ASC");
-                                    $statement->execute();
-                                    $result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
-                                    foreach ($result as $row) {
-                                        ?>
-                                        <option value="<?php echo $row['country_id']; ?>"><?php echo $row['country_name']; ?></option>
-                                        <?php
-                                    }
-                                    ?>    
+                                    <label for="">Register as *</label>
+                                    <select name="acc_type" class="form-control select2">
+                                        <option value="">Customer</option>
+                                        <option value="">Farmer</option>
+                                       
                                     </select>                                    
                                 </div>
                                 
@@ -251,14 +243,7 @@ if (isset($_POST['form1'])) {
                                     <label for=""><?php echo LANG_VALUE_107; ?> *</label>
                                     <input type="text" class="form-control" name="cust_city" value="<?php if(isset($_POST['cust_city'])){echo $_POST['cust_city'];} ?>">
                                 </div>
-                                <div class="col-md-6 form-group">
-                                    <label for=""><?php echo LANG_VALUE_108; ?> *</label>
-                                    <input type="text" class="form-control" name="cust_state" value="<?php if(isset($_POST['cust_state'])){echo $_POST['cust_state'];} ?>">
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <label for=""><?php echo LANG_VALUE_109; ?> *</label>
-                                    <input type="text" class="form-control" name="cust_zip" value="<?php if(isset($_POST['cust_zip'])){echo $_POST['cust_zip'];} ?>">
-                                </div>
+                                
                                 <div class="col-md-6 form-group">
                                     <label for=""><?php echo LANG_VALUE_96; ?> *</label>
                                     <input type="password" class="form-control" name="cust_password">
