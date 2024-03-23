@@ -47,9 +47,9 @@ if (isset($_POST['form1'])) {
         $error_message .= LANG_VALUE_125."<br>";
     }
 
-    if(empty($_POST['cust_country'])) {
+    if(empty($_POST['farm_type'])) {
         $valid = 0;
-        $error_message .= LANG_VALUE_126."<br>";
+        $error_message .= "Please Provide Farming type"."<br>";
     }
 
     if(empty($_POST['cust_city'])) {
@@ -57,15 +57,15 @@ if (isset($_POST['form1'])) {
         $error_message .= LANG_VALUE_127."<br>";
     }
 
-    if(empty($_POST['cust_state'])) {
+    if(empty($_POST['acc_type'])) {
         $valid = 0;
-        $error_message .= LANG_VALUE_128."<br>";
+        $error_message .= "Please Specify either customer or vendor"."<br>";
     }
 
-    if(empty($_POST['cust_zip'])) {
-        $valid = 0;
-        $error_message .= LANG_VALUE_129."<br>";
-    }
+    // if(empty($_POST['cust_zip'])) {
+    //     $valid = 0;
+    //     $error_message .= LANG_VALUE_129."<br>";
+    // }
 
     if( empty($_POST['cust_password']) || empty($_POST['cust_re_password']) ) {
         $valid = 0;
@@ -116,18 +116,20 @@ if (isset($_POST['form1'])) {
                                         cust_token,
                                         cust_datetime,
                                         cust_timestamp,
-                                        cust_status
-                                    ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                                        cust_status,
+                                        acc_type,
+                                        farm_type
+                                    ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
         $statement->execute(array(
                                         strip_tags($_POST['cust_name']),
-                                        strip_tags($_POST['cust_cname']),
+                                        '',
                                         strip_tags($_POST['cust_email']),
                                         strip_tags($_POST['cust_phone']),
-                                        strip_tags($_POST['cust_country']),
+                                        '',
                                         strip_tags($_POST['cust_address']),
                                         strip_tags($_POST['cust_city']),
-                                        strip_tags($_POST['cust_state']),
-                                        strip_tags($_POST['cust_zip']),
+                                        '',
+                                        '',
                                         '',
                                         '',
                                         '',
@@ -148,7 +150,9 @@ if (isset($_POST['form1'])) {
                                         $token,
                                         $cust_datetime,
                                         $cust_timestamp,
-                                        0
+                                        1,
+                                        $_POST['acc_type'],
+                                        $_POST['farm_type']
                                     ));
 
         // Send email for confirmation of the account
@@ -171,15 +175,15 @@ if (isset($_POST['form1'])) {
 //         mail($to, $subject, $message, $headers);
 
         unset($_POST['cust_name']);
-        unset($_POST['cust_cname']);
+        unset($_POST['acc_type']);
         unset($_POST['cust_email']);
         unset($_POST['cust_phone']);
         unset($_POST['cust_address']);
-        unset($_POST['cust_city']);
-        unset($_POST['cust_state']);
-        unset($_POST['cust_zip']);
+        unset($_POST['farm_type']);
 
         $success_message = LANG_VALUE_152;
+
+        header("ocation: login.php");
     }
 }
 ?>
@@ -215,8 +219,8 @@ if (isset($_POST['form1'])) {
                                     <input type="text" class="form-control" name="cust_name" value="<?php if(isset($_POST['cust_name'])){echo $_POST['cust_name'];} ?>">
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <label for="">Farming Type</label>
-                                    <input type="text" class="form-control" name="cust_cname" value="<?php if(isset($_POST['cust_cname'])){echo $_POST['cust_cname'];} ?>">
+                                    <label for="">Farming type</label>
+                                    <input type="text" class="form-control" name="farm_type">
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <label for=""><?php echo LANG_VALUE_94; ?> *</label>
@@ -233,9 +237,8 @@ if (isset($_POST['form1'])) {
                                 <div class="col-md-6 form-group">
                                     <label for="">Register as *</label>
                                     <select name="acc_type" class="form-control select2">
-                                        <option value="">Customer</option>
-                                        <option value="">Farmer</option>
-                                       
+                                        <option value="customer">Customer</option>
+                                        <option value="vendor">Vendor</option>
                                     </select>                                    
                                 </div>
                                 

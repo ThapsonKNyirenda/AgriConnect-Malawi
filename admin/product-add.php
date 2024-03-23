@@ -52,15 +52,22 @@ if(isset($_POST['form1'])) {
 
     if($valid == 1) {
 
-    	$statement = $pdo->prepare("SELECT * FROM 'tbl_product'");
+    	$last_p_id = null; // Variable to store the last p_id value
+
+		$statement = $pdo->prepare("SELECT p_id FROM tbl_product");
 		$statement->execute();
 		$result = $statement->fetchAll();
-		foreach($result as $row) {
-			echo $row['p_id'];
+
+		foreach ($result as $row) {
+			// $row['p_id'];
+			$last_p_id = $row['p_id']; // Update $last_p_id with the current p_id value
 		}
 
-		//terminating code
-		die;
+		// Increment the last p_id value by 1
+		$ai_id = $last_p_id + 1;
+
+		// terminating code
+		// die;
 
     	if( isset($_FILES['photo']["name"]) && isset($_FILES['photo']["tmp_name"]) )
         {
