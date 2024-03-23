@@ -42,8 +42,10 @@ if (isset($_POST['form1'])) {
         
         $statement = $pdo->prepare("UPDATE tbl_customer SET cust_password=? WHERE cust_id=?");
         $statement->execute(array(md5($password),$_SESSION['customer']['cust_id']));
+        // $statement->execute(array($password,$_SESSION['customer']['cust_id']));
         
         $_SESSION['customer']['cust_password'] = md5($password);        
+        // $_SESSION['customer']['cust_password'] = $password;   
 
         $success_message = LANG_VALUE_141;
     }
