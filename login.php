@@ -26,6 +26,7 @@ if(isset($_POST['form1'])) {
         foreach($result as $row) {
             $cust_status = $row['cust_status'];
             $row_password = $row['cust_password'];
+            $row_acc_type = $row['acc_type'];
         }
 
         if($total==0) {
@@ -38,8 +39,19 @@ if(isset($_POST['form1'])) {
                 if($cust_status == 0) {
                     $error_message .= LANG_VALUE_148.'<br>';
                 } else {
-                    $_SESSION['customer'] = $row;
-                    header("location: ".BASE_URL."index.php");
+                    if ($row_acc_type=="customer") {
+                        # code...
+                        $_SESSION['customer'] = $row;
+                        header("location: ".BASE_URL."index.php");
+                    }else if ($row_acc_type=="vendor") {
+                        # code...
+                        $_SESSION['user'] = $row;
+                        header("location: ./vendor/index.php");
+                    } else {
+                        $_SESSION['customer'] = $row;
+                        header("location: ".BASE_URL."index.php");
+                    }
+                    
                 }
             }
             
