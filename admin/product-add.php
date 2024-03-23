@@ -52,14 +52,14 @@ if(isset($_POST['form1'])) {
 
     if($valid == 1) {
 
-    	$statement = $pdo->prepare("SHOW TABLE STATUS LIKE 'tbl_product'");
+    	$statement = $pdo->prepare("SELECT * FROM 'tbl_product'");
 		$statement->execute();
 		$result = $statement->fetchAll();
 		foreach($result as $row) {
-			$ai_id=$row[0];
+			echo $row['p_id'];
 		}
 
-		echo $ai_id;
+		//terminating code
 		die;
 
     	if( isset($_FILES['photo']["name"]) && isset($_FILES['photo']["tmp_name"]) )
