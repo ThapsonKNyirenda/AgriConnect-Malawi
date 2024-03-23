@@ -243,13 +243,15 @@ foreach ($result as $row) {
 				<a href="index.php"><img src="assets/img/logo6.jpeg" alt="logo image"></a>	
 			</div>
 			
-			<div class="col-md-5 right">
+			<div class="col-md-6 right">
 				<ul>
 					
 					<?php
 					if(isset($_SESSION['customer'])) {
 						?>
 						<li><i class="fa fa-user"></i> <?php echo LANG_VALUE_13; ?> <?php echo $_SESSION['customer']['cust_name']; ?></li>
+						
+						<li><a href="logout.php"><i class="fa fa-sign-out"></i> <?php echo "Logout" ?></a></li>
 						<li><a href="dashboard.php"><i class="fa fa-home"></i> <?php echo LANG_VALUE_89; ?></a></li>
 						<?php
 					} else {
@@ -285,11 +287,11 @@ foreach ($result as $row) {
 					?>)</a></li>
 				</ul>
 			</div>
-			<div class="col-md-3 search-area">
+			<div class="col-md-4 search-area">
 				<form class="navbar-form navbar-left" role="search" action="search-result.php" method="get">
 					<?php $csrf->echoInputField(); ?>
 					<div class="form-group">
-						<input type="text" class="form-control search-top" placeholder="<?php echo LANG_VALUE_2; ?>" name="search_text">
+						<input type="text" class="form-control search-top" placeholder="<?php echo "Search..."; ?>" name="search_text">
 					</div>
 					<button type="submit" class="btn btn-danger"><?php echo LANG_VALUE_3; ?></button>
 				</form>

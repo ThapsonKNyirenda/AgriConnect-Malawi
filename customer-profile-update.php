@@ -100,17 +100,19 @@ if (isset($_POST['form1'])) {
 
         $token = md5(time());
         // update data into the database
-        $statement = $pdo->prepare("UPDATE tbl_customer SET cust_name=?, cust_cname=?, cust_phone=?, cust_country=?, cust_address=?, cust_city=?, cust_state=?, cust_zip=?, cust_password=?, cust_token=? WHERE cust_id=?");
+        $statement = $pdo->prepare("UPDATE tbl_customer SET cust_name=?, farm_type=?, cust_email=?, cust_phone=?, cust_country=?, cust_address=?, cust_city=?, cust_state=?, cust_zip=?, acc_type=? WHERE cust_id=?");
         $statement->execute(array(
                     strip_tags($_POST['cust_name']),
                     strip_tags($_POST['farm_type']),
+                    strip_tags($_POST['cust_email']),
                     strip_tags($_POST['cust_phone']),
                     '',
                     strip_tags($_POST['cust_address']),
                     strip_tags($_POST['cust_city']),
                     '',
                     '',
-                    strip_tags($_POST['cust_password']),
+                    // strip_tags(md5($_POST['cust_password'])),
+                    // strip_tags($_POST['cust_password']),
                     strip_tags($_POST['acc_type']),
                     $_SESSION['customer']['cust_id']
                 ));  
@@ -119,6 +121,7 @@ if (isset($_POST['form1'])) {
 
         $_SESSION['customer']['cust_name'] = $_POST['cust_name'];
         $_SESSION['customer']['farm_type'] = $_POST['farm_type'];
+        $_SESSION['customer']['cust_email'] = $_POST['cust_email'];
         $_SESSION['customer']['cust_phone'] = $_POST['cust_phone'];
         $_SESSION['customer']['acc_type'] = $_POST['acc_type'];
         $_SESSION['customer']['cust_address'] = $_POST['cust_address'];
@@ -181,14 +184,7 @@ if (isset($_POST['form1'])) {
                                 <label for=""><?php echo LANG_VALUE_107; ?> *</label>
                                 <input type="text" class="form-control" name="cust_city" value="<?php echo $_SESSION['customer']['cust_city']; ?>">
                             </div>
-                            <div class="col-md-6 form-group">
-                                    <label for=""><?php echo LANG_VALUE_96; ?> *</label>
-                                    <input type="password" class="form-control" name="cust_password">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label for=""><?php echo LANG_VALUE_98; ?> *</label>
-                                <input type="password" class="form-control" name="cust_re_password">
-                            </div>
+                            
                             
                         </div>
                         <input type="submit" class="btn btn-primary" value="<?php echo LANG_VALUE_5; ?>" name="form1">
