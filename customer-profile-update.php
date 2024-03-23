@@ -22,14 +22,14 @@ if (isset($_POST['form1'])) {
 
     $valid = 1;
 
-    echo $_POST['cust_name'];
-    echo $_POST['cust_email'];
-    echo $_POST['cust_phone'];
-    echo $_POST['cust_address'];
-    echo $_POST['farm_type'];
-    echo $_POST['acc_type'];
-    echo $_POST['cust_city'];
-    die;
+    // echo $_POST['cust_name']; echo "<br>";
+    // echo $_POST['cust_email']; echo "<br>";
+    // echo $_POST['cust_phone']; echo "<br>";
+    // echo $_POST['cust_address']; echo "<br>";
+    // echo $_POST['farm_type']; echo "<br>";
+    // echo $_POST['acc_type']; echo "<br>";
+    // echo $_POST['cust_city']; echo "<br>";
+    // die;
 
     if(empty($_POST['cust_name'])) {
         $valid = 0;
@@ -98,8 +98,9 @@ if (isset($_POST['form1'])) {
 
     if($valid == 1) {
 
+        $token = md5(time());
         // update data into the database
-        $statement = $pdo->prepare("UPDATE tbl_customer SET cust_name=?, cust_cname=?, cust_phone=?, cust_country=?, cust_address=?, cust_city=?, cust_state=?, cust_zip=? WHERE cust_id=?");
+        $statement = $pdo->prepare("UPDATE tbl_customer SET cust_name=?, cust_cname=?, cust_phone=?, cust_country=?, cust_address=?, cust_city=?, cust_state=?, cust_zip=?, cust_password=?, cust_token=? WHERE cust_id=?");
         $statement->execute(array(
                     strip_tags($_POST['cust_name']),
                     strip_tags($_POST['farm_type']),
@@ -109,6 +110,7 @@ if (isset($_POST['form1'])) {
                     strip_tags($_POST['cust_city']),
                     '',
                     '',
+                    strip_tags($_POST['cust_password']),
                     strip_tags($_POST['acc_type']),
                     $_SESSION['customer']['cust_id']
                 ));  
@@ -153,11 +155,11 @@ if (isset($_POST['form1'])) {
                             </div>
                             <div class="col-md-6 form-group">
                                 <label for="">Farming type</label>
-                                <input type="text" class="form-control" name="cust_cname" value="<?php echo $_SESSION['customer']['farm_type']; ?>">
+                                <input type="text" class="form-control" name="farm_type" value="<?php echo $_SESSION['customer']['farm_type']; ?>">
                             </div>
                             <div class="col-md-6 form-group">
                                 <label for=""><?php echo LANG_VALUE_94; ?> *</label>
-                                <input type="text" class="form-control" name="" value="<?php echo $_SESSION['customer']['cust_email']; ?>" disabled>
+                                <input type="text" class="form-control" name="cust_email" value="<?php echo $_SESSION['customer']['cust_email']; ?>">
                             </div>
                             <div class="col-md-6 form-group">
                                 <label for=""><?php echo LANG_VALUE_104; ?> *</label>
@@ -178,6 +180,14 @@ if (isset($_POST['form1'])) {
                             <div class="col-md-6 form-group">
                                 <label for=""><?php echo LANG_VALUE_107; ?> *</label>
                                 <input type="text" class="form-control" name="cust_city" value="<?php echo $_SESSION['customer']['cust_city']; ?>">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                    <label for=""><?php echo LANG_VALUE_96; ?> *</label>
+                                    <input type="password" class="form-control" name="cust_password">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label for=""><?php echo LANG_VALUE_98; ?> *</label>
+                                <input type="password" class="form-control" name="cust_re_password">
                             </div>
                             
                         </div>
