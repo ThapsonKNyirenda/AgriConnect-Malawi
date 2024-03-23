@@ -17,7 +17,32 @@ if(!isset($_SESSION['customer'])) {
 }
 ?>
 
-<div class="page">
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Reset default margin and padding */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+/* Styles for the footer */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    /* background-color: #f0f0f0; */
+    /* padding: 20px; */
+}
+
+    </style>
+</head>
+<body>
+    <!-- Your content -->
+    <div class="page">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -188,5 +213,10 @@ if(!isset($_SESSION['customer'])) {
         </div>
     </div>
 </div>
+    <footer>
+        <?php require_once('footer.php'); ?>
+    </footer>
+</body>
+</html>
 
-<?php require_once('footer.php'); ?>
+

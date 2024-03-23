@@ -252,7 +252,7 @@ foreach ($result as $row) {
 						<li><i class="fa fa-user"></i> <?php echo LANG_VALUE_13; ?> <?php echo $_SESSION['customer']['cust_name']; ?></li>
 						
 						<li><a href="logout.php"><i class="fa fa-sign-out"></i> <?php echo "Logout" ?></a></li>
-						<li><a href="dashboard.php"><i class="fa fa-home"></i> <?php echo LANG_VALUE_89; ?></a></li>
+						<li><a href="dashboard.php"><i class="fa fa-user" aria-hidden="true"></i> <?php echo "Profile"; ?></a></li>
 						<?php
 					} else {
 						?>

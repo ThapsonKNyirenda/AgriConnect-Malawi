@@ -79,22 +79,6 @@ if (isset($_POST['form1'])) {
         $error_message .= "Please Specify either customer or vendor"."<br>";
     }
 
-    // if(empty($_POST['cust_zip'])) {
-    //     $valid = 0;
-    //     $error_message .= LANG_VALUE_129."<br>";
-    // }
-
-    if( empty($_POST['cust_password']) || empty($_POST['cust_re_password']) ) {
-        $valid = 0;
-        $error_message .= LANG_VALUE_138."<br>";
-    }
-
-    if( !empty($_POST['cust_password']) && !empty($_POST['cust_re_password']) ) {
-        if($_POST['cust_password'] != $_POST['cust_re_password']) {
-            $valid = 0;
-            $error_message .= LANG_VALUE_139."<br>";
-        }
-    }
 
     if($valid == 1) {
 
