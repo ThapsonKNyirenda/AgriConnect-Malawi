@@ -34,4 +34,3 @@ if(!isset($_SESSION['customer'])) {
     </div>
 </div>
 
-<?php require_once('footer.php'); ?>
