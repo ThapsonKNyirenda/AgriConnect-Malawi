@@ -29,7 +29,12 @@ if(isset($_POST['form1'])) {
             $row_acc_type = $row['acc_type'];
         }
 
-        if($total==0) {
+        $statement2 = $pdo->prepare("SELECT * FROM tbl_user WHERE email=? AND status=?");
+    	$statement2->execute(array($cust_email,'Active'));
+    	$total2 = $statement2->rowCount();    
+        $result2 = $statement2->fetchAll(PDO::FETCH_ASSOC);   
+
+        if($total==0 && $total2==0) {
             $error_message .= LANG_VALUE_133.'<br>';
         } else {
             //using MD5 form
@@ -46,6 +51,9 @@ if(isset($_POST['form1'])) {
                     }else if ($row_acc_type=="vendor") {
                         # code...
                         $_SESSION['user'] = $row;
+
+
+
                         header("location: ./vendor/index.php");
                     } else {
                         $_SESSION['customer'] = $row;
