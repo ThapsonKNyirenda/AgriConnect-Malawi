@@ -32,13 +32,17 @@ if(isset($_POST['form1'])) {
         $statement2 = $pdo->prepare("SELECT * FROM tbl_user WHERE email=? AND status=?");
     	$statement2->execute(array($cust_email,'Active'));
     	$total2 = $statement2->rowCount();    
-        $result2 = $statement2->fetchAll(PDO::FETCH_ASSOC);   
+        $result2 = $statement2->fetchAll(PDO::FETCH_ASSOC);  
+        
+        foreach($result2 as $row2) { 
+            $row_password2 = $row2['password'];
+        }
 
         if($total==0 && $total2==0) {
             $error_message .= LANG_VALUE_133.'<br>';
         } else {
             //using MD5 form
-            if( $row_password != md5($cust_password) ) {
+            if( $row_password != md5($cust_password) && $row_password2 != md5($cust_password) ) {
                 $error_message .= LANG_VALUE_139.'<br>';
             } else {
                 if($cust_status == 0) {
@@ -50,14 +54,11 @@ if(isset($_POST['form1'])) {
                         header("location: ".BASE_URL."index.php");
                     }else if ($row_acc_type=="vendor") {
                         # code...
-                        $_SESSION['user'] = $row;
-
-
-
+                        $_SESSION['user'] = $row2;
                         header("location: ./vendor/index.php");
+                        
                     } else {
-                        $_SESSION['customer'] = $row;
-                        header("location: ".BASE_URL."index.php");
+                        $error_message .= "No user details match".'<br>';
                     }
                     
                 }

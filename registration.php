@@ -120,6 +120,12 @@ if (isset($_POST['form1'])) {
                                         acc_type,
                                         farm_type
                                     ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+
+        $statement2 = $pdo->prepare("INSERT INTO tbl_user(full_name,email,phone,password,photo,role,status) VALUES(?,?,?,?,?,?,?)");
+
+        $statement2->execute(array(strip_tags($_POST['cust_name']),strip_tags($_POST['cust_email']),strip_tags($_POST['cust_phone']),md5($_POST['cust_password']),'user-1.png',$_POST['acc_type'],'Active'));
+
+
         $statement->execute(array(
                                         strip_tags($_POST['cust_name']),
                                         '',
