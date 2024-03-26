@@ -106,27 +106,30 @@ if( !isset($_REQUEST['msg']) ) {
 	    	$i++;
 	    	$arr_p_id[$i] = $row['p_id'];
 	    	$arr_p_qty[$i] = $row['p_qty'];
+	    	$arr_p_upl[$i] = $row['uploader'];
 	    }
 
 	    for($i=1;$i<=count($arr_cart_p_name);$i++) {
 	        $statement = $pdo->prepare("INSERT INTO tbl_order (
 	                        product_id,
 	                        product_name,
+							uploader,
 	                        size, 
 	                        color,
 	                        quantity, 
 	                        unit_price, 
 	                        payment_id
 	                        ) 
-	                        VALUES (?,?,?,?,?,?,?)");
+	                        VALUES (?,?,?,?,?,?,?,?)");
 	        $sql = $statement->execute(array(
 	                        $arr_cart_p_id[$i],
 	                        $arr_cart_p_name[$i],
+							$arr_p_upl[$i],
 	                        $arr_cart_size_name[$i],
 	                        $arr_cart_color_name[$i],
 	                        $arr_cart_p_qty[$i],
 	                        $arr_cart_p_current_price[$i],
-	                        $payment_id
+	                        $payment_id,
 	                    ));
 
 	        // Update the stock

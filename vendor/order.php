@@ -156,6 +156,9 @@ if($success_message != '') {
                 $user_email = $_SESSION['user']['email'];
                 // $user_email = "none";
 
+                // echo $user_email;
+                // die;
+
                 $i=0;
             	$statement = $pdo->prepare("SELECT * FROM tbl_payment ORDER by id DESC");
             	$statement->execute();
