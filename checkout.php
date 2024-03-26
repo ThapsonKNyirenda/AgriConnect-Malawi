@@ -41,8 +41,6 @@ if(!isset($_SESSION['cart_p_id'])) {
                             <th><?php echo '#' ?></th>
                             <th><?php echo LANG_VALUE_8; ?></th>
                             <th><?php echo LANG_VALUE_47; ?></th>
-                            <th><?php echo LANG_VALUE_157; ?></th>
-                            <th><?php echo LANG_VALUE_158; ?></th>
                             <th><?php echo LANG_VALUE_159; ?></th>
                             <th><?php echo LANG_VALUE_55; ?></th>
                             <th class="text-right"><?php echo LANG_VALUE_82; ?></th>
@@ -120,22 +118,20 @@ if(!isset($_SESSION['cart_p_id'])) {
                                 <img src="assets/uploads/<?php echo $arr_cart_p_featured_photo[$i]; ?>" alt="">
                             </td>
                             <td><?php echo $arr_cart_p_name[$i]; ?></td>
-                            <td><?php echo $arr_cart_size_name[$i]; ?></td>
-                            <td><?php echo $arr_cart_color_name[$i]; ?></td>
-                            <td><?php echo LANG_VALUE_1; ?><?php echo $arr_cart_p_current_price[$i]; ?></td>
+                            <td><?php echo "MWK " ?><?php echo $arr_cart_p_current_price[$i]; ?></td>
                             <td><?php echo $arr_cart_p_qty[$i]; ?></td>
                             <td class="text-right">
                                 <?php
                                 $row_total_price = $arr_cart_p_current_price[$i]*$arr_cart_p_qty[$i];
                                 $table_total_price = $table_total_price + $row_total_price;
                                 ?>
-                                <?php echo LANG_VALUE_1; ?><?php echo $row_total_price; ?>
+                                <?php echo "MWK " ?><?php echo $row_total_price; ?>
                             </td>
                         </tr>
                         <?php endfor; ?>           
                         <tr>
                             <th colspan="7" class="total-text"><?php echo LANG_VALUE_81; ?></th>
-                            <th class="total-amount"><?php echo LANG_VALUE_1; ?><?php echo $table_total_price; ?></th>
+                            <th class="total-amount"><?php echo "MWK " ?><?php echo $table_total_price; ?></th>
                         </tr>
                         <?php
                         $statement = $pdo->prepare("SELECT * FROM tbl_shipping_cost WHERE country_id=?");
@@ -144,20 +140,20 @@ if(!isset($_SESSION['cart_p_id'])) {
                         if($total) {
                             $result = $statement->fetchAll(PDO::FETCH_ASSOC);
                             foreach ($result as $row) {
-                                $shipping_cost = $row['amount'];
+                                $shipping_cost = 0;
                             }
                         } else {
                             $statement = $pdo->prepare("SELECT * FROM tbl_shipping_cost_all WHERE sca_id=1");
                             $statement->execute();
                             $result = $statement->fetchAll(PDO::FETCH_ASSOC);
                             foreach ($result as $row) {
-                                $shipping_cost = $row['amount'];
+                                $shipping_cost = 0;
                             }
                         }                        
                         ?>
                         <tr>
-                            <td colspan="7" class="total-text"><?php echo LANG_VALUE_84; ?></td>
-                            <td class="total-amount"><?php echo LANG_VALUE_1; ?><?php echo $shipping_cost; ?></td>
+                            <td colspan="7" class="total-text"><?php echo "Additional costs" ?></td>
+                            <td class="total-amount"><?php echo "MWK " ?><?php echo $shipping_cost; ?></td>
                         </tr>
                         <tr>
                             <th colspan="7" class="total-text"><?php echo LANG_VALUE_82; ?></th>
@@ -165,7 +161,7 @@ if(!isset($_SESSION['cart_p_id'])) {
                                 <?php
                                 $final_total = $table_total_price+$shipping_cost;
                                 ?>
-                                <?php echo LANG_VALUE_1; ?><?php echo $final_total; ?>
+                                <?php echo "MWK " ?><?php echo $final_total; ?>
                             </th>
                         </tr>
                     </table> 
@@ -312,7 +308,7 @@ if(!isset($_SESSION['cart_p_id'])) {
 		                <?php if($checkout_access == 0): ?>
 		                	<div class="col-md-12">
 				                <div style="color:red;font-size:22px;margin-bottom:50px;">
-			                        You must have to fill up all the billing and shipping information from your dashboard panel in order to checkout the order. Please fill up the information going to <a href="customer-billing-shipping-update.php" style="color:red;text-decoration:underline;">this link</a>.
+			                        You must have to fill up all the billing information from your dashboard panel in order to checkout the order. Please fill up the information going to <a href="customer-billing-shipping-update.php" style="color:red;text-decoration:underline;">this link</a>.
 			                    </div>
 	                    	</div>
 	                	<?php else: ?>
