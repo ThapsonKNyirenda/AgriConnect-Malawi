@@ -32,7 +32,7 @@
 						<tbody>
 							<?php
 							$i=0;
-							
+							$uploader_email= $_SESSION['user']['email'];
 							$statement = $pdo->prepare("SELECT
 														t1.p_id,
 														t1.p_name,
