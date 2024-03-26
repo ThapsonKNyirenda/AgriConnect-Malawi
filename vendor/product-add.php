@@ -114,6 +114,7 @@ if(isset($_POST['form1'])) {
 		//Saving data into the main table tbl_product
 		$statement = $pdo->prepare("INSERT INTO tbl_product(
 										p_name,
+										uploader,
 										p_old_price,
 										p_current_price,
 										p_qty,
@@ -127,9 +128,10 @@ if(isset($_POST['form1'])) {
 										p_is_featured,
 										p_is_active,
 										ecat_id
-									) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+									) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 		$statement->execute(array(
 										$_POST['p_name'],
+										$_SESSION['user']['email'],
 										$_POST['p_old_price'],
 										$_POST['p_current_price'],
 										$_POST['p_qty'],

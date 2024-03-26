@@ -1,6 +1,7 @@
 <?php require_once('header.php'); 
 
-	echo $_SESSION['user']
+	// echo $_SESSION['user']['email'];
+	// die;
 ?>
 
 <section class="content-header">
