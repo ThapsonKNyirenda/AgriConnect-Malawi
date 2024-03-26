@@ -1,4 +1,7 @@
-<?php require_once('header.php'); ?>
+<?php require_once('header.php'); 
+
+	echo $_SESSION['user']
+?>
 
 <section class="content-header">
 	<h1>Dashboard</h1>
@@ -96,82 +99,16 @@ $total_order_complete_shipping_pending = $statement->rowCount();
                
               </div>
             </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-xs-6">
-              <!-- small box -->
-              <div class="small-box bg-aqua">
-                <div class="inner">
-                  <h3><?php echo $total_shipping_completed; ?></h3>
 
-                  <p>Completed Shipping</p>
-                </div>
-                <div class="icon">
-                  <i class="ionicons ion-checkmark-circled"></i>
-                </div>
-                
-              </div>
-            </div>
-			<!-- ./col -->
+            
 			
-			<div class="col-lg-3 col-xs-6">
-				<!-- small box -->
-				<div class="small-box bg-orange">
-				  <div class="inner">
-					<h3><?php echo $total_order_complete_shipping_pending; ?></h3>
-  
-					<p>Pending Shippings</p>
-				  </div>
-				  <div class="icon">
-					<i class="ionicons ion-load-a"></i>
-				  </div>
-				  
-				</div>
-			  </div>
+			
 
-			  <div class="col-lg-3 col-xs-6">
-				<!-- small box -->
-				<div class="small-box bg-red">
-				  <div class="inner">
-					<h3><?php echo $total_customers; ?></h3>
-  
-					<p>Active Customers</p>
-				  </div>
-				  <div class="icon">
-					<i class="ionicons ion-person-stalker"></i>
-				  </div>
-				  
-				</div>
-			  </div>
+			  
 
-			  <div class="col-lg-3 col-xs-6">
-				<!-- small box -->
-				<div class="small-box bg-yellow">
-				  <div class="inner">
-					<h3><?php echo $total_subscriber; ?></h3>
-  
-					<p>Subscriber</p>
-				  </div>
-				  <div class="icon">
-					<i class="ionicons ion-person-add"></i>
-				  </div>
-				  
-				</div>
-			  </div>
+			  
 
-			  <div class="col-lg-3 col-xs-6">
-				<!-- small box -->
-				<div class="small-box bg-teal">
-				  <div class="inner">
-					<h3><?php echo $available_shipping; ?></h3>
-  
-					<p>Available Shippings</p>
-				  </div>
-				  <div class="icon">
-					<i class="ionicons ion-location"></i>
-				  </div>
-				  
-				</div>
-			  </div>
+			  
 
 			  <div class="col-lg-3 col-xs-6">
 				<!-- small box -->

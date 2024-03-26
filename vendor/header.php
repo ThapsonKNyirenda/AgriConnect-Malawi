@@ -105,8 +105,7 @@ if(!isset($_SESSION['user'])) {
 							</span>
                         </a>
                         <ul class="treeview-menu">
-                            
-                            <li><a href="shipping-cost.php"><i class="fa fa-circle-o"></i> Shipping Cost</a></li>
+
                             <li><a href="top-category.php"><i class="fa fa-circle-o"></i> Top Level Category</a></li>
                             <li><a href="mid-category.php"><i class="fa fa-circle-o"></i> Mid Level Category</a></li>
                             <li><a href="end-category.php"><i class="fa fa-circle-o"></i> End Level Category</a></li>
@@ -126,50 +125,6 @@ if(!isset($_SESSION['user'])) {
                             <i class="fa fa-sticky-note"></i> <span>Order Management</span>
                         </a>
                     </li>
-
-
-                     <li class="treeview <?php if( ($cur_page == 'slider.php') ) {echo 'active';} ?>">
-			          <a href="slider.php">
-			            <i class="fa fa-picture-o"></i> <span>Manage Sliders</span>
-			          </a>
-			        </li>
-                    <!-- Icons to be displayed on Shop -->
-			        <li class="treeview <?php if( ($cur_page == 'service.php') ) {echo 'active';} ?>">
-			          <a href="service.php">
-			            <i class="fa fa-list-ol"></i> <span>Services</span>
-			          </a>
-			        </li>
-
-			      			        <li class="treeview <?php if( ($cur_page == 'faq.php') ) {echo 'active';} ?>">
-			          <a href="faq.php">
-			            <i class="fa fa-question-circle"></i> <span>FAQ</span>
-			          </a>
-			        </li>
-
-						<li class="treeview <?php if( ($cur_page == 'customer.php') || ($cur_page == 'customer-add.php') || ($cur_page == 'customer-edit.php') ) {echo 'active';} ?>">
-			          <a href="customer.php">
-			            <i class="fa fa-user-plus"></i> <span>Registered Customer</span>
-			          </a>
-			        </li>
-
-			        <li class="treeview <?php if( ($cur_page == 'page.php') ) {echo 'active';} ?>">
-			          <a href="page.php">
-			            <i class="fa fa-tasks"></i> <span>Page Settings</span>
-			          </a>
-			        </li>
-
-			        <li class="treeview <?php if( ($cur_page == 'social-media.php') ) {echo 'active';} ?>">
-			          <a href="social-media.php">
-			            <i class="fa fa-globe"></i> <span>Social Media</span>
-			          </a>
-			        </li>
-
-			        <li class="treeview <?php if( ($cur_page == 'subscriber.php')||($cur_page == 'subscriber.php') ) {echo 'active';} ?>">
-			          <a href="subscriber.php">
-			            <i class="fa fa-hand-o-right"></i> <span>Subscriber</span>
-			          </a>
-			        </li>
-
       			</ul>
     		</section>
   		</aside>
