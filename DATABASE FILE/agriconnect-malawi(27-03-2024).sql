@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 27, 2024 at 07:50 AM
+-- Generation Time: Mar 27, 2024 at 10:05 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `ecommerceweb`
+-- Database: `agriconnect-malawi`
 --
 
 -- --------------------------------------------------------
@@ -383,9 +383,9 @@ INSERT INTO `tbl_customer` (`cust_id`, `cust_name`, `cust_cname`, `cust_email`, 
 (5, 'Matthew Morales', 'ABC Company', 'matthew@mail.com', '7896587450', 230, '81 Felosa Drive', 'Mira Loma', 'CA', '91002', 'Matthew Morales', 'ABC Company', '7896587450', 230, '81 Felosa Drive', 'Mira Loma', 'CA', '91002', 'Matthew Morales', 'ABC Company', '7896587450', 230, '81 Felosa Drive', 'Mira Loma', 'CA', '91002', '5f4dcc3b5aa765d61d8327deb882cf99', 'c391105908fe01a636bfa5fc39eed33d', '2022-03-20 10:33:15', '1647797595', 1, 'customer', ''),
 (6, 'August F. Freels', 'none', 'august@mail.com', '1478547850', 230, '96 Johnny Lane', 'Milwaukee', 'WI', '55550', 'August F. Freels', 'none', '1478547850', 230, '96 Johnny Lane', 'Milwaukee', 'WI', '55550', 'August F. Freels', 'none', '1478547850', 230, '96 Johnny Lane', 'Milwaukee', 'WI', '55550', '5f4dcc3b5aa765d61d8327deb882cf99', 'decc1fc2c5dd9935df82c0233002ce66', '2022-03-20 10:34:08', '1647797648', 1, 'customer', ''),
 (7, 'Carl M. Dineen', 'none', 'carl@mail.com', '789878987', 230, '77 Lyndon Street', 'Kutztown', 'PA', '19855', '', '', '', 0, '', '', '', '', '', '', '', 0, '', '', '', '', '5f4dcc3b5aa765d61d8327deb882cf99', 'c79bac688e70cc9665a2164c57ec172c', '2022-03-20 10:35:02', '1647797702', 1, 'customer', ''),
-(26, 'Thapson Nyirenda', 'none', 'thapsonknyirenda@gmail.com', '0880218905', 132, 'kafukule, box 56', 'Mzuzu', 'none', 'none', 'Thapson Nyirenda', 'none', '0880218905', 132, 'kafukule, box 56', 'Mzuzu', 'No any', 'No any', 'Shipping address', 'none', '0880218905', 132, 'Mbayani Blantyre, Malawi', 'Mzuzu', 'No any', 'No any', 'c4ca4238a0b923820dcc509a6f75849b', 'dcf944a622ea613a54d4442607aaf4d6', '2024-03-19 05:46:24', '1710905557', 1, 'customer', ''),
+(26, 'Thapson Nyirenda', 'none', 'thapsonknyirenda@gmail.com', '0880218905', 132, 'kafukule, box 56', 'Mzuzu', 'none', 'none', 'Shipping address', 'none', '0880218905', 0, 'Mbayani Blantyre, Malawi', 'Mzuzu', 'Mzimba', '', 'Shipping address', 'none', '0880218905', 1, 'Mbayani Blantyre, Malawi', 'Mzuzu', 'Mzimba', 'none', 'c4ca4238a0b923820dcc509a6f75849b', 'dcf944a622ea613a54d4442607aaf4d6', '2024-03-19 05:46:24', '1710905557', 1, 'customer', ''),
 (33, 'Kapembe', '', 'kapembe@mail.com', '0880218905', 0, 'Kafukule health Centre, box 56, Kafukule mzimba', 'Mzimba - Kafukule', '', '', '', '', '', 0, '', '', '', '', '', '', '', 0, '', '', '', '', '202cb962ac59075b964b07152d234b70', '539f779cba35d46e930ec63134453252', '2024-03-24 10:35:12', '1711301712', 1, 'vendor', 'Any'),
-(34, 'John Banda', '', 'john@gmail.com', '0880218905', 0, 'Mzuzu, box 56', 'Mzuzu', '', '', '', '', '', 0, '', '', '', '', '', '', '', 0, '', '', '', '', '202cb962ac59075b964b07152d234b70', '0bcd71075b278a88cb28b09d195f1456', '2024-03-26 11:54:00', '1711479240', 1, 'customer', 'Fruit farmer');
+(34, 'John Banda', '', 'john@gmail.com', '0880218905', 0, 'Mzuzu, box 56', 'Mzuzu', '', '', 'Thapson Nyirenda', 'none', '0880218905', 0, 'kafukule, box 56', 'Mzuzu', 'Mzimba', '', 'Thapson Nyirenda', 'none', '0880218905', 0, 'kafukule, box 56', 'Mzuzu', 'Mzimba', '', '202cb962ac59075b964b07152d234b70', '0bcd71075b278a88cb28b09d195f1456', '2024-03-26 11:54:00', '1711479240', 1, 'customer', 'Fruit farmer');
 
 -- --------------------------------------------------------
 
@@ -757,8 +757,8 @@ CREATE TABLE `tbl_order` (
 --
 
 INSERT INTO `tbl_order` (`id`, `product_id`, `product_name`, `uploader`, `size`, `color`, `quantity`, `unit_price`, `payment_id`) VALUES
-(15, 117, 'kentt', 'kapembe@mail.com', '', '', '1', '120', '1711463385'),
-(16, 122, 'Second hand wheel barrow', 'kapembe@mail.com', '', '', '2', '100000', '1711481678');
+(16, 122, 'Second hand wheel barrow', 'kapembe@mail.com', '', '', '2', '100000', '1711481678'),
+(18, 120, 'Tanzanian apples', 'kapembe@mail.com', '', '', '1', '82', '1711573400');
 
 -- --------------------------------------------------------
 
@@ -830,16 +830,17 @@ CREATE TABLE `tbl_payment` (
   `payment_method` varchar(20) NOT NULL,
   `payment_status` varchar(25) NOT NULL,
   `shipping_status` varchar(20) NOT NULL,
-  `payment_id` varchar(255) NOT NULL
+  `payment_id` varchar(255) NOT NULL,
+  `customer_address` varchar(100) NOT NULL DEFAULT 'none'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tbl_payment`
 --
 
-INSERT INTO `tbl_payment` (`id`, `customer_id`, `customer_name`, `customer_email`, `payment_date`, `txnid`, `paid_amount`, `card_number`, `card_cvv`, `card_month`, `card_year`, `bank_transaction_info`, `payment_method`, `payment_status`, `shipping_status`, `payment_id`) VALUES
-(69, 26, 'Thapson Nyirenda', 'thapsonknyirenda@gmail.com', '2024-03-26 07:29:45', '', 120, '', '', '', '', 'Any', 'Bank Deposit', 'Pending', 'Pending', '1711463385'),
-(70, 26, 'Thapson Nyirenda', 'thapsonknyirenda@gmail.com', '2024-03-26 12:34:38', '', 200000, '', '', '', '', 'Transid: 12345', 'Bank Deposit', 'Completed', 'Pending', '1711481678');
+INSERT INTO `tbl_payment` (`id`, `customer_id`, `customer_name`, `customer_email`, `payment_date`, `txnid`, `paid_amount`, `card_number`, `card_cvv`, `card_month`, `card_year`, `bank_transaction_info`, `payment_method`, `payment_status`, `shipping_status`, `payment_id`, `customer_address`) VALUES
+(70, 26, 'Thapson Nyirenda', 'thapsonknyirenda@gmail.com', '2024-03-26 12:34:38', '', 200000, '', '', '', '', 'Transid: 12345', 'Bank Deposit', 'Completed', 'Pending', '1711481678', 'none'),
+(72, 26, 'Thapson Nyirenda', 'thapsonknyirenda@gmail.com', '2024-03-27 14:03:20', '', 82, '', '', '', '', 'TransID', 'Bank Deposit', 'Pending', 'Pending', '1711573400', 'Mbayani Blantyre, Malawi');
 
 -- --------------------------------------------------------
 
@@ -932,10 +933,10 @@ CREATE TABLE `tbl_product` (
 --
 
 INSERT INTO `tbl_product` (`p_id`, `p_name`, `uploader`, `p_old_price`, `p_current_price`, `p_qty`, `p_featured_photo`, `p_description`, `p_short_description`, `p_feature`, `p_condition`, `p_return_policy`, `p_total_view`, `p_is_featured`, `p_is_active`, `ecat_id`) VALUES
-(117, 'kentt', 'kapembe@mail.com', '100', '120', 10, 'product-featured-1.jpg', '<p>Kentt mangoes</p>', '<p>Mangoes</p>', '', '<p>fresh</p>', '<p>No any</p>', 31, 1, 1, 80),
+(117, 'kentt', 'kapembe@mail.com', '100', '120', 11, 'product-featured-1.jpg', '<p>Kentt mangoes</p>', '<p>Mangoes</p>', '', '<p>fresh</p>', '<p>No any</p>', 31, 1, 1, 80),
 (118, 'British apples', 'none', '140', '170', 45, 'product-featured-118.jpg', '<p>British apples</p>', '<p>Apples</p>', '', '<p>fresh</p>', '<p>No any</p>', 0, 1, 1, 81),
 (119, 'Kenyan Mangoes', 'none', '60', '85', 37, 'product-featured-119.jpg', '<p>Kenyan mangoes</p>', '<p>Mangoes</p>', '', '<p>fresh</p>', '<p>No any</p>', 4, 1, 1, 80),
-(120, 'Tanzanian apples', 'none', '70', '82', 6, 'product-featured-120.jpg', '<p>Tanzania apples</p>', '<p>apples</p>', '', '<p>Fresh</p>', '<p>No any</p>', 1, 1, 1, 81),
+(120, 'Tanzanian apples', 'none', '70', '82', 5, 'product-featured-120.jpg', '<p>Tanzania apples</p>', '<p>apples</p>', '', '<p>Fresh</p>', '<p>No any</p>', 7, 1, 1, 81),
 (122, 'Second hand wheel barrow', 'kapembe@mail.com', '120000', '100000', 1, 'product-featured-122.jpg', '<p>Fairly Used Wheelbarrow</p>', '<p>Second hand</p>', '<p>Some Features here of wheelbarrow</p>', '<p>Second hand</p>', '<p>No return policy</p>', 5, 0, 1, 85);
 
 -- --------------------------------------------------------
@@ -1735,7 +1736,7 @@ ALTER TABLE `tbl_mid_category`
 -- AUTO_INCREMENT for table `tbl_order`
 --
 ALTER TABLE `tbl_order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `tbl_page`
@@ -1747,7 +1748,7 @@ ALTER TABLE `tbl_page`
 -- AUTO_INCREMENT for table `tbl_payment`
 --
 ALTER TABLE `tbl_payment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT for table `tbl_photo`
