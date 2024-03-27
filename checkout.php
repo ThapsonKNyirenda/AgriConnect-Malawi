@@ -168,58 +168,7 @@ if(!isset($_SESSION['cart_p_id'])) {
                 </div>
 
                 
-
-                <div class="billing-address">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h3 class="special"><?php echo LANG_VALUE_161; ?></h3>
-                            <table class="table table-responsive table-bordered table-hover table-striped bill-address">
-                                <tr>
-                                    <td><?php echo LANG_VALUE_102; ?></td>
-                                    <td><?php echo $_SESSION['customer']['cust_b_name']; ?></p></td>
-                                </tr>
-                                <tr>
-                                    <td><?php echo LANG_VALUE_103; ?></td>
-                                    <td><?php echo $_SESSION['customer']['cust_b_cname']; ?></td>
-                                </tr>
-                                <tr>
-                                    <td><?php echo LANG_VALUE_104; ?></td>
-                                    <td><?php echo $_SESSION['customer']['cust_b_phone']; ?></td>
-                                </tr>
-                                <tr>
-                                    <td><?php echo LANG_VALUE_106; ?></td>
-                                    <td>
-                                        <?php
-                                        $statement = $pdo->prepare("SELECT * FROM tbl_country WHERE country_id=?");
-                                        $statement->execute(array($_SESSION['customer']['cust_b_country']));
-                                        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-                                        foreach ($result as $row) {
-                                            echo $row['country_name'];
-                                        }
-                                        ?>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><?php echo LANG_VALUE_105; ?></td>
-                                    <td>
-                                        <?php echo nl2br($_SESSION['customer']['cust_b_address']); ?>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><?php echo LANG_VALUE_107; ?></td>
-                                    <td><?php echo $_SESSION['customer']['cust_b_city']; ?></td>
-                                </tr>
-                                <tr>
-                                    <td><?php echo LANG_VALUE_108; ?></td>
-                                    <td><?php echo $_SESSION['customer']['cust_b_state']; ?></td>
-                                </tr>
-                                <tr>
-                                    <td><?php echo LANG_VALUE_109; ?></td>
-                                    <td><?php echo $_SESSION['customer']['cust_b_zip']; ?></td>
-                                </tr>                                
-                            </table>
-                        </div>
-                        <div class="col-md-6">
+                        <div class="col-md-9">
                             <h3 class="special"><?php echo LANG_VALUE_162; ?></h3>
                             <table class="table table-responsive table-bordered table-hover table-striped bill-address">
                                 <tr>
@@ -234,19 +183,7 @@ if(!isset($_SESSION['cart_p_id'])) {
                                     <td><?php echo LANG_VALUE_104; ?></td>
                                     <td><?php echo $_SESSION['customer']['cust_s_phone']; ?></td>
                                 </tr>
-                                <tr>
-                                    <td><?php echo LANG_VALUE_106; ?></td>
-                                    <td>
-                                        <?php
-                                        $statement = $pdo->prepare("SELECT * FROM tbl_country WHERE country_id=?");
-                                        $statement->execute(array($_SESSION['customer']['cust_s_country']));
-                                        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-                                        foreach ($result as $row) {
-                                            echo $row['country_name'];
-                                        }
-                                        ?>
-                                    </td>
-                                </tr>
+                                
                                 <tr>
                                     <td><?php echo LANG_VALUE_105; ?></td>
                                     <td>
@@ -258,13 +195,10 @@ if(!isset($_SESSION['cart_p_id'])) {
                                     <td><?php echo $_SESSION['customer']['cust_s_city']; ?></td>
                                 </tr>
                                 <tr>
-                                    <td><?php echo LANG_VALUE_108; ?></td>
+                                    <td><?php echo "District"; ?></td>
                                     <td><?php echo $_SESSION['customer']['cust_s_state']; ?></td>
                                 </tr>
-                                <tr>
-                                    <td><?php echo LANG_VALUE_109; ?></td>
-                                    <td><?php echo $_SESSION['customer']['cust_s_zip']; ?></td>
-                                </tr> 
+                                 
                             </table>
                         </div>
                     </div>                    
@@ -285,22 +219,12 @@ if(!isset($_SESSION['cart_p_id'])) {
                     	<?php
 		                $checkout_access = 1;
 		                if(
-		                    ($_SESSION['customer']['cust_b_name']=='') ||
-		                    ($_SESSION['customer']['cust_b_cname']=='') ||
-		                    ($_SESSION['customer']['cust_b_phone']=='') ||
-		                    ($_SESSION['customer']['cust_b_country']=='') ||
-		                    ($_SESSION['customer']['cust_b_address']=='') ||
-		                    ($_SESSION['customer']['cust_b_city']=='') ||
-		                    ($_SESSION['customer']['cust_b_state']=='') ||
-		                    ($_SESSION['customer']['cust_b_zip']=='') ||
 		                    ($_SESSION['customer']['cust_s_name']=='') ||
 		                    ($_SESSION['customer']['cust_s_cname']=='') ||
 		                    ($_SESSION['customer']['cust_s_phone']=='') ||
-		                    ($_SESSION['customer']['cust_s_country']=='') ||
 		                    ($_SESSION['customer']['cust_s_address']=='') ||
 		                    ($_SESSION['customer']['cust_s_city']=='') ||
-		                    ($_SESSION['customer']['cust_s_state']=='') ||
-		                    ($_SESSION['customer']['cust_s_zip']=='')
+		                    ($_SESSION['customer']['cust_s_state']=='')
 		                ) {
 		                    $checkout_access = 0;
 		                }
@@ -308,7 +232,7 @@ if(!isset($_SESSION['cart_p_id'])) {
 		                <?php if($checkout_access == 0): ?>
 		                	<div class="col-md-12">
 				                <div style="color:red;font-size:22px;margin-bottom:50px;">
-			                        You must have to fill up all the billing information from your dashboard panel in order to checkout the order. Please fill up the information going to <a href="customer-billing-shipping-update.php" style="color:red;text-decoration:underline;">this link</a>.
+			                        You must have to fill up all the Shipping information from your dashboard panel in order to checkout the order. Please fill up the information going to <a href="customer-billing-shipping-update.php" style="color:red;text-decoration:underline;">this link</a>.
 			                    </div>
 	                    	</div>
 	                	<?php else: ?>
