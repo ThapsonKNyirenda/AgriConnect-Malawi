@@ -1,0 +1,11 @@
+Customer
+username: thapsonknyirenda@gmail.com
+password: 1
+
+Vendor
+username: kapembe@mail.com
+password: 123
+
+admin(go to admin directory in url)
+username: admin@mail.com
+password: Password@123
