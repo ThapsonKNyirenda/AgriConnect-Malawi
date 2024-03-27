@@ -213,8 +213,6 @@ if($success_message != '') {
                            $result1 = $statement1->fetchAll(PDO::FETCH_ASSOC);
                            foreach ($result1 as $row1) {
                                 echo '<b>Product:</b> '.$row1['product_name'];
-                                echo '<br>(<b>Size:</b> '.$row1['size'];
-                                echo ', <b>Color:</b> '.$row1['color'].')';
                                 echo '<br>(<b>Quantity:</b> '.$row1['quantity'];
                                 echo ', <b>Unit Price:</b> '.$row1['unit_price'].')';
                                 echo '<br><br>';
@@ -243,7 +241,7 @@ if($success_message != '') {
                         		<b>Transaction Information:</b> <br><?php echo $row['bank_transaction_info']; ?><br>
                         	<?php endif; ?>
                         </td>
-                        <td>$<?php echo $row['paid_amount']; ?></td>
+                        <td>MWK <?php echo $row['paid_amount']; ?></td>
                         <td>
                             <?php echo $row['payment_status']; ?>
                             <br><br>
