@@ -64,11 +64,6 @@ if (isset($_POST['form1'])) {
         $error_message .= LANG_VALUE_125."<br>";
     }
 
-    if(empty($_POST['farm_type'])) {
-        $valid = 0;
-        $error_message .= "Please Provide Farming type"."<br>";
-    }
-
     if(empty($_POST['cust_city'])) {
         $valid = 0;
         $error_message .= LANG_VALUE_127."<br>";
@@ -84,10 +79,9 @@ if (isset($_POST['form1'])) {
 
         $token = md5(time());
         // update data into the database
-        $statement = $pdo->prepare("UPDATE tbl_customer SET cust_name=?, farm_type=?, cust_email=?, cust_phone=?, cust_country=?, cust_address=?, cust_city=?, cust_state=?, cust_zip=?, acc_type=? WHERE cust_id=?");
+        $statement = $pdo->prepare("UPDATE tbl_customer SET cust_name=?, cust_email=?, cust_phone=?, cust_country=?, cust_address=?, cust_city=?, cust_state=?, cust_zip=?, acc_type=? WHERE cust_id=?");
         $statement->execute(array(
                     strip_tags($_POST['cust_name']),
-                    strip_tags($_POST['farm_type']),
                     strip_tags($_POST['cust_email']),
                     strip_tags($_POST['cust_phone']),
                     '',
@@ -104,7 +98,6 @@ if (isset($_POST['form1'])) {
         $success_message = LANG_VALUE_130;
 
         $_SESSION['customer']['cust_name'] = $_POST['cust_name'];
-        $_SESSION['customer']['farm_type'] = $_POST['farm_type'];
         $_SESSION['customer']['cust_email'] = $_POST['cust_email'];
         $_SESSION['customer']['cust_phone'] = $_POST['cust_phone'];
         $_SESSION['customer']['acc_type'] = $_POST['acc_type'];
@@ -141,20 +134,12 @@ if (isset($_POST['form1'])) {
                                 <input type="text" class="form-control" name="cust_name" value="<?php echo $_SESSION['customer']['cust_name']; ?>">
                             </div>
                             <div class="col-md-6 form-group">
-                                <label for="">Farming type</label>
-                                <input type="text" class="form-control" name="farm_type" value="<?php echo $_SESSION['customer']['farm_type']; ?>">
-                            </div>
-                            <div class="col-md-6 form-group">
                                 <label for=""><?php echo LANG_VALUE_94; ?> *</label>
                                 <input type="text" class="form-control" name="cust_email" value="<?php echo $_SESSION['customer']['cust_email']; ?>">
                             </div>
                             <div class="col-md-6 form-group">
                                 <label for=""><?php echo LANG_VALUE_104; ?> *</label>
                                 <input type="text" class="form-control" name="cust_phone" value="<?php echo $_SESSION['customer']['cust_phone']; ?>">
-                            </div>
-                            <div class="col-md-12 form-group">
-                                <label for=""><?php echo LANG_VALUE_105; ?> *</label>
-                                <textarea name="cust_address" class="form-control" cols="30" rows="10" style="height:70px;"><?php echo $_SESSION['customer']['cust_address']; ?></textarea>
                             </div>
                             <div class="col-md-6 form-group">
                                     <label for="">Register as *</label>
@@ -163,6 +148,10 @@ if (isset($_POST['form1'])) {
                                         <option value="vendor">Vendor</option>
                                     </select>                                    
                                 </div>
+                            <div class="col-md-12 form-group">
+                                <label for=""><?php echo LANG_VALUE_105; ?> *</label>
+                                <textarea name="cust_address" class="form-control" cols="30" rows="10" style="height:70px;"><?php echo $_SESSION['customer']['cust_address']; ?></textarea>
+                            </div>
                             
                             <div class="col-md-6 form-group">
                                 <label for=""><?php echo LANG_VALUE_107; ?> *</label>
