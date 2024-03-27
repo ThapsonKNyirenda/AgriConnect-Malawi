@@ -36,8 +36,9 @@ if( !isset($_REQUEST['msg']) ) {
 	                            payment_method,
 	                            payment_status,
 	                            shipping_status,
-	                            payment_id
-	                        ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+	                            payment_id,
+								customer_address
+	                        ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 	    $statement->execute(array(
 	                            $_SESSION['customer']['cust_id'],
 	                            $_SESSION['customer']['cust_name'],
@@ -53,7 +54,8 @@ if( !isset($_REQUEST['msg']) ) {
 	                            'Bank Deposit',
 	                            'Pending',
 	                            'Pending',
-	                            $payment_id
+	                            $payment_id,
+								$_SESSION['customer']['cust_s_address']
 	                        ));
 
 	    $i=0;

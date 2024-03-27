@@ -191,7 +191,8 @@ if($success_message != '') {
 	                    <td>
                             <b>Id:</b> <?php echo $row['customer_id']; ?><br>
                             <b>Name:</b><br> <?php echo $row['customer_name']; ?><br>
-                            <b>Email:</b><br> <?php echo $row['customer_email']; ?><br><br>
+                            <b>Email:</b><br> <?php echo $row['customer_email']; ?><br>
+                            <b>Shipping Address:</b><br> <?php echo $row['customer_address']; ?><br><br>
                             <a href="#" data-toggle="modal" data-target="#model-<?php echo $i; ?>"class="btn btn-warning btn-xs" style="width:100%;margin-bottom:4px;">Send Message</a>
                             <div id="model-<?php echo $i; ?>" class="modal fade" role="dialog">
 								<div class="modal-dialog">
