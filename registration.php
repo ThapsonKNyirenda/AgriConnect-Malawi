@@ -47,11 +47,6 @@ if (isset($_POST['form1'])) {
         $error_message .= LANG_VALUE_125."<br>";
     }
 
-    if(empty($_POST['farm_type'])) {
-        $valid = 0;
-        $error_message .= "Please Provide Farming type"."<br>";
-    }
-
     if(empty($_POST['cust_city'])) {
         $valid = 0;
         $error_message .= LANG_VALUE_127."<br>";
@@ -117,8 +112,7 @@ if (isset($_POST['form1'])) {
                                         cust_datetime,
                                         cust_timestamp,
                                         cust_status,
-                                        acc_type,
-                                        farm_type
+                                        acc_type
                                     ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
         $statement2 = $pdo->prepare("INSERT INTO tbl_user(full_name,email,phone,password,photo,role,status) VALUES(?,?,?,?,?,?,?)");
@@ -158,8 +152,7 @@ if (isset($_POST['form1'])) {
                                         $cust_datetime,
                                         $cust_timestamp,
                                         1,
-                                        $_POST['acc_type'],
-                                        $_POST['farm_type']
+                                        $_POST['acc_type']
                                     ));
 
         // Send email for confirmation of the account
@@ -186,7 +179,6 @@ if (isset($_POST['form1'])) {
         unset($_POST['cust_email']);
         unset($_POST['cust_phone']);
         unset($_POST['cust_address']);
-        unset($_POST['farm_type']);
 
         // $success_message = LANG_VALUE_152;
 
@@ -225,10 +217,6 @@ if (isset($_POST['form1'])) {
                                 <div class="col-md-6 form-group">
                                     <label for=""><?php echo LANG_VALUE_102; ?> *</label>
                                     <input type="text" class="form-control" name="cust_name" value="<?php if(isset($_POST['cust_name'])){echo $_POST['cust_name'];} ?>">
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <label for="">Farming type</label>
-                                    <input type="text" class="form-control" name="farm_type">
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <label for=""><?php echo LANG_VALUE_94; ?> *</label>
