@@ -23,25 +23,33 @@ if (isset($_POST['form1'])) {
 
     // update data into the database
     $statement = $pdo->prepare("UPDATE tbl_customer SET 
+                            cust_b_name=?, 
+                            cust_b_cname=?, 
+                            cust_b_phone=?,
+                            cust_b_address=?, 
+                            cust_b_city=?, 
+                            cust_b_state=?,
                             cust_s_name=?, 
                             cust_s_cname=?, 
-                            cust_s_phone=?, 
-                            cust_s_country=?, 
+                            cust_s_phone=?,
                             cust_s_address=?, 
                             cust_s_city=?, 
-                            cust_s_state=?, 
-                            cust_s_zip=? 
+                            cust_s_state=?
 
                             WHERE cust_id=?");
     $statement->execute(array(
                             strip_tags($_POST['cust_s_name']),
                             strip_tags($_POST['cust_s_cname']),
                             strip_tags($_POST['cust_s_phone']),
-                            strip_tags($_POST['cust_s_country']),
                             strip_tags($_POST['cust_s_address']),
                             strip_tags($_POST['cust_s_city']),
                             strip_tags($_POST['cust_s_state']),
-                            strip_tags($_POST['cust_s_zip']),
+                            strip_tags($_POST['cust_s_name']),
+                            strip_tags($_POST['cust_s_cname']),
+                            strip_tags($_POST['cust_s_phone']),
+                            strip_tags($_POST['cust_s_address']),
+                            strip_tags($_POST['cust_s_city']),
+                            strip_tags($_POST['cust_s_state']),
                             $_SESSION['customer']['cust_id']
                         ));  
    
@@ -50,11 +58,9 @@ if (isset($_POST['form1'])) {
     $_SESSION['customer']['cust_s_name'] = strip_tags($_POST['cust_s_name']);
     $_SESSION['customer']['cust_s_cname'] = strip_tags($_POST['cust_s_cname']);
     $_SESSION['customer']['cust_s_phone'] = strip_tags($_POST['cust_s_phone']);
-    $_SESSION['customer']['cust_s_country'] = strip_tags($_POST['cust_s_country']);
     $_SESSION['customer']['cust_s_address'] = strip_tags($_POST['cust_s_address']);
     $_SESSION['customer']['cust_s_city'] = strip_tags($_POST['cust_s_city']);
     $_SESSION['customer']['cust_s_state'] = strip_tags($_POST['cust_s_state']);
-    $_SESSION['customer']['cust_s_zip'] = strip_tags($_POST['cust_s_zip']);
 
 }
 ?>
@@ -93,21 +99,7 @@ if (isset($_POST['form1'])) {
                                     <label for=""><?php echo LANG_VALUE_104; ?></label>
                                     <input type="text" class="form-control" name="cust_s_phone" value="<?php echo $_SESSION['customer']['cust_s_phone']; ?>">
                                 </div>
-                                <div class="form-group">
-                                    <label for=""><?php echo LANG_VALUE_106; ?></label>
-                                    <select name="cust_s_country" class="form-control">
-                                        <?php
-                                        $statement = $pdo->prepare("SELECT * FROM tbl_country ORDER BY country_name ASC");
-                                        $statement->execute();
-                                        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-                                        foreach ($result as $row) {
-                                            ?>
-                                            <option value="<?php echo $row['country_id']; ?>" <?php if($row['country_id'] == $_SESSION['customer']['cust_s_country']) {echo 'selected';} ?>><?php echo $row['country_name']; ?></option>
-                                            <?php
-                                        }
-                                        ?>
-                                    </select>
-                                </div>
+                                
                                 <div class="form-group">
                                     <label for=""><?php echo LANG_VALUE_105; ?></label>
                                     <textarea name="cust_s_address" class="form-control" cols="30" rows="10" style="height:100px;"><?php echo $_SESSION['customer']['cust_s_address']; ?></textarea>
@@ -117,12 +109,8 @@ if (isset($_POST['form1'])) {
                                     <input type="text" class="form-control" name="cust_s_city" value="<?php echo $_SESSION['customer']['cust_s_city']; ?>">
                                 </div>
                                 <div class="form-group">
-                                    <label for=""><?php echo LANG_VALUE_108; ?></label>
+                                    <label for=""><?php echo "District"; ?></label>
                                     <input type="text" class="form-control" name="cust_s_state" value="<?php echo $_SESSION['customer']['cust_s_state']; ?>">
-                                </div>
-                                <div class="form-group">
-                                    <label for=""><?php echo LANG_VALUE_109; ?></label>
-                                    <input type="text" class="form-control" name="cust_s_zip" value="<?php echo $_SESSION['customer']['cust_s_zip']; ?>">
                                 </div>
                             </div>
                         </div>

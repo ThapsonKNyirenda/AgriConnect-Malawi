@@ -10,7 +10,7 @@ date_default_timezone_set('America/Los_Angeles');
 $dbhost = 'localhost';
 
 // Database Name
-$dbname = 'ecommerceweb';
+// $dbname = 'agriconnect-malawi';
 
 // Database Username
 $dbuser = 'root';
