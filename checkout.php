@@ -175,10 +175,7 @@ if(!isset($_SESSION['cart_p_id'])) {
                                     <td><?php echo LANG_VALUE_102; ?></td>
                                     <td><?php echo $_SESSION['customer']['cust_s_name']; ?></p></td>
                                 </tr>
-                                <tr>
-                                    <td><?php echo LANG_VALUE_103; ?></td>
-                                    <td><?php echo $_SESSION['customer']['cust_s_cname']; ?></td>
-                                </tr>
+                                
                                 <tr>
                                     <td><?php echo LANG_VALUE_104; ?></td>
                                     <td><?php echo $_SESSION['customer']['cust_s_phone']; ?></td>
@@ -220,7 +217,6 @@ if(!isset($_SESSION['cart_p_id'])) {
 		                $checkout_access = 1;
 		                if(
 		                    ($_SESSION['customer']['cust_s_name']=='') ||
-		                    ($_SESSION['customer']['cust_s_cname']=='') ||
 		                    ($_SESSION['customer']['cust_s_phone']=='') ||
 		                    ($_SESSION['customer']['cust_s_address']=='') ||
 		                    ($_SESSION['customer']['cust_s_city']=='') ||
@@ -232,7 +228,7 @@ if(!isset($_SESSION['cart_p_id'])) {
 		                <?php if($checkout_access == 0): ?>
 		                	<div class="col-md-12">
 				                <div style="color:red;font-size:22px;margin-bottom:50px;">
-			                        You must have to fill up all the Shipping information from your dashboard panel in order to checkout the order. Please fill up the information going to <a href="customer-billing-shipping-update.php" style="color:red;text-decoration:underline;">this link</a>.
+			                        You must have to fill up all the Shipping information from your Profile Page in order to checkout the order. Please fill up the information going to <a href="customer-billing-shipping-update.php" style="color:red;text-decoration:underline;">this link</a>.
 			                    </div>
 	                    	</div>
 	                	<?php else: ?>

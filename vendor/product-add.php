@@ -131,7 +131,7 @@ if(isset($_POST['form1'])) {
 									) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 		$statement->execute(array(
 										$_POST['p_name'],
-										$_SESSION['user']['email'],
+										$_SESSION['user1']['email'],
 										$_POST['p_old_price'],
 										$_POST['p_current_price'],
 										$_POST['p_qty'],

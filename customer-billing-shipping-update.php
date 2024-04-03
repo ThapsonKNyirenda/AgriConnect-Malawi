@@ -25,31 +25,39 @@ if (isset($_POST['form1'])) {
     $statement = $pdo->prepare("UPDATE tbl_customer SET 
                             cust_b_name=?, 
                             cust_b_cname=?, 
-                            cust_b_phone=?,
+                            cust_b_phone=?, 
+                            cust_b_country=?, 
                             cust_b_address=?, 
                             cust_b_city=?, 
-                            cust_b_state=?,
+                            cust_b_state=?, 
+                            cust_b_zip=?,
                             cust_s_name=?, 
                             cust_s_cname=?, 
-                            cust_s_phone=?,
+                            cust_s_phone=?, 
+                            cust_s_country=?, 
                             cust_s_address=?, 
                             cust_s_city=?, 
-                            cust_s_state=?
+                            cust_s_state=?, 
+                            cust_s_zip=?
 
                             WHERE cust_id=?");
     $statement->execute(array(
                             strip_tags($_POST['cust_s_name']),
                             "None",
                             strip_tags($_POST['cust_s_phone']),
+                            "None",
                             strip_tags($_POST['cust_s_address']),
                             strip_tags($_POST['cust_s_city']),
                             strip_tags($_POST['cust_s_state']),
+                            "None",
                             strip_tags($_POST['cust_s_name']),
                             "None",
                             strip_tags($_POST['cust_s_phone']),
+                            "None",
                             strip_tags($_POST['cust_s_address']),
                             strip_tags($_POST['cust_s_city']),
                             strip_tags($_POST['cust_s_state']),
+                            "None",
                             $_SESSION['customer']['cust_id']
                         ));  
    
