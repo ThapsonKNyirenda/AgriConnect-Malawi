@@ -31,7 +31,7 @@ if(isset($_POST['form1'])) {
                 $error_message .= 'Password does not match<br>';
             } else {       
             
-				$_SESSION['user'] = $row;
+				$_SESSION['user1'] = $row;
                 header("location: index.php");
             }
         }

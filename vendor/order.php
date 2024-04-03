@@ -70,7 +70,7 @@ Payment Id: '.$row['payment_id'].'<br>
 
         $i=0;
         $statement = $pdo->prepare("SELECT * FROM tbl_order WHERE payment_id=? AND uploader=?");
-        $statement->execute(array($_POST['payment_id'], $_SESSION['user']['email']));
+        $statement->execute(array($_POST['payment_id'], $_SESSION['user1']['email']));
 
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
         foreach ($result as $row) {
@@ -153,7 +153,7 @@ if($success_message != '') {
             	<?php
 
                 // Get the user email from the session
-                $user_email = $_SESSION['user']['email'];
+                $user_email = $_SESSION['user1']['email'];
                 // $user_email = "none";
 
                 // echo $user_email;

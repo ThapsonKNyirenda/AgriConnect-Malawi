@@ -1,4 +1,10 @@
-<?php require_once('header.php'); ?>
+<?php 
+	require_once('header.php'); 
+
+	// echo $_SESSION['user1']['email'];
+	// echo $_SESSION['user']['email'];
+	// die;
+?>
 
 <section class="content-header">
 	<div class="content-header-left">
@@ -32,7 +38,7 @@
 						<tbody>
 							<?php
 							$i=0;
-							$uploader_email= $_SESSION['user']['email'];
+							$uploader_email= $_SESSION['user1']['email'];
 							$statement = $pdo->prepare("SELECT
 														t1.p_id,
 														t1.p_name,
@@ -57,11 +63,11 @@
 													ORDER BY t1.p_id DESC
 												");
 
-// Bind the session user's email to the :uploader_email parameter
-$statement->bindParam(':uploader_email', $_SESSION['user']['email']);
+							// Bind the session user's email to the :uploader_email parameter
+							$statement->bindParam(':uploader_email', $_SESSION['user1']['email']);
 
-// Execute the statement
-$statement->execute();
+							// Execute the statement
+							$statement->execute();
 
 							$statement->execute();
 							$result = $statement->fetchAll(PDO::FETCH_ASSOC);

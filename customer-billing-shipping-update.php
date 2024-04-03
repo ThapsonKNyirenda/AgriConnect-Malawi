@@ -39,13 +39,13 @@ if (isset($_POST['form1'])) {
                             WHERE cust_id=?");
     $statement->execute(array(
                             strip_tags($_POST['cust_s_name']),
-                            strip_tags($_POST['cust_s_cname']),
+                            "None",
                             strip_tags($_POST['cust_s_phone']),
                             strip_tags($_POST['cust_s_address']),
                             strip_tags($_POST['cust_s_city']),
                             strip_tags($_POST['cust_s_state']),
                             strip_tags($_POST['cust_s_name']),
-                            strip_tags($_POST['cust_s_cname']),
+                            "None",
                             strip_tags($_POST['cust_s_phone']),
                             strip_tags($_POST['cust_s_address']),
                             strip_tags($_POST['cust_s_city']),
@@ -53,10 +53,9 @@ if (isset($_POST['form1'])) {
                             $_SESSION['customer']['cust_id']
                         ));  
    
-    $success_message = LANG_VALUE_122;
+    $success_message = "Shipping information updated successfully";
 
     $_SESSION['customer']['cust_s_name'] = strip_tags($_POST['cust_s_name']);
-    $_SESSION['customer']['cust_s_cname'] = strip_tags($_POST['cust_s_cname']);
     $_SESSION['customer']['cust_s_phone'] = strip_tags($_POST['cust_s_phone']);
     $_SESSION['customer']['cust_s_address'] = strip_tags($_POST['cust_s_address']);
     $_SESSION['customer']['cust_s_city'] = strip_tags($_POST['cust_s_city']);
@@ -91,10 +90,7 @@ if (isset($_POST['form1'])) {
                                     <label for=""><?php echo LANG_VALUE_102; ?></label>
                                     <input type="text" class="form-control" name="cust_s_name" value="<?php echo $_SESSION['customer']['cust_s_name']; ?>">
                                 </div>
-                                <div class="form-group">
-                                    <label for=""><?php echo LANG_VALUE_103; ?></label>
-                                    <input type="text" class="form-control" name="cust_s_cname" value="<?php echo $_SESSION['customer']['cust_s_cname']; ?>">
-                                </div>
+                                
                                 <div class="form-group">
                                     <label for=""><?php echo LANG_VALUE_104; ?></label>
                                     <input type="text" class="form-control" name="cust_s_phone" value="<?php echo $_SESSION['customer']['cust_s_phone']; ?>">

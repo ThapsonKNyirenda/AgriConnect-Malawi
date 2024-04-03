@@ -54,7 +54,7 @@ if(isset($_POST['form1'])) {
                         header("location: ".BASE_URL."index.php");
                     }else if ($row_acc_type=="vendor") {
                         # code...
-                        $_SESSION['user'] = $row2;
+                        $_SESSION['user1'] = $row2;
                         header("location: ./vendor/index.php");
                         
                     } else {
