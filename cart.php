@@ -1,4 +1,21 @@
-<?php require_once('header.php'); ?>
+<?php require_once('header.php'); 
+    // print_r ($_SESSION['cart_p_id']);
+    // die;
+
+    // print_r ($_SESSION['uploader']);
+    // die;
+
+    // $i=0;
+    // foreach($_SESSION['cart_p_id'] as $key => $value) 
+    // {
+    //     $i++;
+    //     $arr_cart_p_id[$i] = $value;
+        
+    // }
+    // die;
+
+
+?>
 
 <?php
 $statement = $pdo->prepare("SELECT * FROM tbl_settings WHERE id=1");
@@ -91,8 +108,6 @@ if(isset($_POST['form1'])) {
                             <th><?php echo '#' ?></th>
                             <th><?php echo LANG_VALUE_8; ?></th>
                             <th><?php echo LANG_VALUE_47; ?></th>
-                            <th><?php echo LANG_VALUE_157; ?></th>
-                            <th><?php echo LANG_VALUE_158; ?></th>
                             <th><?php echo LANG_VALUE_159; ?></th>
                             <th><?php echo LANG_VALUE_55; ?></th>
                             <th class="text-right"><?php echo LANG_VALUE_82; ?></th>
@@ -171,8 +186,6 @@ if(isset($_POST['form1'])) {
                                 <img src="assets/uploads/<?php echo $arr_cart_p_featured_photo[$i]; ?>" alt="">
                             </td>
                             <td><?php echo $arr_cart_p_name[$i]; ?></td>
-                            <td><?php echo $arr_cart_size_name[$i]; ?></td>
-                            <td><?php echo $arr_cart_color_name[$i]; ?></td>
                             <td><?php echo "MWK "; ?><?php echo $arr_cart_p_current_price[$i]; ?></td>
                             <td>
                                 <input type="hidden" name="product_id[]" value="<?php echo $arr_cart_p_id[$i]; ?>">
@@ -192,7 +205,7 @@ if(isset($_POST['form1'])) {
                         </tr>
                         <?php endfor; ?>
                         <tr>
-                            <th colspan="7" class="total-text">Total</th>
+                            <th colspan="5" class="total-text">Total</th>
                             <th class="total-amount"><?php echo "MWK "; ?><?php echo $table_total_price; ?></th>
                             <th></th>
                         </tr>

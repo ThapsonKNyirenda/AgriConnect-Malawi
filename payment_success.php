@@ -6,7 +6,7 @@
             <div class="col-md-12">
                 <p>
                     <h3 style="margin-top:20px;"><?php echo LANG_VALUE_121; ?></h3>
-                    <a href="dashboard.php" class="btn btn-success"><?php echo LANG_VALUE_91; ?></a>
+                    <a href="index.php" class="btn btn-success"><?php echo "Continue Shoping"; ?></a>
                 </p>
             </div>
         </div>

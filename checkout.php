@@ -1,4 +1,8 @@
-<?php require_once('header.php'); ?>
+<?php require_once('header.php'); 
+
+    // print_r($_SESSION['cart_p_id']);
+    // die;
+?>
 
 <?php
 $statement = $pdo->prepare("SELECT * FROM tbl_settings WHERE id=1");
@@ -53,6 +57,13 @@ if(!isset($_SESSION['cart_p_id'])) {
                         {
                             $i++;
                             $arr_cart_p_id[$i] = $value;
+                        }
+
+                        $i=0;
+                        foreach($_SESSION['uploader'] as $key => $value) 
+                        {
+                            $i++;
+                            $uploader[$i] = $value;
                         }
 
                         $i=0;
@@ -240,7 +251,6 @@ if(!isset($_SESSION['cart_p_id'])) {
 	                                    <label for=""><?php echo LANG_VALUE_34; ?> *</label>
 	                                    <select name="payment_method" class="form-control select2" id="advFieldsStatus">
 	                                        <option value=""><?php echo LANG_VALUE_35; ?></option>
-	                                        <option value="PayPal"><?php echo LANG_VALUE_36; ?></option>
 	                                        <option value="Bank Deposit"><?php echo LANG_VALUE_38; ?></option>
 	                                    </select>
 	                                </div>
@@ -249,7 +259,7 @@ if(!isset($_SESSION['cart_p_id'])) {
                                         <input type="hidden" name="cmd" value="_xclick" />
                                         <input type="hidden" name="no_note" value="1" />
                                         <input type="hidden" name="lc" value="UK" />
-                                        <input type="hidden" name="currency_code" value="USD" />
+                                        <input type="hidden" name="currency_code" value="MWK" />
                                         <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynow_LG.gif:NonHostedGuest" />
 
                                         <input type="hidden" name="final_total" value="<?php echo $final_total; ?>">

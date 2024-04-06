@@ -31,7 +31,9 @@ foreach($result as $row) {
     $p_is_featured = $row['p_is_featured'];
     $p_is_active = $row['p_is_active'];
     $ecat_id = $row['ecat_id'];
+    $uploader = $row['uploader'];
 }
+
 
 // Getting all categories name for breadcrumb
 $statement = $pdo->prepare("SELECT
@@ -219,6 +221,7 @@ if(isset($_POST['form_add_to_cart'])) {
           
 
             $_SESSION['cart_p_id'][$new_key] = $_REQUEST['id'];
+            $_SESSION['uploader'][$new_key] = $uploader;
             $_SESSION['cart_size_id'][$new_key] = $size_id;
             $_SESSION['cart_size_name'][$new_key] = $size_name;
             $_SESSION['cart_color_id'][$new_key] = $color_id;
@@ -265,6 +268,7 @@ if(isset($_POST['form_add_to_cart'])) {
         
 
         $_SESSION['cart_p_id'][1] = $_REQUEST['id'];
+        $_SESSION['uploader'][1] = $uploader;
         $_SESSION['cart_size_id'][1] = $size_id;
         $_SESSION['cart_size_name'][1] = $size_name;
         $_SESSION['cart_color_id'][1] = $color_id;

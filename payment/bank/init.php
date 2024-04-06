@@ -37,8 +37,9 @@ if( !isset($_REQUEST['msg']) ) {
 	                            payment_status,
 	                            shipping_status,
 	                            payment_id,
-								customer_address
-	                        ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+								customer_address,
+								product_owner
+	                        ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 	    $statement->execute(array(
 	                            $_SESSION['customer']['cust_id'],
 	                            $_SESSION['customer']['cust_name'],
@@ -55,7 +56,8 @@ if( !isset($_REQUEST['msg']) ) {
 	                            'Pending',
 	                            'Pending',
 	                            $payment_id,
-								$_SESSION['customer']['cust_s_address']
+								$_SESSION['customer']['cust_s_address'],
+								''
 	                        ));
 
 	    $i=0;
@@ -63,6 +65,13 @@ if( !isset($_REQUEST['msg']) ) {
 	    {
 	        $i++;
 	        $arr_cart_p_id[$i] = $value;
+	    }
+
+		$i=0;
+	    foreach($_SESSION['uploader'] as $key => $value) 
+	    {
+	        $i++;
+	        $arr_uploader[$i] = $value;
 	    }
 
 	    $i=0;
@@ -108,7 +117,6 @@ if( !isset($_REQUEST['msg']) ) {
 	    	$i++;
 	    	$arr_p_id[$i] = $row['p_id'];
 	    	$arr_p_qty[$i] = $row['p_qty'];
-	    	$arr_p_upl[$i] = $row['uploader'];
 	    }
 
 	    for($i=1;$i<=count($arr_cart_p_name);$i++) {
@@ -126,12 +134,12 @@ if( !isset($_REQUEST['msg']) ) {
 	        $sql = $statement->execute(array(
 	                        $arr_cart_p_id[$i],
 	                        $arr_cart_p_name[$i],
-							$arr_p_upl[$i],
+							$arr_uploader[$i],
 	                        $arr_cart_size_name[$i],
 	                        $arr_cart_color_name[$i],
 	                        $arr_cart_p_qty[$i],
 	                        $arr_cart_p_current_price[$i],
-	                        $payment_id,
+	                        $payment_id
 	                    ));
 
 	        // Update the stock
@@ -150,6 +158,7 @@ if( !isset($_REQUEST['msg']) ) {
 	    }
 	    unset($_SESSION['cart_p_id']);
 	    unset($_SESSION['cart_size_id']);
+	    unset($_SESSION['uploader']);
 	    unset($_SESSION['cart_size_name']);
 	    unset($_SESSION['cart_color_id']);
 	    unset($_SESSION['cart_color_name']);

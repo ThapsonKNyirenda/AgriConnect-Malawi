@@ -2,6 +2,8 @@
 
 	require_once('header.php'); 
 
+	$uploader_email=$_SESSION['user1']['email'];
+
 ?>
 
 <section class="content-header">
@@ -21,7 +23,7 @@ $statement = $pdo->prepare("SELECT * FROM tbl_end_category");
 $statement->execute();
 $total_end_category = $statement->rowCount();
 
-$statement = $pdo->prepare("SELECT * FROM tbl_product");
+$statement = $pdo->prepare("SELECT * FROM tbl_product WHERE uploader='$uploader_email'");
 $statement->execute();
 $total_product = $statement->rowCount();
 

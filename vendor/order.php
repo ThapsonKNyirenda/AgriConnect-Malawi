@@ -193,14 +193,9 @@ if($success_message != '') {
                             <b>Name:</b><br> <?php echo $row['customer_name']; ?><br>
                             <b>Email:</b><br> <?php echo $row['customer_email']; ?><br>
                             <b>Shipping Address:</b><br> <?php echo $row['customer_address']; ?><br><br>
-                            <a href="#" data-toggle="modal" data-target="#model-<?php echo $i; ?>"class="btn btn-warning btn-xs" style="width:100%;margin-bottom:4px;">Send Message</a>
                             <div id="model-<?php echo $i; ?>" class="modal fade" role="dialog">
 								<div class="modal-dialog">
 									<div class="modal-content">
-										<div class="modal-header">
-											<button type="button" class="close" data-dismiss="modal">&times;</button>
-											<h4 class="modal-title" style="font-weight: bold;">Send Message</h4>
-										</div>
 										<div class="modal-body" style="font-size: 14px">
 											<form action="" method="post">
                                                 <input type="hidden" name="cust_id" value="<?php echo $row['customer_id']; ?>">
