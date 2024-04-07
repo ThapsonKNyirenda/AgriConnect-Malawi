@@ -33,9 +33,9 @@ $statement = $pdo->prepare("SELECT * FROM tbl_subscriber WHERE subs_active='1'")
 $statement->execute();
 $total_subscriber = $statement->rowCount();
 
-$statement = $pdo->prepare("SELECT * FROM tbl_shipping_cost");
+$statement = $pdo->prepare("SELECT * FROM tbl_user");
 $statement->execute();
-$available_shipping = $statement->rowCount();
+$total_admins = $statement->rowCount();
 
 $statement = $pdo->prepare("SELECT * FROM tbl_payment WHERE payment_status=?");
 $statement->execute(array('Completed'));
@@ -75,6 +75,21 @@ $total_order_complete_shipping_pending = $statement->rowCount();
 				<!-- small box -->
 				<div class="small-box bg-red">
 				  <div class="inner">
+					<h3><?php echo $total_admins; ?></h3>
+  
+					<p>Total Admins</p>
+				  </div>
+				  <div class="icon">
+					<i class="ionicons ion-person-stalker"></i>
+				  </div>
+				  
+				</div>
+			</div>
+
+			<div class="col-lg-3 col-xs-6">
+				<!-- small box -->
+				<div class="small-box bg-orange">
+				  <div class="inner">
 					<h3><?php echo $total_customers; ?></h3>
   
 					<p>Active Customers</p>
@@ -84,7 +99,7 @@ $total_order_complete_shipping_pending = $statement->rowCount();
 				  </div>
 				  
 				</div>
-			  </div>
+			</div>
 
 			  <div class="col-lg-3 col-xs-6">
 				<!-- small box -->
@@ -103,7 +118,7 @@ $total_order_complete_shipping_pending = $statement->rowCount();
             <!-- ./col -->
             <div class="col-lg-3 col-xs-6">
               <!-- small box -->
-              <div class="small-box bg-blue">
+              <div class="small-box bg-yellow">
                 <div class="inner">
                   <h3><?php echo $total_order_completed; ?></h3>
 
@@ -120,7 +135,7 @@ $total_order_complete_shipping_pending = $statement->rowCount();
 
 			  <div class="col-lg-3 col-xs-6">
 				<!-- small box -->
-				<div class="small-box bg-yellow">
+				<div class="small-box bg-blue">
 				  <div class="inner">
 					<h3><?php echo $total_subscriber; ?></h3>
   
