@@ -7,60 +7,63 @@
 </section>
 
 <section class="content">
-	<div class="row">
-		<div class="col-md-12">
-			<div class="box box-info">
-				<div class="box-body table-responsive">
-					<table id="example1" class="table table-bordered table-hover table-striped">
-						<thead>
-							<tr>
-								<th width="10">#</th>
-								<th width="180">Name</th>
-								<th width="150">Email Address</th>
-								<th width="180">District</th>
-								<th>Status</th>
-								<th width="100">Change Status</th>
-								<th width="100">Action</th>
-							</tr>
-						</thead>
-						<tbody>
-							<?php
-							$i=0;
-							$statement = $pdo->prepare("SELECT * 
-														FROM tbl_customer WHERE acc_type='customer'
-													");
-							$statement->execute();
-							$result = $statement->fetchAll(PDO::FETCH_ASSOC);						
-							foreach ($result as $row) {
-								$i++;
-								?>
-								<tr class="<?php if($row['cust_status']==1) {echo 'bg-g';}else {echo 'bg-r';} ?>">
-									<td><?php echo $i; ?></td>
-									<td><?php echo $row['cust_name']; ?></td>
-									<td><?php echo $row['cust_email']; ?></td>
-									<td>
-										<?php echo $row['cust_city']; ?><br>
-									</td>
-									<td><?php if($row['cust_status']==1) {echo 'Active';} else {echo 'Inactive';} ?></td>
-									<td>
-										<a href="customer-change-status.php?id=<?php echo $row['cust_id']; ?>" class="btn btn-success btn-xs">Change Status</a>
-									</td>
-									<td>
-										<a href="#" class="btn btn-danger btn-xs" data-href="customer-delete.php?id=<?php echo $row['cust_id']; ?>" data-toggle="modal" data-target="#confirm-delete">Delete</a>
-									</td>
-								</tr>
-								<?php
-							}
-							?>							
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-info">
+                <div class="box-header">
+                    <div class="box-tools pull-right">
+                        <a href="add-admin.php" class="btn btn-primary btn-sm">Add Admin</a>
+                    </div>
+                    <br>
+                </div>
 
+                <?php if($success_message): ?>
+                <div class="callout callout-success">
+                
+                <p><?php echo $success_message; ?></p>
+                </div>
+                <?php endif; ?>
 
+                <div class="box-body table-responsive">
+                    <table id="example1" class="table table-bordered table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th width="10">#</th>
+                                <th width="180">Name</th>
+                                <th width="150">Email Address</th>
+                                <th width="180">Phone Number</th>
+                                <th width="100">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $i=0;
+                            $statement = $pdo->prepare("SELECT * FROM tbl_user WHERE role='Super Admin' or role='admin'");
+                            $statement->execute();
+                            $result = $statement->fetchAll(PDO::FETCH_ASSOC);                      
+                            foreach ($result as $row) {
+                                $i++;
+                                ?>
+                                <tr>
+                                    <td><?php echo $i; ?></td>
+                                    <td><?php echo $row['full_name']; ?></td>
+                                    <td><?php echo $row['email']; ?></td>
+                                    <td><?php echo $row['phone']; ?></td>
+                                    <td>
+                                        <a href="#" class="btn btn-danger btn-xs" data-href="admins-delete.php?id=<?php echo $row['id']; ?>" data-toggle="modal" data-target="#confirm-delete">Delete</a>
+                                    </td>
+                                </tr>
+                                <?php
+                            }
+                            ?>                          
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
+
 
 
 <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

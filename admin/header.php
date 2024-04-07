@@ -109,8 +109,8 @@ if(!isset($_SESSION['user'])) {
 			          </a>
 			        </li>
 
-					<li class="treeview <?php if( ($cur_page == 'vendor.php') || ($cur_page == 'vendor-add.php') || ($cur_page == 'vendor-edit.php') ) {echo 'active';} ?>">
-			          <a href="vendor.php">
+					<li class="treeview <?php if( ($cur_page == 'admins.php') || ($cur_page == 'admins-add.php') || ($cur_page == 'admins-edit.php') ) {echo 'active';} ?>">
+			          <a href="admins.php">
 					  <i class="fa fa-user"></i> <span>Admins Management</span>
 			          </a>
 			        </li>
