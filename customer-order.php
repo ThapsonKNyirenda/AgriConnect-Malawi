@@ -58,7 +58,6 @@ footer {
                                     <th><?php echo '#' ?></th>
                                     <th><?php echo LANG_VALUE_48; ?></th>
                                     <th><?php echo LANG_VALUE_27; ?></th>
-                                    <th><?php echo LANG_VALUE_28; ?></th>
                                     <th><?php echo LANG_VALUE_29; ?></th>
                                     <th><?php echo LANG_VALUE_30; ?></th>
                                     <th><?php echo LANG_VALUE_31; ?></th>
@@ -189,7 +188,6 @@ footer {
                                             ?>
                                         </td>
                                         <td><?php echo $row['payment_date']; ?></td>
-                                        <td><?php echo $row['txnid']; ?></td>
                                         <td><?php echo 'MWK '.$row['paid_amount']; ?></td>
                                         <td><?php echo $row['payment_status']; ?></td>
                                         <td><?php echo $row['payment_method']; ?></td>

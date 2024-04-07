@@ -35,7 +35,7 @@ if(isset($_POST['form1'])) {
 
         $order_detail = '';
         $statement = $pdo->prepare("SELECT * FROM tbl_payment WHERE payment_id=?");
-        $statement->execute(array());
+        $statement->execute(array($_POST['payment_id']));
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
         foreach ($result as $row) {
         	
@@ -64,20 +64,22 @@ Payment Date: '.$row['payment_date'].'<br>
 Payment Details: <br>'.$payment_details.'<br>
 Paid Amount: '.$row['paid_amount'].'<br>
 Payment Status: '.$row['payment_status'].'<br>
+Shipping Status: '.$row['shipping_status'].'<br>
 Payment Id: '.$row['payment_id'].'<br>
             ';
         }
 
         $i=0;
-        $statement = $pdo->prepare("SELECT * FROM tbl_order WHERE payment_id=? AND uploader=?");
-        $statement->execute(array($_POST['payment_id'], $_SESSION['user1']['email']));
-
+        $statement = $pdo->prepare("SELECT * FROM tbl_order WHERE payment_id=?");
+        $statement->execute(array($_POST['payment_id']));
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
         foreach ($result as $row) {
             $i++;
             $order_detail .= '
 <br><b><u>Product Item '.$i.'</u></b><br>
 Product Name: '.$row['product_name'].'<br>
+Size: '.$row['size'].'<br>
+Color: '.$row['color'].'<br>
 Quantity: '.$row['quantity'].'<br>
 Unit Price: '.$row['unit_price'].'<br>
             ';
@@ -146,40 +148,13 @@ if($success_message != '') {
                     </th>
                     <th>Paid Amount</th>
                     <th>Payment Status</th>
+                    <th>Shipping Status</th>
 			        <th>Action</th>
 			    </tr>
 			</thead>
             <tbody>
             	<?php
-
-                // Get the user email from the session
-                $user_email = $_SESSION['user1']['email'];
-                // $user_email = "none";
-
-                // echo $user_email;
-                // die;
-
-                $i=0;
-            	$statement = $pdo->prepare("SELECT * FROM tbl_payment ORDER by id DESC");
-            	$statement->execute();
-            	$result = $statement->fetchAll(PDO::FETCH_ASSOC);							
-            	foreach ($result as $row){
-                   $payment_id= $row['payment_id'];
-                }
-
-                // Prepare the SQL statement with placeholders for the variables
-                $statement = $pdo->prepare("SELECT * FROM tbl_order WHERE payment_id = ? AND uploader = ?");
-
-                // Bind the parameters to the prepared statement
-                $statement->bindParam(1, $payment_id, PDO::PARAM_INT);
-                $statement->bindParam(2, $user_email, PDO::PARAM_STR);
-
-                // Execute the prepared statement
-                $statement->execute();
-
-                // Check if there are any rows returned by the query
-                if ($statement->rowCount() > 0) {
-                    $i=0;
+            	$i=0;
             	$statement = $pdo->prepare("SELECT * FROM tbl_payment ORDER by id DESC");
             	$statement->execute();
             	$result = $statement->fetchAll(PDO::FETCH_ASSOC);							
@@ -191,11 +166,15 @@ if($success_message != '') {
 	                    <td>
                             <b>Id:</b> <?php echo $row['customer_id']; ?><br>
                             <b>Name:</b><br> <?php echo $row['customer_name']; ?><br>
-                            <b>Email:</b><br> <?php echo $row['customer_email']; ?><br>
-                            <b>Shipping Address:</b><br> <?php echo $row['customer_address']; ?><br><br>
+                            <b>Email:</b><br> <?php echo $row['customer_email']; ?><br><br>
+                            <a href="#" data-toggle="modal" data-target="#model-<?php echo $i; ?>"class="btn btn-warning btn-xs" style="width:100%;margin-bottom:4px;">Send Message</a>
                             <div id="model-<?php echo $i; ?>" class="modal fade" role="dialog">
 								<div class="modal-dialog">
 									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal">&times;</button>
+											<h4 class="modal-title" style="font-weight: bold;">Send Message</h4>
+										</div>
 										<div class="modal-body" style="font-size: 14px">
 											<form action="" method="post">
                                                 <input type="hidden" name="cust_id" value="<?php echo $row['customer_id']; ?>">
@@ -234,8 +213,10 @@ if($success_message != '') {
                            $result1 = $statement1->fetchAll(PDO::FETCH_ASSOC);
                            foreach ($result1 as $row1) {
                                 echo '<b>Product:</b> '.$row1['product_name'];
+                                echo '<br>(<b>Size:</b> '.$row1['size'];
+                                echo ', <b>Color:</b> '.$row1['color'].')';
                                 echo '<br>(<b>Quantity:</b> '.$row1['quantity'];
-                                echo ', <b>Unit Price: MWK</b> '.$row1['unit_price'].')';
+                                echo ', <b>Unit Price:</b> '.$row1['unit_price'].')';
                                 echo '<br><br>';
                            }
                            ?>
@@ -262,7 +243,7 @@ if($success_message != '') {
                         		<b>Transaction Information:</b> <br><?php echo $row['bank_transaction_info']; ?><br>
                         	<?php endif; ?>
                         </td>
-                        <td>MKW <?php echo $row['paid_amount']; ?></td>
+                        <td>$<?php echo $row['paid_amount']; ?></td>
                         <td>
                             <?php echo $row['payment_status']; ?>
                             <br><br>
@@ -274,14 +255,25 @@ if($success_message != '') {
                                 }
                             ?>
                         </td>
+                        <td>
+                            <?php echo $row['shipping_status']; ?>
+                            <br><br>
+                            <?php
+                            if($row['payment_status']=='Completed') {
+                                if($row['shipping_status']=='Pending'){
+                                    ?>
+                                    <a href="shipping-change-status.php?id=<?php echo $row['id']; ?>&task=Completed" class="btn btn-warning btn-xs" style="width:100%;margin-bottom:4px;">Mark Complete</a>
+                                    <?php
+                                }
+                            }
+                            ?>
+                        </td>
 	                    <td>
                             <a href="#" class="btn btn-danger btn-xs" data-href="order-delete.php?id=<?php echo $row['id']; ?>" data-toggle="modal" data-target="#confirm-delete" style="width:100%;">Delete</a>
 	                    </td>
 	                </tr>
             		<?php
             	}
-                    
-                }
             	?>
             </tbody>
           </table>

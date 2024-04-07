@@ -198,7 +198,7 @@ if (isset($_POST['form1'])) {
                                 </div>
                                 
                                 <div class="col-md-6 form-group">
-                                    <label for=""><?php echo LANG_VALUE_107; ?> *</label>
+                                    <label for=""><?php echo "District"; ?> *</label>
                                     <input type="text" class="form-control" name="cust_city" value="<?php if(isset($_POST['cust_city'])){echo $_POST['cust_city'];} ?>">
                                 </div>
                                 

@@ -13,6 +13,13 @@ if(!isset($_REQUEST['id'])) {
 		header('location: logout.php');
 		exit;
 	}
+
+	foreach($statement as $row){
+		$cust_email= $row['cust_email'];
+		$statement1 = $pdo->prepare("DELETE FROM tbl_user WHERE email=?");
+		$statement1->execute(array($cust_email));
+	}
+
 }
 ?>
 

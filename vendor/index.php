@@ -39,13 +39,9 @@ $statement = $pdo->prepare("SELECT * FROM tbl_shipping_cost");
 $statement->execute();
 $available_shipping = $statement->rowCount();
 
-$statement = $pdo->prepare("SELECT * FROM tbl_payment WHERE payment_status=?");
-$statement->execute(array('Completed'));
-$total_order_completed = $statement->rowCount();
-
-$statement = $pdo->prepare("SELECT * FROM tbl_payment WHERE shipping_status=?");
-$statement->execute(array('Completed'));
-$total_shipping_completed = $statement->rowCount();
+$statement = $pdo->prepare("SELECT * FROM tbl_order WHERE uploader=?");
+$statement->execute(array($uploader_email));
+$your_order = $statement->rowCount();
 
 $statement = $pdo->prepare("SELECT * FROM tbl_payment WHERE payment_status=?");
 $statement->execute(array('Pending'));
@@ -77,9 +73,9 @@ $total_order_complete_shipping_pending = $statement->rowCount();
               <!-- small box -->
               <div class="small-box bg-maroon">
                 <div class="inner">
-                  <h3><?php echo $total_order_pending; ?></h3>
+                  <h3><?php echo $your_order; ?></h3>
 
-                  <p>Pending Orders</p>
+                  <p>Total Orders</p>
                 </div>
                 <div class="icon">
                   <i class="ionicons ion-clipboard"></i>
@@ -88,31 +84,7 @@ $total_order_complete_shipping_pending = $statement->rowCount();
               </div>
             </div>
             <!-- ./col -->
-            <div class="col-lg-3 col-xs-6">
-              <!-- small box -->
-              <div class="small-box bg-green">
-                <div class="inner">
-                  <h3><?php echo $total_order_completed; ?></h3>
-
-                  <p>Completed Orders</p>
-                </div>
-                <div class="icon">
-                  <i class="ionicons ion-android-checkbox-outline"></i>
-                </div>
-               
-              </div>
-            </div>
-
             
-			
-			
-
-			  
-
-			  
-
-			  
-
 			  <div class="col-lg-3 col-xs-6">
 				<!-- small box -->
 				<div class="small-box bg-olive">
