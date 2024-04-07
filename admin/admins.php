@@ -27,7 +27,7 @@
 							<?php
 							$i=0;
 							$statement = $pdo->prepare("SELECT * 
-														FROM tbl_customer WHERE acc_type='vendor'
+														FROM tbl_customer WHERE acc_type='customer'
 													");
 							$statement->execute();
 							$result = $statement->fetchAll(PDO::FETCH_ASSOC);						
@@ -43,10 +43,10 @@
 									</td>
 									<td><?php if($row['cust_status']==1) {echo 'Active';} else {echo 'Inactive';} ?></td>
 									<td>
-										<a href="vendor-change-status.php?id=<?php echo $row['cust_id']; ?>" class="btn btn-success btn-xs">Change Status</a>
+										<a href="customer-change-status.php?id=<?php echo $row['cust_id']; ?>" class="btn btn-success btn-xs">Change Status</a>
 									</td>
 									<td>
-										<a href="#" class="btn btn-danger btn-xs" data-href="vendor-delete.php?id=<?php echo $row['cust_id']; ?>" data-toggle="modal" data-target="#confirm-delete">Delete</a>
+										<a href="#" class="btn btn-danger btn-xs" data-href="customer-delete.php?id=<?php echo $row['cust_id']; ?>" data-toggle="modal" data-target="#confirm-delete">Delete</a>
 									</td>
 								</tr>
 								<?php
@@ -71,7 +71,7 @@
                 <h4 class="modal-title" id="myModalLabel">Delete Confirmation</h4>
             </div>
             <div class="modal-body">
-                <p>Are you sure want to delete this vendor?</p>
+                <p>Are you sure want to delete this admin?</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>

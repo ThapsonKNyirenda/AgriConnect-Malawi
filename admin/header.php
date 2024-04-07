@@ -108,6 +108,12 @@ if(!isset($_SESSION['user'])) {
 					  <i class="fa fa-user"></i> <span>Registered Vendor</span>
 			          </a>
 			        </li>
+
+					<li class="treeview <?php if( ($cur_page == 'vendor.php') || ($cur_page == 'vendor-add.php') || ($cur_page == 'vendor-edit.php') ) {echo 'active';} ?>">
+			          <a href="vendor.php">
+					  <i class="fa fa-user"></i> <span>Admins Management</span>
+			          </a>
+			        </li>
 					
 			        <li class="treeview <?php if( ($cur_page == 'settings.php') ) {echo 'active';} ?>">
 			          <a href="settings.php">
