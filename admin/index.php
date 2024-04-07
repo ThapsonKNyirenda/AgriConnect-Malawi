@@ -21,9 +21,13 @@ $statement = $pdo->prepare("SELECT * FROM tbl_product");
 $statement->execute();
 $total_product = $statement->rowCount();
 
-$statement = $pdo->prepare("SELECT * FROM tbl_customer WHERE cust_status='1'");
+$statement = $pdo->prepare("SELECT * FROM tbl_customer WHERE cust_status='1' AND acc_type='customer'");
 $statement->execute();
 $total_customers = $statement->rowCount();
+
+$statement = $pdo->prepare("SELECT * FROM tbl_customer WHERE cust_status='1' AND acc_type='vendor'");
+$statement->execute();
+$total_vendors = $statement->rowCount();
 
 $statement = $pdo->prepare("SELECT * FROM tbl_subscriber WHERE subs_active='1'");
 $statement->execute();
@@ -81,10 +85,25 @@ $total_order_complete_shipping_pending = $statement->rowCount();
 				  
 				</div>
 			  </div>
+
+			  <div class="col-lg-3 col-xs-6">
+				<!-- small box -->
+				<div class="small-box bg-green">
+				  <div class="inner">
+					<h3><?php echo $total_vendors; ?></h3>
+  
+					<p>Active Vendors</p>
+				  </div>
+				  <div class="icon">
+					<i class="ionicons ion-person-stalker"></i>
+				  </div>
+				  
+				</div>
+			  </div>
             <!-- ./col -->
             <div class="col-lg-3 col-xs-6">
               <!-- small box -->
-              <div class="small-box bg-green">
+              <div class="small-box bg-blue">
                 <div class="inner">
                   <h3><?php echo $total_order_completed; ?></h3>
 

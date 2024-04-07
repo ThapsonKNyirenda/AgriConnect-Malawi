@@ -99,7 +99,13 @@ if(!isset($_SESSION['user'])) {
 
 					<li class="treeview <?php if( ($cur_page == 'customer.php') || ($cur_page == 'customer-add.php') || ($cur_page == 'customer-edit.php') ) {echo 'active';} ?>">
 			          <a href="customer.php">
-			            <i class="fa fa-user-plus"></i> <span>Registered Customer</span>
+			            <i class="fa fa-users"></i> <span>Registered Customer</span>
+			          </a>
+			        </li>
+
+					<li class="treeview <?php if( ($cur_page == 'vendor.php') || ($cur_page == 'vendor-add.php') || ($cur_page == 'vendor-edit.php') ) {echo 'active';} ?>">
+			          <a href="vendor.php">
+					  <i class="fa fa-user"></i> <span>Registered Vendor</span>
 			          </a>
 			        </li>
 					

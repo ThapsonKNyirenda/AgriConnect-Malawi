@@ -27,7 +27,7 @@
 							<?php
 							$i=0;
 							$statement = $pdo->prepare("SELECT * 
-														FROM tbl_customer WHERE acc_type='customer'
+														FROM tbl_customer WHERE acc_type='vendor'
 													");
 							$statement->execute();
 							$result = $statement->fetchAll(PDO::FETCH_ASSOC);						
