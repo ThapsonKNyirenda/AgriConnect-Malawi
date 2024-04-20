@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Mar 27, 2024 at 10:05 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- Host: 127.0.0.1:3306
+-- Generation Time: Apr 08, 2024 at 03:24 AM
+-- Server version: 8.2.0
+-- PHP Version: 8.2.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -27,10 +27,12 @@ SET time_zone = "+00:00";
 -- Table structure for table `tbl_color`
 --
 
-CREATE TABLE `tbl_color` (
-  `color_id` int(11) NOT NULL,
-  `color_name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+DROP TABLE IF EXISTS `tbl_color`;
+CREATE TABLE IF NOT EXISTS `tbl_color` (
+  `color_id` int NOT NULL AUTO_INCREMENT,
+  `color_name` varchar(255) NOT NULL,
+  PRIMARY KEY (`color_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_color`
@@ -73,10 +75,12 @@ INSERT INTO `tbl_color` (`color_id`, `color_name`) VALUES
 -- Table structure for table `tbl_country`
 --
 
-CREATE TABLE `tbl_country` (
-  `country_id` int(11) NOT NULL,
-  `country_name` varchar(100) NOT NULL DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+DROP TABLE IF EXISTS `tbl_country`;
+CREATE TABLE IF NOT EXISTS `tbl_country` (
+  `country_id` int NOT NULL AUTO_INCREMENT,
+  `country_name` varchar(100) NOT NULL DEFAULT '',
+  PRIMARY KEY (`country_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=246 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `tbl_country`
@@ -335,30 +339,31 @@ INSERT INTO `tbl_country` (`country_id`, `country_name`) VALUES
 -- Table structure for table `tbl_customer`
 --
 
-CREATE TABLE `tbl_customer` (
-  `cust_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_customer`;
+CREATE TABLE IF NOT EXISTS `tbl_customer` (
+  `cust_id` int NOT NULL AUTO_INCREMENT,
   `cust_name` varchar(100) DEFAULT NULL,
   `cust_cname` varchar(100) DEFAULT NULL,
   `cust_email` varchar(100) DEFAULT NULL,
   `cust_phone` varchar(50) DEFAULT NULL,
-  `cust_country` int(11) DEFAULT NULL,
-  `cust_address` text DEFAULT NULL,
+  `cust_country` int DEFAULT NULL,
+  `cust_address` text,
   `cust_city` varchar(100) DEFAULT NULL,
   `cust_state` varchar(100) DEFAULT NULL,
   `cust_zip` varchar(30) DEFAULT NULL,
   `cust_b_name` varchar(100) DEFAULT NULL,
   `cust_b_cname` varchar(100) DEFAULT NULL,
   `cust_b_phone` varchar(50) DEFAULT NULL,
-  `cust_b_country` int(11) DEFAULT NULL,
-  `cust_b_address` text DEFAULT NULL,
+  `cust_b_country` int DEFAULT NULL,
+  `cust_b_address` text,
   `cust_b_city` varchar(100) DEFAULT NULL,
   `cust_b_state` varchar(100) DEFAULT NULL,
   `cust_b_zip` varchar(30) DEFAULT NULL,
   `cust_s_name` varchar(100) DEFAULT NULL,
-  `cust_s_cname` varchar(100) DEFAULT NULL,
+  `cust_s_cname` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT 'None',
   `cust_s_phone` varchar(50) DEFAULT NULL,
-  `cust_s_country` int(11) DEFAULT NULL,
-  `cust_s_address` text DEFAULT NULL,
+  `cust_s_country` int DEFAULT NULL,
+  `cust_s_address` text,
   `cust_s_city` varchar(100) DEFAULT NULL,
   `cust_s_state` varchar(100) DEFAULT NULL,
   `cust_s_zip` varchar(30) DEFAULT NULL,
@@ -366,26 +371,18 @@ CREATE TABLE `tbl_customer` (
   `cust_token` varchar(255) DEFAULT NULL,
   `cust_datetime` varchar(100) DEFAULT NULL,
   `cust_timestamp` varchar(100) DEFAULT NULL,
-  `cust_status` int(11) DEFAULT NULL,
+  `cust_status` int DEFAULT NULL,
   `acc_type` varchar(50) CHARACTER SET armscii8 COLLATE armscii8_general_ci NOT NULL DEFAULT 'Customer',
-  `farm_type` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `farm_type` varchar(50) NOT NULL,
+  PRIMARY KEY (`cust_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_customer`
 --
 
 INSERT INTO `tbl_customer` (`cust_id`, `cust_name`, `cust_cname`, `cust_email`, `cust_phone`, `cust_country`, `cust_address`, `cust_city`, `cust_state`, `cust_zip`, `cust_b_name`, `cust_b_cname`, `cust_b_phone`, `cust_b_country`, `cust_b_address`, `cust_b_city`, `cust_b_state`, `cust_b_zip`, `cust_s_name`, `cust_s_cname`, `cust_s_phone`, `cust_s_country`, `cust_s_address`, `cust_s_city`, `cust_s_state`, `cust_s_zip`, `cust_password`, `cust_token`, `cust_datetime`, `cust_timestamp`, `cust_status`, `acc_type`, `farm_type`) VALUES
-(1, 'Liam Moore', 'WV Company', 'liam@mail.com', '7458965410', 230, '788 Cottonwood Lane', 'Nashville', 'TN', '37072', '', '', '', 0, '', '', '', '', '', '', '', 0, '', '', '', '', '5f4dcc3b5aa765d61d8327deb882cf99', '4d16fbf499a20f8d0f0af8d9e1669810', '2022-03-17 11:09:34', '1710831717', 1, 'customer', ''),
-(2, 'Chad N. Carney', 'none', 'chad@mail.com', '4785690000', 230, '469 Diamond Street', 'Charlotte', 'NC', '28808', 'Chad N. Carney', 'none', '7477474440', 230, '469 Diamond Street', 'Charlotte', 'NC', '28808', 'Chad N. Carney', 'none', '7477474440', 230, '469 Diamond Street', 'Charlotte', 'NC', '28808', '5f4dcc3b5aa765d61d8327deb882cf99', 'ca87666426f4bc5c5128a96dabfecefb', '2022-03-17 11:15:26', '1647544526', 1, 'customer', ''),
-(3, 'Jean Collins', 'none', 'jean@mail.com', '1478523698', 230, '1508 Crosswind Drive', 'Owensboro', 'KY', '13040', 'Jean Collins', 'none', '1478523698', 230, '1508 Crosswind Drive', 'Owensboro', 'KY', '13040', 'Jean Collins', 'none', '1478523698', 230, '1508 Crosswind Drive', 'Owensboro', 'KY', '13040', '5f4dcc3b5aa765d61d8327deb882cf99', '6b3439bf95644a36a1ed92bef374ebb7', '2022-03-20 10:29:39', '1647797379', 1, 'customer', ''),
-(4, 'Annie Young', 'XYZ Company', 'annie@mail.com', '7770001144', 230, '79 Burwell Heights Road', 'Beaumont', 'TX', '77400', '', '', '', 0, '', '', '', '', '', '', '', 0, '', '', '', '', '5f4dcc3b5aa765d61d8327deb882cf99', 'fc8f07537cdd6b3f89eb94f1cad78060', '2022-03-20 10:31:35', '1647797495', 1, 'customer', ''),
-(5, 'Matthew Morales', 'ABC Company', 'matthew@mail.com', '7896587450', 230, '81 Felosa Drive', 'Mira Loma', 'CA', '91002', 'Matthew Morales', 'ABC Company', '7896587450', 230, '81 Felosa Drive', 'Mira Loma', 'CA', '91002', 'Matthew Morales', 'ABC Company', '7896587450', 230, '81 Felosa Drive', 'Mira Loma', 'CA', '91002', '5f4dcc3b5aa765d61d8327deb882cf99', 'c391105908fe01a636bfa5fc39eed33d', '2022-03-20 10:33:15', '1647797595', 1, 'customer', ''),
-(6, 'August F. Freels', 'none', 'august@mail.com', '1478547850', 230, '96 Johnny Lane', 'Milwaukee', 'WI', '55550', 'August F. Freels', 'none', '1478547850', 230, '96 Johnny Lane', 'Milwaukee', 'WI', '55550', 'August F. Freels', 'none', '1478547850', 230, '96 Johnny Lane', 'Milwaukee', 'WI', '55550', '5f4dcc3b5aa765d61d8327deb882cf99', 'decc1fc2c5dd9935df82c0233002ce66', '2022-03-20 10:34:08', '1647797648', 1, 'customer', ''),
-(7, 'Carl M. Dineen', 'none', 'carl@mail.com', '789878987', 230, '77 Lyndon Street', 'Kutztown', 'PA', '19855', '', '', '', 0, '', '', '', '', '', '', '', 0, '', '', '', '', '5f4dcc3b5aa765d61d8327deb882cf99', 'c79bac688e70cc9665a2164c57ec172c', '2022-03-20 10:35:02', '1647797702', 1, 'customer', ''),
-(26, 'Thapson Nyirenda', 'none', 'thapsonknyirenda@gmail.com', '0880218905', 132, 'kafukule, box 56', 'Mzuzu', 'none', 'none', 'Shipping address', 'none', '0880218905', 0, 'Mbayani Blantyre, Malawi', 'Mzuzu', 'Mzimba', '', 'Shipping address', 'none', '0880218905', 1, 'Mbayani Blantyre, Malawi', 'Mzuzu', 'Mzimba', 'none', 'c4ca4238a0b923820dcc509a6f75849b', 'dcf944a622ea613a54d4442607aaf4d6', '2024-03-19 05:46:24', '1710905557', 1, 'customer', ''),
-(33, 'Kapembe', '', 'kapembe@mail.com', '0880218905', 0, 'Kafukule health Centre, box 56, Kafukule mzimba', 'Mzimba - Kafukule', '', '', '', '', '', 0, '', '', '', '', '', '', '', 0, '', '', '', '', '202cb962ac59075b964b07152d234b70', '539f779cba35d46e930ec63134453252', '2024-03-24 10:35:12', '1711301712', 1, 'vendor', 'Any'),
-(34, 'John Banda', '', 'john@gmail.com', '0880218905', 0, 'Mzuzu, box 56', 'Mzuzu', '', '', 'Thapson Nyirenda', 'none', '0880218905', 0, 'kafukule, box 56', 'Mzuzu', 'Mzimba', '', 'Thapson Nyirenda', 'none', '0880218905', 0, 'kafukule, box 56', 'Mzuzu', 'Mzimba', '', '202cb962ac59075b964b07152d234b70', '0bcd71075b278a88cb28b09d195f1456', '2024-03-26 11:54:00', '1711479240', 1, 'customer', 'Fruit farmer');
+(33, 'Kapembe', '', 'kapembe@mail.com', '0880218905', 0, 'Kafukule health Centre, box 56, Kafukule mzimba', 'Mzimba - Kafukule', '', '', '', '', '', 0, '', '', '', '', '', '', '', 0, '', '', '', '', '202cb962ac59075b964b07152d234b70', '539f779cba35d46e930ec63134453252', '2024-03-24 10:35:12', '1711301712', 1, 'vendor', 'Any');
 
 -- --------------------------------------------------------
 
@@ -393,13 +390,15 @@ INSERT INTO `tbl_customer` (`cust_id`, `cust_name`, `cust_cname`, `cust_email`, 
 -- Table structure for table `tbl_customer_message`
 --
 
-CREATE TABLE `tbl_customer_message` (
-  `customer_message_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_customer_message`;
+CREATE TABLE IF NOT EXISTS `tbl_customer_message` (
+  `customer_message_id` int NOT NULL AUTO_INCREMENT,
   `subject` varchar(255) NOT NULL,
   `message` text NOT NULL,
   `order_detail` text NOT NULL,
-  `cust_id` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `cust_id` int NOT NULL,
+  PRIMARY KEY (`customer_message_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -407,11 +406,13 @@ CREATE TABLE `tbl_customer_message` (
 -- Table structure for table `tbl_end_category`
 --
 
-CREATE TABLE `tbl_end_category` (
-  `ecat_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_end_category`;
+CREATE TABLE IF NOT EXISTS `tbl_end_category` (
+  `ecat_id` int NOT NULL AUTO_INCREMENT,
   `ecat_name` varchar(255) NOT NULL,
-  `mcat_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `mcat_id` int NOT NULL,
+  PRIMARY KEY (`ecat_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=87 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_end_category`
@@ -501,7 +502,8 @@ INSERT INTO `tbl_end_category` (`ecat_id`, `ecat_name`, `mcat_id`) VALUES
 (82, 'Chicken', 22),
 (83, 'Chicken', 23),
 (84, 'Local', 24),
-(85, ' Wheel barrows', 26);
+(85, ' Wheel barrows', 26),
+(86, 'Farm Truck', 27);
 
 -- --------------------------------------------------------
 
@@ -509,11 +511,13 @@ INSERT INTO `tbl_end_category` (`ecat_id`, `ecat_name`, `mcat_id`) VALUES
 -- Table structure for table `tbl_faq`
 --
 
-CREATE TABLE `tbl_faq` (
-  `faq_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_faq`;
+CREATE TABLE IF NOT EXISTS `tbl_faq` (
+  `faq_id` int NOT NULL AUTO_INCREMENT,
   `faq_title` varchar(255) NOT NULL,
-  `faq_content` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `faq_content` text NOT NULL,
+  PRIMARY KEY (`faq_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_faq`
@@ -532,11 +536,13 @@ INSERT INTO `tbl_faq` (`faq_id`, `faq_title`, `faq_content`) VALUES
 -- Table structure for table `tbl_language`
 --
 
-CREATE TABLE `tbl_language` (
-  `lang_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_language`;
+CREATE TABLE IF NOT EXISTS `tbl_language` (
+  `lang_id` int NOT NULL AUTO_INCREMENT,
   `lang_name` varchar(255) NOT NULL,
-  `lang_value` text NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `lang_value` text NOT NULL,
+  PRIMARY KEY (`lang_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=164 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_language`
@@ -713,11 +719,13 @@ INSERT INTO `tbl_language` (`lang_id`, `lang_name`, `lang_value`) VALUES
 -- Table structure for table `tbl_mid_category`
 --
 
-CREATE TABLE `tbl_mid_category` (
-  `mcat_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_mid_category`;
+CREATE TABLE IF NOT EXISTS `tbl_mid_category` (
+  `mcat_id` int NOT NULL AUTO_INCREMENT,
   `mcat_name` varchar(255) NOT NULL,
-  `tcat_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `tcat_id` int NOT NULL,
+  PRIMARY KEY (`mcat_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_mid_category`
@@ -732,7 +740,8 @@ INSERT INTO `tbl_mid_category` (`mcat_id`, `mcat_name`, `tcat_id`) VALUES
 (23, 'Poultry', 5),
 (24, 'Goat', 5),
 (25, 'Cattle', 5),
-(26, 'Farm tools', 8);
+(26, 'Farm tools', 8),
+(27, 'Vehicle', 8);
 
 -- --------------------------------------------------------
 
@@ -740,17 +749,19 @@ INSERT INTO `tbl_mid_category` (`mcat_id`, `mcat_name`, `tcat_id`) VALUES
 -- Table structure for table `tbl_order`
 --
 
-CREATE TABLE `tbl_order` (
-  `id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_order`;
+CREATE TABLE IF NOT EXISTS `tbl_order` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `product_id` int NOT NULL,
   `product_name` varchar(255) NOT NULL,
   `uploader` varchar(100) NOT NULL DEFAULT 'none',
   `size` varchar(100) NOT NULL,
   `color` varchar(100) NOT NULL,
   `quantity` varchar(50) NOT NULL,
   `unit_price` varchar(50) NOT NULL,
-  `payment_id` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `payment_id` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_order`
@@ -758,7 +769,8 @@ CREATE TABLE `tbl_order` (
 
 INSERT INTO `tbl_order` (`id`, `product_id`, `product_name`, `uploader`, `size`, `color`, `quantity`, `unit_price`, `payment_id`) VALUES
 (16, 122, 'Second hand wheel barrow', 'kapembe@mail.com', '', '', '2', '100000', '1711481678'),
-(18, 120, 'Tanzanian apples', 'kapembe@mail.com', '', '', '1', '82', '1711573400');
+(24, 122, 'Second hand wheel barrow', 'kapembe@mail.com', '', '', '1', '100000', '1712383180'),
+(25, 123, 'Farming Truck', 'kapembe@mail.com', '', '', '1', '4500000', '1712383180');
 
 -- --------------------------------------------------------
 
@@ -766,8 +778,9 @@ INSERT INTO `tbl_order` (`id`, `product_id`, `product_name`, `uploader`, `size`,
 -- Table structure for table `tbl_page`
 --
 
-CREATE TABLE `tbl_page` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_page`;
+CREATE TABLE IF NOT EXISTS `tbl_page` (
+  `id` int NOT NULL AUTO_INCREMENT,
   `about_title` varchar(255) NOT NULL,
   `about_content` text NOT NULL,
   `about_banner` varchar(255) NOT NULL,
@@ -798,8 +811,9 @@ CREATE TABLE `tbl_page` (
   `vgallery_banner` varchar(255) NOT NULL,
   `vgallery_meta_title` varchar(255) NOT NULL,
   `vgallery_meta_keyword` text NOT NULL,
-  `vgallery_meta_description` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `vgallery_meta_description` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_page`
@@ -814,14 +828,15 @@ INSERT INTO `tbl_page` (`id`, `about_title`, `about_content`, `about_banner`, `a
 -- Table structure for table `tbl_payment`
 --
 
-CREATE TABLE `tbl_payment` (
-  `id` int(11) NOT NULL,
-  `customer_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_payment`;
+CREATE TABLE IF NOT EXISTS `tbl_payment` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `customer_id` int NOT NULL,
   `customer_name` varchar(255) NOT NULL,
   `customer_email` varchar(255) NOT NULL,
   `payment_date` varchar(50) NOT NULL,
   `txnid` varchar(255) NOT NULL,
-  `paid_amount` int(11) NOT NULL,
+  `paid_amount` int NOT NULL,
   `card_number` varchar(50) NOT NULL,
   `card_cvv` varchar(10) NOT NULL,
   `card_month` varchar(10) NOT NULL,
@@ -831,16 +846,18 @@ CREATE TABLE `tbl_payment` (
   `payment_status` varchar(25) NOT NULL,
   `shipping_status` varchar(20) NOT NULL,
   `payment_id` varchar(255) NOT NULL,
-  `customer_address` varchar(100) NOT NULL DEFAULT 'none'
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `customer_address` varchar(100) NOT NULL DEFAULT 'none',
+  `product_owner` varchar(100) NOT NULL DEFAULT 'None',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=85 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_payment`
 --
 
-INSERT INTO `tbl_payment` (`id`, `customer_id`, `customer_name`, `customer_email`, `payment_date`, `txnid`, `paid_amount`, `card_number`, `card_cvv`, `card_month`, `card_year`, `bank_transaction_info`, `payment_method`, `payment_status`, `shipping_status`, `payment_id`, `customer_address`) VALUES
-(70, 26, 'Thapson Nyirenda', 'thapsonknyirenda@gmail.com', '2024-03-26 12:34:38', '', 200000, '', '', '', '', 'Transid: 12345', 'Bank Deposit', 'Completed', 'Pending', '1711481678', 'none'),
-(72, 26, 'Thapson Nyirenda', 'thapsonknyirenda@gmail.com', '2024-03-27 14:03:20', '', 82, '', '', '', '', 'TransID', 'Bank Deposit', 'Pending', 'Pending', '1711573400', 'Mbayani Blantyre, Malawi');
+INSERT INTO `tbl_payment` (`id`, `customer_id`, `customer_name`, `customer_email`, `payment_date`, `txnid`, `paid_amount`, `card_number`, `card_cvv`, `card_month`, `card_year`, `bank_transaction_info`, `payment_method`, `payment_status`, `shipping_status`, `payment_id`, `customer_address`, `product_owner`) VALUES
+(70, 26, 'Thapson Nyirenda', 'thapsonknyirenda@gmail.com', '2024-03-26 12:34:38', '', 200000, '', '', '', '', 'Transid: 12345', 'Bank Deposit', 'Completed', 'Pending', '1711481678', 'none', 'None'),
+(84, 35, 'Thapson', 'thap@gmail.com', '2024-04-05 22:59:40', '', 4600000, '', '', '', '', 'transID:123', 'Bank Deposit', 'Completed', 'Pending', '1712383180', 'Kafukule Primary school, box 10, Kafukule mzimba', '');
 
 -- --------------------------------------------------------
 
@@ -848,11 +865,13 @@ INSERT INTO `tbl_payment` (`id`, `customer_id`, `customer_name`, `customer_email
 -- Table structure for table `tbl_photo`
 --
 
-CREATE TABLE `tbl_photo` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_photo`;
+CREATE TABLE IF NOT EXISTS `tbl_photo` (
+  `id` int NOT NULL AUTO_INCREMENT,
   `caption` varchar(255) NOT NULL,
-  `photo` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `photo` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_photo`
@@ -872,19 +891,21 @@ INSERT INTO `tbl_photo` (`id`, `caption`, `photo`) VALUES
 -- Table structure for table `tbl_post`
 --
 
-CREATE TABLE `tbl_post` (
-  `post_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_post`;
+CREATE TABLE IF NOT EXISTS `tbl_post` (
+  `post_id` int NOT NULL AUTO_INCREMENT,
   `post_title` varchar(255) NOT NULL,
   `post_slug` varchar(255) NOT NULL,
   `post_content` text NOT NULL,
   `post_date` varchar(255) NOT NULL,
   `photo` varchar(255) NOT NULL,
-  `category_id` int(11) NOT NULL,
-  `total_view` int(11) NOT NULL,
+  `category_id` int NOT NULL,
+  `total_view` int NOT NULL,
   `meta_title` varchar(255) NOT NULL,
   `meta_keyword` text NOT NULL,
-  `meta_description` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `meta_description` text NOT NULL,
+  PRIMARY KEY (`post_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_post`
@@ -909,24 +930,26 @@ INSERT INTO `tbl_post` (`post_id`, `post_title`, `post_slug`, `post_content`, `p
 -- Table structure for table `tbl_product`
 --
 
-CREATE TABLE `tbl_product` (
-  `p_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_product`;
+CREATE TABLE IF NOT EXISTS `tbl_product` (
+  `p_id` int NOT NULL AUTO_INCREMENT,
   `p_name` varchar(255) NOT NULL,
   `uploader` varchar(100) NOT NULL DEFAULT 'none',
   `p_old_price` varchar(10) NOT NULL,
   `p_current_price` varchar(10) NOT NULL,
-  `p_qty` int(11) NOT NULL,
+  `p_qty` int NOT NULL,
   `p_featured_photo` varchar(255) NOT NULL,
   `p_description` text NOT NULL,
   `p_short_description` text NOT NULL,
   `p_feature` text NOT NULL,
   `p_condition` text NOT NULL,
   `p_return_policy` text NOT NULL,
-  `p_total_view` int(11) NOT NULL,
-  `p_is_featured` int(11) NOT NULL,
-  `p_is_active` int(11) NOT NULL,
-  `ecat_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `p_total_view` int NOT NULL,
+  `p_is_featured` int NOT NULL,
+  `p_is_active` int NOT NULL,
+  `ecat_id` int NOT NULL,
+  PRIMARY KEY (`p_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=124 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_product`
@@ -936,8 +959,9 @@ INSERT INTO `tbl_product` (`p_id`, `p_name`, `uploader`, `p_old_price`, `p_curre
 (117, 'kentt', 'kapembe@mail.com', '100', '120', 11, 'product-featured-1.jpg', '<p>Kentt mangoes</p>', '<p>Mangoes</p>', '', '<p>fresh</p>', '<p>No any</p>', 31, 1, 1, 80),
 (118, 'British apples', 'none', '140', '170', 45, 'product-featured-118.jpg', '<p>British apples</p>', '<p>Apples</p>', '', '<p>fresh</p>', '<p>No any</p>', 0, 1, 1, 81),
 (119, 'Kenyan Mangoes', 'none', '60', '85', 37, 'product-featured-119.jpg', '<p>Kenyan mangoes</p>', '<p>Mangoes</p>', '', '<p>fresh</p>', '<p>No any</p>', 4, 1, 1, 80),
-(120, 'Tanzanian apples', 'none', '70', '82', 5, 'product-featured-120.jpg', '<p>Tanzania apples</p>', '<p>apples</p>', '', '<p>Fresh</p>', '<p>No any</p>', 7, 1, 1, 81),
-(122, 'Second hand wheel barrow', 'kapembe@mail.com', '120000', '100000', 1, 'product-featured-122.jpg', '<p>Fairly Used Wheelbarrow</p>', '<p>Second hand</p>', '<p>Some Features here of wheelbarrow</p>', '<p>Second hand</p>', '<p>No return policy</p>', 5, 0, 1, 85);
+(120, 'Tanzanian apples', 'none', '70', '82', 6, 'product-featured-120.jpg', '<p>Tanzania apples</p>', '<p>apples</p>', '', '<p>Fresh</p>', '<p>No any</p>', 7, 1, 1, 81),
+(122, 'Second hand wheel barrow', 'kapembe@mail.com', '120000', '100000', 9, 'product-featured-122.jpg', '<p>Fairly Used Wheelbarrow</p>', '<p>Second hand</p>', '<p>Some Features here of wheelbarrow</p>', '<p>Second hand</p>', '<p>No return policy</p>', 36, 0, 1, 85),
+(123, 'Farming Truck', 'kapembe@mail.com', '5000000', '4500000', 2, 'product-featured-123.jpg', '<p>Second hand Tractor</p>', '<p>Second hand farming truck</p>', '', '<p>Fairly used</p>', '<p>Available</p>', 18, 1, 1, 86);
 
 -- --------------------------------------------------------
 
@@ -945,11 +969,13 @@ INSERT INTO `tbl_product` (`p_id`, `p_name`, `uploader`, `p_old_price`, `p_curre
 -- Table structure for table `tbl_product_color`
 --
 
-CREATE TABLE `tbl_product_color` (
-  `id` int(11) NOT NULL,
-  `color_id` int(11) NOT NULL,
-  `p_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+DROP TABLE IF EXISTS `tbl_product_color`;
+CREATE TABLE IF NOT EXISTS `tbl_product_color` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `color_id` int NOT NULL,
+  `p_id` int NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=270 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_product_color`
@@ -1006,11 +1032,13 @@ INSERT INTO `tbl_product_color` (`id`, `color_id`, `p_id`) VALUES
 -- Table structure for table `tbl_product_photo`
 --
 
-CREATE TABLE `tbl_product_photo` (
-  `pp_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_product_photo`;
+CREATE TABLE IF NOT EXISTS `tbl_product_photo` (
+  `pp_id` int NOT NULL AUTO_INCREMENT,
   `photo` varchar(255) NOT NULL,
-  `p_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `p_id` int NOT NULL,
+  PRIMARY KEY (`pp_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=138 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_product_photo`
@@ -1025,11 +1053,13 @@ INSERT INTO `tbl_product_photo` (`pp_id`, `photo`, `p_id`) VALUES
 -- Table structure for table `tbl_product_size`
 --
 
-CREATE TABLE `tbl_product_size` (
-  `id` int(11) NOT NULL,
-  `size_id` int(11) NOT NULL,
-  `p_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+DROP TABLE IF EXISTS `tbl_product_size`;
+CREATE TABLE IF NOT EXISTS `tbl_product_size` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `size_id` int NOT NULL,
+  `p_id` int NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=458 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_product_size`
@@ -1140,13 +1170,15 @@ INSERT INTO `tbl_product_size` (`id`, `size_id`, `p_id`) VALUES
 -- Table structure for table `tbl_rating`
 --
 
-CREATE TABLE `tbl_rating` (
-  `rt_id` int(11) NOT NULL,
-  `p_id` int(11) NOT NULL,
-  `cust_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_rating`;
+CREATE TABLE IF NOT EXISTS `tbl_rating` (
+  `rt_id` int NOT NULL AUTO_INCREMENT,
+  `p_id` int NOT NULL,
+  `cust_id` int NOT NULL,
   `comment` text NOT NULL,
-  `rating` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `rating` int NOT NULL,
+  PRIMARY KEY (`rt_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -1154,12 +1186,13 @@ CREATE TABLE `tbl_rating` (
 -- Table structure for table `tbl_service`
 --
 
-CREATE TABLE `tbl_service` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_service`;
+CREATE TABLE IF NOT EXISTS `tbl_service` (
+  `id` int NOT NULL,
   `title` varchar(255) NOT NULL,
   `content` text NOT NULL,
   `photo` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_service`
@@ -1177,8 +1210,9 @@ INSERT INTO `tbl_service` (`id`, `title`, `content`, `photo`) VALUES
 -- Table structure for table `tbl_settings`
 --
 
-CREATE TABLE `tbl_settings` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_settings`;
+CREATE TABLE IF NOT EXISTS `tbl_settings` (
+  `id` int NOT NULL AUTO_INCREMENT,
   `logo` varchar(255) NOT NULL,
   `favicon` varchar(255) NOT NULL,
   `footer_about` text NOT NULL,
@@ -1192,13 +1226,13 @@ CREATE TABLE `tbl_settings` (
   `receive_email_subject` varchar(255) NOT NULL,
   `receive_email_thank_you_message` text NOT NULL,
   `forget_password_message` text NOT NULL,
-  `total_recent_post_footer` int(11) NOT NULL,
-  `total_popular_post_footer` int(11) NOT NULL,
-  `total_recent_post_sidebar` int(11) NOT NULL,
-  `total_popular_post_sidebar` int(11) NOT NULL,
-  `total_featured_product_home` int(11) NOT NULL,
-  `total_latest_product_home` int(11) NOT NULL,
-  `total_popular_product_home` int(11) NOT NULL,
+  `total_recent_post_footer` int NOT NULL,
+  `total_popular_post_footer` int NOT NULL,
+  `total_recent_post_sidebar` int NOT NULL,
+  `total_popular_post_sidebar` int NOT NULL,
+  `total_featured_product_home` int NOT NULL,
+  `total_latest_product_home` int NOT NULL,
+  `total_popular_product_home` int NOT NULL,
   `meta_title_home` text NOT NULL,
   `meta_keyword_home` text NOT NULL,
   `meta_description_home` text NOT NULL,
@@ -1235,21 +1269,22 @@ CREATE TABLE `tbl_settings` (
   `before_head` text NOT NULL,
   `after_body` text NOT NULL,
   `before_body` text NOT NULL,
-  `home_service_on_off` int(11) NOT NULL,
-  `home_welcome_on_off` int(11) NOT NULL,
-  `home_featured_product_on_off` int(11) NOT NULL,
-  `home_latest_product_on_off` int(11) NOT NULL,
-  `home_popular_product_on_off` int(11) NOT NULL,
-  `home_testimonial_on_off` int(11) NOT NULL,
-  `home_blog_on_off` int(11) NOT NULL,
-  `newsletter_on_off` int(11) NOT NULL,
-  `ads_above_welcome_on_off` int(11) NOT NULL,
-  `ads_above_featured_product_on_off` int(11) NOT NULL,
-  `ads_above_latest_product_on_off` int(11) NOT NULL,
-  `ads_above_popular_product_on_off` int(11) NOT NULL,
-  `ads_above_testimonial_on_off` int(11) NOT NULL,
-  `ads_category_sidebar_on_off` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci ROW_FORMAT=COMPRESSED;
+  `home_service_on_off` int NOT NULL,
+  `home_welcome_on_off` int NOT NULL,
+  `home_featured_product_on_off` int NOT NULL,
+  `home_latest_product_on_off` int NOT NULL,
+  `home_popular_product_on_off` int NOT NULL,
+  `home_testimonial_on_off` int NOT NULL,
+  `home_blog_on_off` int NOT NULL,
+  `newsletter_on_off` int NOT NULL,
+  `ads_above_welcome_on_off` int NOT NULL,
+  `ads_above_featured_product_on_off` int NOT NULL,
+  `ads_above_latest_product_on_off` int NOT NULL,
+  `ads_above_popular_product_on_off` int NOT NULL,
+  `ads_above_testimonial_on_off` int NOT NULL,
+  `ads_category_sidebar_on_off` int NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPRESSED;
 
 --
 -- Dumping data for table `tbl_settings`
@@ -1264,11 +1299,13 @@ INSERT INTO `tbl_settings` (`id`, `logo`, `favicon`, `footer_about`, `footer_cop
 -- Table structure for table `tbl_shipping_cost`
 --
 
-CREATE TABLE `tbl_shipping_cost` (
-  `shipping_cost_id` int(11) NOT NULL,
-  `country_id` int(11) NOT NULL,
-  `amount` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+DROP TABLE IF EXISTS `tbl_shipping_cost`;
+CREATE TABLE IF NOT EXISTS `tbl_shipping_cost` (
+  `shipping_cost_id` int NOT NULL AUTO_INCREMENT,
+  `country_id` int NOT NULL,
+  `amount` varchar(20) NOT NULL,
+  PRIMARY KEY (`shipping_cost_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_shipping_cost`
@@ -1286,10 +1323,12 @@ INSERT INTO `tbl_shipping_cost` (`shipping_cost_id`, `country_id`, `amount`) VAL
 -- Table structure for table `tbl_shipping_cost_all`
 --
 
-CREATE TABLE `tbl_shipping_cost_all` (
-  `sca_id` int(11) NOT NULL,
-  `amount` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+DROP TABLE IF EXISTS `tbl_shipping_cost_all`;
+CREATE TABLE IF NOT EXISTS `tbl_shipping_cost_all` (
+  `sca_id` int NOT NULL AUTO_INCREMENT,
+  `amount` varchar(20) NOT NULL,
+  PRIMARY KEY (`sca_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_shipping_cost_all`
@@ -1304,10 +1343,12 @@ INSERT INTO `tbl_shipping_cost_all` (`sca_id`, `amount`) VALUES
 -- Table structure for table `tbl_size`
 --
 
-CREATE TABLE `tbl_size` (
-  `size_id` int(11) NOT NULL,
-  `size_name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+DROP TABLE IF EXISTS `tbl_size`;
+CREATE TABLE IF NOT EXISTS `tbl_size` (
+  `size_id` int NOT NULL AUTO_INCREMENT,
+  `size_name` varchar(255) NOT NULL,
+  PRIMARY KEY (`size_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_size`
@@ -1368,15 +1409,17 @@ INSERT INTO `tbl_size` (`size_id`, `size_name`) VALUES
 -- Table structure for table `tbl_slider`
 --
 
-CREATE TABLE `tbl_slider` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_slider`;
+CREATE TABLE IF NOT EXISTS `tbl_slider` (
+  `id` int NOT NULL AUTO_INCREMENT,
   `photo` varchar(255) NOT NULL,
   `heading` varchar(255) NOT NULL,
   `content` text NOT NULL,
   `button_text` varchar(255) NOT NULL,
   `button_url` varchar(255) NOT NULL,
-  `position` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `position` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_slider`
@@ -1393,12 +1436,14 @@ INSERT INTO `tbl_slider` (`id`, `photo`, `heading`, `content`, `button_text`, `b
 -- Table structure for table `tbl_social`
 --
 
-CREATE TABLE `tbl_social` (
-  `social_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_social`;
+CREATE TABLE IF NOT EXISTS `tbl_social` (
+  `social_id` int NOT NULL AUTO_INCREMENT,
   `social_name` varchar(30) NOT NULL,
   `social_url` varchar(255) NOT NULL,
-  `social_icon` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `social_icon` varchar(30) NOT NULL,
+  PRIMARY KEY (`social_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_social`
@@ -1428,14 +1473,16 @@ INSERT INTO `tbl_social` (`social_id`, `social_name`, `social_url`, `social_icon
 -- Table structure for table `tbl_subscriber`
 --
 
-CREATE TABLE `tbl_subscriber` (
-  `subs_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_subscriber`;
+CREATE TABLE IF NOT EXISTS `tbl_subscriber` (
+  `subs_id` int NOT NULL AUTO_INCREMENT,
   `subs_email` varchar(255) NOT NULL,
   `subs_date` varchar(100) NOT NULL,
   `subs_date_time` varchar(100) NOT NULL,
   `subs_hash` varchar(255) NOT NULL,
-  `subs_active` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `subs_active` int NOT NULL,
+  PRIMARY KEY (`subs_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -1443,11 +1490,13 @@ CREATE TABLE `tbl_subscriber` (
 -- Table structure for table `tbl_top_category`
 --
 
-CREATE TABLE `tbl_top_category` (
-  `tcat_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_top_category`;
+CREATE TABLE IF NOT EXISTS `tbl_top_category` (
+  `tcat_id` int NOT NULL AUTO_INCREMENT,
   `tcat_name` varchar(255) NOT NULL,
-  `show_on_menu` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `show_on_menu` int NOT NULL,
+  PRIMARY KEY (`tcat_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_top_category`
@@ -1466,26 +1515,27 @@ INSERT INTO `tbl_top_category` (`tcat_id`, `tcat_name`, `show_on_menu`) VALUES
 -- Table structure for table `tbl_user`
 --
 
-CREATE TABLE `tbl_user` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_user`;
+CREATE TABLE IF NOT EXISTS `tbl_user` (
+  `id` int NOT NULL AUTO_INCREMENT,
   `full_name` varchar(100) NOT NULL,
   `email` varchar(255) NOT NULL,
   `phone` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL,
   `photo` varchar(255) NOT NULL,
   `role` varchar(30) NOT NULL,
-  `status` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `status` varchar(10) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_user`
 --
 
 INSERT INTO `tbl_user` (`id`, `full_name`, `email`, `phone`, `password`, `photo`, `role`, `status`) VALUES
-(1, 'Administrator', 'admin@mail.com', '7777777777', 'd00f5d5217896fb7fd601412cb890830', 'user-1.png', 'Super Admin', 'Active'),
-(2, 'Christine', 'christine@mail.com', '4444444444', '81dc9bdb52d04dc20036dbd8313ed055', 'user-13.jpg', 'Admin', 'Active'),
-(3, 'Kapembe', 'kapembe@mail.com', '0880218905', '202cb962ac59075b964b07152d234b70', 'user-1.png', 'vendor', 'Active'),
-(4, 'John Banda', 'john@gmail.com', '0880218905', '202cb962ac59075b964b07152d234b70', 'user-1.png', 'customer', 'Active');
+(1, 'Administrator', 'admin@mail.com', '7777777777', 'd00f5d5217896fb7fd601412cb890830', 'user-1.png', 'admin', 'Active'),
+(3, 'Kapembe', 'kapembe@mail.com', '0880218905', '202cb962ac59075b964b07152d234b70', 'user-3.jpg', 'vendor', 'Active'),
+(11, 'Admin2', 'admin2@mail.com', '999779174', '81dc9bdb52d04dc20036dbd8313ed055', 'user-3.jpg', 'admin', 'Active');
 
 -- --------------------------------------------------------
 
@@ -1493,11 +1543,13 @@ INSERT INTO `tbl_user` (`id`, `full_name`, `email`, `phone`, `password`, `photo`
 -- Table structure for table `tbl_video`
 --
 
-CREATE TABLE `tbl_video` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `tbl_video`;
+CREATE TABLE IF NOT EXISTS `tbl_video` (
+  `id` int NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
-  `iframe_code` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `iframe_code` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_video`
@@ -1507,350 +1559,6 @@ INSERT INTO `tbl_video` (`id`, `title`, `iframe_code`) VALUES
 (1, 'Video 1', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/L3XAFSMdVWU\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen></iframe>'),
 (2, 'Video 2', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/sinQ06YzbJI\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen></iframe>'),
 (4, 'Video 3', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/ViZNgU-Yt-Y\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen></iframe>');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `tbl_color`
---
-ALTER TABLE `tbl_color`
-  ADD PRIMARY KEY (`color_id`);
-
---
--- Indexes for table `tbl_country`
---
-ALTER TABLE `tbl_country`
-  ADD PRIMARY KEY (`country_id`);
-
---
--- Indexes for table `tbl_customer`
---
-ALTER TABLE `tbl_customer`
-  ADD PRIMARY KEY (`cust_id`);
-
---
--- Indexes for table `tbl_customer_message`
---
-ALTER TABLE `tbl_customer_message`
-  ADD PRIMARY KEY (`customer_message_id`);
-
---
--- Indexes for table `tbl_end_category`
---
-ALTER TABLE `tbl_end_category`
-  ADD PRIMARY KEY (`ecat_id`);
-
---
--- Indexes for table `tbl_faq`
---
-ALTER TABLE `tbl_faq`
-  ADD PRIMARY KEY (`faq_id`);
-
---
--- Indexes for table `tbl_language`
---
-ALTER TABLE `tbl_language`
-  ADD PRIMARY KEY (`lang_id`);
-
---
--- Indexes for table `tbl_mid_category`
---
-ALTER TABLE `tbl_mid_category`
-  ADD PRIMARY KEY (`mcat_id`);
-
---
--- Indexes for table `tbl_order`
---
-ALTER TABLE `tbl_order`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tbl_page`
---
-ALTER TABLE `tbl_page`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tbl_payment`
---
-ALTER TABLE `tbl_payment`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tbl_photo`
---
-ALTER TABLE `tbl_photo`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tbl_post`
---
-ALTER TABLE `tbl_post`
-  ADD PRIMARY KEY (`post_id`);
-
---
--- Indexes for table `tbl_product`
---
-ALTER TABLE `tbl_product`
-  ADD PRIMARY KEY (`p_id`);
-
---
--- Indexes for table `tbl_product_color`
---
-ALTER TABLE `tbl_product_color`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tbl_product_photo`
---
-ALTER TABLE `tbl_product_photo`
-  ADD PRIMARY KEY (`pp_id`);
-
---
--- Indexes for table `tbl_product_size`
---
-ALTER TABLE `tbl_product_size`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tbl_rating`
---
-ALTER TABLE `tbl_rating`
-  ADD PRIMARY KEY (`rt_id`);
-
---
--- Indexes for table `tbl_settings`
---
-ALTER TABLE `tbl_settings`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tbl_shipping_cost`
---
-ALTER TABLE `tbl_shipping_cost`
-  ADD PRIMARY KEY (`shipping_cost_id`);
-
---
--- Indexes for table `tbl_shipping_cost_all`
---
-ALTER TABLE `tbl_shipping_cost_all`
-  ADD PRIMARY KEY (`sca_id`);
-
---
--- Indexes for table `tbl_size`
---
-ALTER TABLE `tbl_size`
-  ADD PRIMARY KEY (`size_id`);
-
---
--- Indexes for table `tbl_slider`
---
-ALTER TABLE `tbl_slider`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tbl_social`
---
-ALTER TABLE `tbl_social`
-  ADD PRIMARY KEY (`social_id`);
-
---
--- Indexes for table `tbl_subscriber`
---
-ALTER TABLE `tbl_subscriber`
-  ADD PRIMARY KEY (`subs_id`);
-
---
--- Indexes for table `tbl_top_category`
---
-ALTER TABLE `tbl_top_category`
-  ADD PRIMARY KEY (`tcat_id`);
-
---
--- Indexes for table `tbl_user`
---
-ALTER TABLE `tbl_user`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tbl_video`
---
-ALTER TABLE `tbl_video`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `tbl_color`
---
-ALTER TABLE `tbl_color`
-  MODIFY `color_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
-
---
--- AUTO_INCREMENT for table `tbl_country`
---
-ALTER TABLE `tbl_country`
-  MODIFY `country_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=246;
-
---
--- AUTO_INCREMENT for table `tbl_customer`
---
-ALTER TABLE `tbl_customer`
-  MODIFY `cust_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
-
---
--- AUTO_INCREMENT for table `tbl_customer_message`
---
-ALTER TABLE `tbl_customer_message`
-  MODIFY `customer_message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT for table `tbl_end_category`
---
-ALTER TABLE `tbl_end_category`
-  MODIFY `ecat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
-
---
--- AUTO_INCREMENT for table `tbl_faq`
---
-ALTER TABLE `tbl_faq`
-  MODIFY `faq_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `tbl_language`
---
-ALTER TABLE `tbl_language`
-  MODIFY `lang_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=164;
-
---
--- AUTO_INCREMENT for table `tbl_mid_category`
---
-ALTER TABLE `tbl_mid_category`
-  MODIFY `mcat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
-
---
--- AUTO_INCREMENT for table `tbl_order`
---
-ALTER TABLE `tbl_order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
-
---
--- AUTO_INCREMENT for table `tbl_page`
---
-ALTER TABLE `tbl_page`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `tbl_payment`
---
-ALTER TABLE `tbl_payment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
-
---
--- AUTO_INCREMENT for table `tbl_photo`
---
-ALTER TABLE `tbl_photo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `tbl_post`
---
-ALTER TABLE `tbl_post`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- AUTO_INCREMENT for table `tbl_product`
---
-ALTER TABLE `tbl_product`
-  MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
-
---
--- AUTO_INCREMENT for table `tbl_product_color`
---
-ALTER TABLE `tbl_product_color`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=270;
-
---
--- AUTO_INCREMENT for table `tbl_product_photo`
---
-ALTER TABLE `tbl_product_photo`
-  MODIFY `pp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
-
---
--- AUTO_INCREMENT for table `tbl_product_size`
---
-ALTER TABLE `tbl_product_size`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=458;
-
---
--- AUTO_INCREMENT for table `tbl_rating`
---
-ALTER TABLE `tbl_rating`
-  MODIFY `rt_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `tbl_settings`
---
-ALTER TABLE `tbl_settings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `tbl_shipping_cost`
---
-ALTER TABLE `tbl_shipping_cost`
-  MODIFY `shipping_cost_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `tbl_shipping_cost_all`
---
-ALTER TABLE `tbl_shipping_cost_all`
-  MODIFY `sca_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `tbl_size`
---
-ALTER TABLE `tbl_size`
-  MODIFY `size_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
-
---
--- AUTO_INCREMENT for table `tbl_slider`
---
-ALTER TABLE `tbl_slider`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `tbl_social`
---
-ALTER TABLE `tbl_social`
-  MODIFY `social_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
-
---
--- AUTO_INCREMENT for table `tbl_subscriber`
---
-ALTER TABLE `tbl_subscriber`
-  MODIFY `subs_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `tbl_top_category`
---
-ALTER TABLE `tbl_top_category`
-  MODIFY `tcat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT for table `tbl_user`
---
-ALTER TABLE `tbl_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `tbl_video`
---
-ALTER TABLE `tbl_video`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

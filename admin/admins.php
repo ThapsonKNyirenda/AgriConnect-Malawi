@@ -43,6 +43,10 @@
                             $result = $statement->fetchAll(PDO::FETCH_ASSOC);                      
                             foreach ($result as $row) {
                                 $i++;
+
+                                if($row['email']==$_SESSION['user']['email']){
+                                    continue;
+                                }
                                 ?>
                                 <tr>
                                     <td><?php echo $i; ?></td>

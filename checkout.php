@@ -195,7 +195,7 @@ if(!isset($_SESSION['cart_p_id'])) {
                                 <tr>
                                     <td><?php echo LANG_VALUE_105; ?></td>
                                     <td>
-                                        <?php echo nl2br($_SESSION['customer']['cust_s_address']); ?>
+                                        <?php echo ($_SESSION['customer']['cust_s_address']); ?>
                                     </td>
                                 </tr>
                                 <tr>

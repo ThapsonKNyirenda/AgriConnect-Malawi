@@ -220,6 +220,5 @@ foreach ($result as $row) {
         }
     }
 </script>
-<?php echo $before_body; ?>
 </body>
 </html>

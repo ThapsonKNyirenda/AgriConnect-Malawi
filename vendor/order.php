@@ -1,4 +1,5 @@
-<?php require_once('header.php'); ?>
+<?php require_once('header.php'); 
+?>
 
 <?php
 $error_message = '';
@@ -153,9 +154,17 @@ if($success_message != '') {
 			    </tr>
 			</thead>
             <tbody>
-            	<?php
-            	$i=0;
-            	$statement = $pdo->prepare("SELECT * FROM tbl_payment ORDER by id DESC");
+            <?php
+                $statement1 = $pdo->prepare("SELECT * FROM tbl_order");
+                $statement1->execute();
+                $result1 = $statement1->fetchAll(PDO::FETCH_ASSOC);
+                foreach ($result1 as $row1) {
+                   if($row1['uploader']==$_SESSION['user1']['email']){
+                        $paymentId= $row1['payment_id'];
+                        $uploader= $row1['uploader'];
+
+                        $i=0;
+            	$statement = $pdo->prepare("SELECT * FROM tbl_payment WHERE payment_id='$paymentId' ORDER by id DESC");
             	$statement->execute();
             	$result = $statement->fetchAll(PDO::FETCH_ASSOC);							
             	foreach ($result as $row) {
@@ -209,14 +218,12 @@ if($success_message != '') {
                         <td>
                            <?php
                            $statement1 = $pdo->prepare("SELECT * FROM tbl_order WHERE payment_id=?");
-                           $statement1->execute(array($row['payment_id']));
+                           $statement1->execute(array($paymentId));
                            $result1 = $statement1->fetchAll(PDO::FETCH_ASSOC);
                            foreach ($result1 as $row1) {
                                 echo '<b>Product:</b> '.$row1['product_name'];
-                                echo '<br>(<b>Size:</b> '.$row1['size'];
-                                echo ', <b>Color:</b> '.$row1['color'].')';
                                 echo '<br>(<b>Quantity:</b> '.$row1['quantity'];
-                                echo ', <b>Unit Price:</b> '.$row1['unit_price'].')';
+                                echo ', <b>Unit Price:MWK </b> '.$row1['unit_price'].')';
                                 echo '<br><br>';
                            }
                            ?>
@@ -243,7 +250,7 @@ if($success_message != '') {
                         		<b>Transaction Information:</b> <br><?php echo $row['bank_transaction_info']; ?><br>
                         	<?php endif; ?>
                         </td>
-                        <td>$<?php echo $row['paid_amount']; ?></td>
+                        <td>MWK<?php echo $row['paid_amount']; ?></td>
                         <td>
                             <?php echo $row['payment_status']; ?>
                             <br><br>
@@ -274,6 +281,14 @@ if($success_message != '') {
 	                </tr>
             		<?php
             	}
+                        
+                   }else{
+                    echo "";
+                   }
+                }
+                ?>
+            <?php
+            	
             	?>
             </tbody>
           </table>
