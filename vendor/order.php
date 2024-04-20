@@ -155,6 +155,7 @@ if($success_message != '') {
 			</thead>
             <tbody>
             <?php
+                $paymentIdCount = [];
                 $statement1 = $pdo->prepare("SELECT * FROM tbl_order");
                 $statement1->execute();
                 $result1 = $statement1->fetchAll(PDO::FETCH_ASSOC);
@@ -162,6 +163,30 @@ if($success_message != '') {
                    if($row1['uploader']==$_SESSION['user1']['email']){
                         $paymentId= $row1['payment_id'];
                         $uploader= $row1['uploader'];
+
+                    // Increment the count for this paymentId or initialize it if not exists
+                    if (!isset($paymentIdCount[$paymentId])) {
+                        $paymentIdCount[$paymentId] = 0;
+                    }
+                    $paymentIdCount[$paymentId]++;
+
+                    // print_r($paymentIdCount);
+                    // die;
+
+                    // Check if the count is greater than 2
+                    if ($paymentIdCount[$paymentId] > 1) {
+                        ?>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var links = document.querySelectorAll('.mark');
+            links.forEach(function(link) {
+                link.style.display = 'none';
+            });
+        });
+    </script>
+    <?php
+    continue;
+                    }
 
                         $i=0;
             	$statement = $pdo->prepare("SELECT * FROM tbl_payment WHERE payment_id='$paymentId' ORDER by id DESC");
@@ -175,8 +200,7 @@ if($success_message != '') {
 	                    <td>
                             <b>Id:</b> <?php echo $row['customer_id']; ?><br>
                             <b>Name:</b><br> <?php echo $row['customer_name']; ?><br>
-                            <b>Email:</b><br> <?php echo $row['customer_email']; ?><br><br>
-                            <a href="#" data-toggle="modal" data-target="#model-<?php echo $i; ?>"class="btn btn-warning btn-xs" style="width:100%;margin-bottom:4px;">Send Message</a>
+                            <b>Email:</b><br> <?php echo $row['customer_email']; ?><br>
                             <div id="model-<?php echo $i; ?>" class="modal fade" role="dialog">
 								<div class="modal-dialog">
 									<div class="modal-content">
@@ -217,8 +241,8 @@ if($success_message != '') {
                         </td>
                         <td>
                            <?php
-                           $statement1 = $pdo->prepare("SELECT * FROM tbl_order WHERE payment_id=?");
-                           $statement1->execute(array($paymentId));
+                           $statement1 = $pdo->prepare("SELECT * FROM tbl_order WHERE payment_id=? AND uploader=?");
+                           $statement1->execute(array($paymentId, $_SESSION['user1']['email']));
                            $result1 = $statement1->fetchAll(PDO::FETCH_ASSOC);
                            foreach ($result1 as $row1) {
                                 echo '<b>Product:</b> '.$row1['product_name'];
@@ -250,14 +274,17 @@ if($success_message != '') {
                         		<b>Transaction Information:</b> <br><?php echo $row['bank_transaction_info']; ?><br>
                         	<?php endif; ?>
                         </td>
-                        <td>MWK<?php echo $row['paid_amount']; ?></td>
+                        <td>MWK<?php echo $row1['unit_price'] * $row1['quantity']; ?></td>
                         <td>
                             <?php echo $row['payment_status']; ?>
                             <br><br>
                             <?php
                                 if($row['payment_status']=='Pending'){
                                     ?>
-                                    <a href="order-change-status.php?id=<?php echo $row['id']; ?>&task=Completed" class="btn btn-success btn-xs" style="width:100%;margin-bottom:4px;">Mark Complete</a>
+                                    <?php
+                                        $payment_id=$row['payment_id'];
+                                    ?>
+                                    <a class='mark' href="order-change-status.php?id=<?php echo $row['id']; ?>&task=Completed" class="btn btn-success btn-xs" style="width:100%;margin-bottom:4px;">Mark Complete</a>
                                     <?php
                                 }
                             ?>

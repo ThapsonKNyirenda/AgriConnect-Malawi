@@ -97,6 +97,12 @@ if(!isset($_SESSION['user'])) {
 			          </a>
 			        </li>
 
+					<li class="treeview <?php if( ($cur_page == 'admins.php') || ($cur_page == 'admins-add.php') || ($cur_page == 'admins-edit.php') ) {echo 'active';} ?>">
+			          <a href="admins.php">
+					  <i class="fa fa-user"></i> <span>Admins Management</span>
+			          </a>
+			        </li>
+
 					<li class="treeview <?php if( ($cur_page == 'customer.php') || ($cur_page == 'customer-add.php') || ($cur_page == 'customer-edit.php') ) {echo 'active';} ?>">
 			          <a href="customer.php">
 			            <i class="fa fa-users"></i> <span>Registered Customer</span>
@@ -109,9 +115,9 @@ if(!isset($_SESSION['user'])) {
 			          </a>
 			        </li>
 
-					<li class="treeview <?php if( ($cur_page == 'admins.php') || ($cur_page == 'admins-add.php') || ($cur_page == 'admins-edit.php') ) {echo 'active';} ?>">
-			          <a href="admins.php">
-					  <i class="fa fa-user"></i> <span>Admins Management</span>
+					<li class="treeview <?php if( ($cur_page == 'order.php') ) {echo 'active';} ?>">
+			          <a href="order.php">
+					  		<i class="fa fa-sticky-note"></i> <span>Orders Management</span>
 			          </a>
 			        </li>
 					

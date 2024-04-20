@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 08, 2024 at 03:24 AM
+-- Generation Time: Apr 20, 2024 at 10:42 AM
 -- Server version: 8.2.0
 -- PHP Version: 8.2.13
 
@@ -375,14 +375,17 @@ CREATE TABLE IF NOT EXISTS `tbl_customer` (
   `acc_type` varchar(50) CHARACTER SET armscii8 COLLATE armscii8_general_ci NOT NULL DEFAULT 'Customer',
   `farm_type` varchar(50) NOT NULL,
   PRIMARY KEY (`cust_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_customer`
 --
 
 INSERT INTO `tbl_customer` (`cust_id`, `cust_name`, `cust_cname`, `cust_email`, `cust_phone`, `cust_country`, `cust_address`, `cust_city`, `cust_state`, `cust_zip`, `cust_b_name`, `cust_b_cname`, `cust_b_phone`, `cust_b_country`, `cust_b_address`, `cust_b_city`, `cust_b_state`, `cust_b_zip`, `cust_s_name`, `cust_s_cname`, `cust_s_phone`, `cust_s_country`, `cust_s_address`, `cust_s_city`, `cust_s_state`, `cust_s_zip`, `cust_password`, `cust_token`, `cust_datetime`, `cust_timestamp`, `cust_status`, `acc_type`, `farm_type`) VALUES
-(33, 'Kapembe', '', 'kapembe@mail.com', '0880218905', 0, 'Kafukule health Centre, box 56, Kafukule mzimba', 'Mzimba - Kafukule', '', '', '', '', '', 0, '', '', '', '', '', '', '', 0, '', '', '', '', '202cb962ac59075b964b07152d234b70', '539f779cba35d46e930ec63134453252', '2024-03-24 10:35:12', '1711301712', 1, 'vendor', 'Any');
+(33, 'Kapembe', '', 'kapembe@mail.com', '0880218905', 0, 'Kafukule health Centre, box 56, Kafukule mzimba', 'Mzimba - Kafukule', '', '', '', '', '', 0, '', '', '', '', '', '', '', 0, '', '', '', '', '202cb962ac59075b964b07152d234b70', '539f779cba35d46e930ec63134453252', '2024-03-24 10:35:12', '1711301712', 1, 'vendor', 'Any'),
+(36, 'Customer 1', NULL, 'customer1@mail.com', '0880218905', NULL, 'Kafukule health Centre, box 56, Kafukule mzimba', 'Mzimba - Kafukule', NULL, NULL, 'Customer1', 'None', '0880218905', 0, 'Kafukule health Centre, box 56, Kafukule mzimba', 'Mzimba - Kafukule', 'Mzimba', 'None', 'Customer1', 'None', '0880218905', 0, 'Kafukule health Centre, box 56, Kafukule mzimba', 'Mzimba - Kafukule', 'Mzimba', 'None', '202cb962ac59075b964b07152d234b70', '7c948123eb0a4f0c7d259bd1e6a2eb6d', '2024-04-20 12:36:16', '1713598576', 1, 'customer', ''),
+(37, 'vendor 1', NULL, 'vendor1@mail.com', '0880218905', NULL, 'Kafukule health Centre, box 56, Kafukule mzimba', 'Mzimba - Kafukule', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'None', NULL, NULL, NULL, NULL, NULL, NULL, '202cb962ac59075b964b07152d234b70', '8eac1697478143fd40d0a494443b7d4a', '2024-04-20 12:48:34', '1713599314', 1, 'vendor', ''),
+(38, 'vendor 2', NULL, 'vendor2@mail.com', '0880218905', NULL, 'Kafukule health Centre, box 56, Kafukule mzimba', 'Mzimba - Kafukule', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'None', NULL, NULL, NULL, NULL, NULL, NULL, '202cb962ac59075b964b07152d234b70', 'a32c2f3867147d7940ee2c3d9ee2f7b0', '2024-04-20 03:36:12', '1713609372', 1, 'vendor', '');
 
 -- --------------------------------------------------------
 
@@ -398,7 +401,15 @@ CREATE TABLE IF NOT EXISTS `tbl_customer_message` (
   `order_detail` text NOT NULL,
   `cust_id` int NOT NULL,
   PRIMARY KEY (`customer_message_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_customer_message`
+--
+
+INSERT INTO `tbl_customer_message` (`customer_message_id`, `subject`, `message`, `order_detail`, `cust_id`) VALUES
+(9, 'qwe', 'asasaasas', '\nCustomer Name: Customer 1<br>\nCustomer Email: customer1@mail.com<br>\nPayment Method: Bank Deposit<br>\nPayment Date: 2024-04-20 00:40:35<br>\nPayment Details: <br>\nTransaction Details: <br>id=123abc<br>\nPaid Amount: 4500000<br>\nPayment Status: Completed<br>\nShipping Status: Pending<br>\nPayment Id: 1713598835<br>\n            \n<br><b><u>Product Item 1</u></b><br>\nProduct Name: Farming Truck<br>\nSize: <br>\nColor: <br>\nQuantity: 1<br>\nUnit Price: 4500000<br>\n            ', 36),
+(10, 'qwe', 'asasaasas', '\nCustomer Name: Customer 1<br>\nCustomer Email: customer1@mail.com<br>\nPayment Method: Bank Deposit<br>\nPayment Date: 2024-04-20 00:40:35<br>\nPayment Details: <br>\nTransaction Details: <br>id=123abc<br>\nPaid Amount: 4500000<br>\nPayment Status: Completed<br>\nShipping Status: Pending<br>\nPayment Id: 1713598835<br>\n            \n<br><b><u>Product Item 1</u></b><br>\nProduct Name: Farming Truck<br>\nSize: <br>\nColor: <br>\nQuantity: 1<br>\nUnit Price: 4500000<br>\n            ', 36);
 
 -- --------------------------------------------------------
 
@@ -419,87 +430,9 @@ CREATE TABLE IF NOT EXISTS `tbl_end_category` (
 --
 
 INSERT INTO `tbl_end_category` (`ecat_id`, `ecat_name`, `mcat_id`) VALUES
-(1, 'Headwear ', 1),
-(2, 'Sunglasses', 1),
-(3, 'Watches', 1),
-(4, 'Sandals', 2),
-(5, 'Boots', 2),
-(6, 'Tops', 3),
-(7, 'T-Shirt', 3),
-(8, 'Watches', 4),
-(9, 'Sunglasses', 4),
-(11, 'Sports Shoes', 2),
-(12, 'Sandals', 6),
-(13, 'Flat Shoes', 6),
-(14, 'Hoodies', 7),
-(15, 'Coats & Jackets', 7),
-(16, 'Pants', 8),
-(17, 'Jeans', 8),
-(18, 'Joggers', 8),
-(19, 'Shorts', 8),
-(20, 'T-shirts', 9),
-(21, 'Casual Shirts', 9),
-(22, 'Formal Shirts', 9),
-(23, 'Polo Shirts', 9),
-(24, 'Vests', 9),
-(25, 'Casual Shoes', 2),
-(26, 'Boys', 10),
-(27, 'Girls', 10),
-(28, 'Boys', 11),
-(29, 'Girls', 11),
-(30, 'Boys', 12),
-(31, 'Girls', 12),
-(32, 'Dresses', 7),
-(33, 'Tops', 7),
-(34, 'T-Shirts & Vests', 7),
-(35, 'Pants & Leggings', 7),
-(36, 'Sportswear', 7),
-(37, 'Plus Size Clothing', 7),
-(38, 'Socks & Hosiery', 7),
-(39, 'Fragrance', 3),
-(40, 'Skincare', 3),
-(41, 'Hair Care', 3),
-(42, 'Jewellery', 4),
-(43, 'Eyes Care', 3),
-(44, 'Lips', 3),
-(45, 'Face Care', 3),
-(46, 'Gift Sets', 3),
-(47, 'Scarves & Headwear', 4),
-(48, 'Multipacks', 4),
-(49, 'Other Accessories', 4),
-(50, 'Pumps', 6),
-(51, 'Sneakers', 6),
-(52, 'Sports Shoes', 6),
-(53, 'Boots', 6),
-(54, 'Comfort Shoes', 6),
-(55, 'Slippers & Casual Shoes', 6),
-(56, 'Formal Shoes', 2),
-(57, 'Belts', 1),
-(58, 'Multipacks', 1),
-(59, 'Other Accessories', 1),
-(60, 'Bags', 4),
-(61, 'Cell Phone and Accessories', 14),
-(62, 'Headphones', 14),
-(63, 'Security and Surveillance', 14),
-(64, 'Television and Video', 14),
-(65, 'GPS and Navigation', 14),
-(66, 'Home Audio', 14),
-(67, 'Computer Components', 15),
-(68, 'Computers and Tablets', 15),
-(69, 'Laptop Accessories', 15),
-(70, 'Printer and Monitors', 15),
-(71, 'External Components', 15),
-(72, 'Networking Products', 15),
-(73, 'Medical Supplies and Equipment', 16),
-(74, 'Oral Care', 16),
-(75, 'Vision Care', 16),
-(76, 'Vitamins and Dietary Supplements', 16),
-(77, 'Baby and Child Care', 17),
-(78, 'Household Supplies', 17),
-(79, 'Stationery and Gift Wrapping Supplies', 17),
 (80, 'Mangoes', 18),
 (81, 'Apples', 18),
-(82, 'Chicken', 22),
+(82, 'Poultry Eggs', 22),
 (83, 'Chicken', 23),
 (84, 'Local', 24),
 (85, ' Wheel barrows', 26),
@@ -761,16 +694,16 @@ CREATE TABLE IF NOT EXISTS `tbl_order` (
   `unit_price` varchar(50) NOT NULL,
   `payment_id` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_order`
 --
 
 INSERT INTO `tbl_order` (`id`, `product_id`, `product_name`, `uploader`, `size`, `color`, `quantity`, `unit_price`, `payment_id`) VALUES
-(16, 122, 'Second hand wheel barrow', 'kapembe@mail.com', '', '', '2', '100000', '1711481678'),
-(24, 122, 'Second hand wheel barrow', 'kapembe@mail.com', '', '', '1', '100000', '1712383180'),
-(25, 123, 'Farming Truck', 'kapembe@mail.com', '', '', '1', '4500000', '1712383180');
+(26, 123, 'Farming Truck', 'kapembe@mail.com', '', '', '1', '4500000', '1713598835'),
+(27, 124, 'Local Chicken', 'vendor1@mail.com', '', '', '1', '1300', '1713608671'),
+(28, 125, 'Medium Chicken Eggs', 'vendor1@mail.com', '', '', '11', '270', '1713608789');
 
 -- --------------------------------------------------------
 
@@ -849,15 +782,16 @@ CREATE TABLE IF NOT EXISTS `tbl_payment` (
   `customer_address` varchar(100) NOT NULL DEFAULT 'none',
   `product_owner` varchar(100) NOT NULL DEFAULT 'None',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=85 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=88 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_payment`
 --
 
 INSERT INTO `tbl_payment` (`id`, `customer_id`, `customer_name`, `customer_email`, `payment_date`, `txnid`, `paid_amount`, `card_number`, `card_cvv`, `card_month`, `card_year`, `bank_transaction_info`, `payment_method`, `payment_status`, `shipping_status`, `payment_id`, `customer_address`, `product_owner`) VALUES
-(70, 26, 'Thapson Nyirenda', 'thapsonknyirenda@gmail.com', '2024-03-26 12:34:38', '', 200000, '', '', '', '', 'Transid: 12345', 'Bank Deposit', 'Completed', 'Pending', '1711481678', 'none', 'None'),
-(84, 35, 'Thapson', 'thap@gmail.com', '2024-04-05 22:59:40', '', 4600000, '', '', '', '', 'transID:123', 'Bank Deposit', 'Completed', 'Pending', '1712383180', 'Kafukule Primary school, box 10, Kafukule mzimba', '');
+(85, 36, 'Customer 1', 'customer1@mail.com', '2024-04-20 00:40:35', '', 4500000, '', '', '', '', 'id=123abc', 'Bank Deposit', 'Completed', 'Pending', '1713598835', 'Kafukule health Centre, box 56, Kafukule mzimba', ''),
+(86, 36, 'Customer 1', 'customer1@mail.com', '2024-04-20 03:24:31', '', 1300, '', '', '', '', 'trans id: 1234abcd', 'Bank Deposit', 'Completed', 'Pending', '1713608671', 'Kafukule health Centre, box 56, Kafukule mzimba', ''),
+(87, 36, 'Customer 1', 'customer1@mail.com', '2024-04-20 03:26:29', '', 2970, '', '', '', '', 'transid:12345abcde', 'Bank Deposit', 'Pending', 'Pending', '1713608789', 'Kafukule health Centre, box 56, Kafukule mzimba', '');
 
 -- --------------------------------------------------------
 
@@ -949,7 +883,7 @@ CREATE TABLE IF NOT EXISTS `tbl_product` (
   `p_is_active` int NOT NULL,
   `ecat_id` int NOT NULL,
   PRIMARY KEY (`p_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=124 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=126 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_product`
@@ -960,8 +894,10 @@ INSERT INTO `tbl_product` (`p_id`, `p_name`, `uploader`, `p_old_price`, `p_curre
 (118, 'British apples', 'none', '140', '170', 45, 'product-featured-118.jpg', '<p>British apples</p>', '<p>Apples</p>', '', '<p>fresh</p>', '<p>No any</p>', 0, 1, 1, 81),
 (119, 'Kenyan Mangoes', 'none', '60', '85', 37, 'product-featured-119.jpg', '<p>Kenyan mangoes</p>', '<p>Mangoes</p>', '', '<p>fresh</p>', '<p>No any</p>', 4, 1, 1, 80),
 (120, 'Tanzanian apples', 'none', '70', '82', 6, 'product-featured-120.jpg', '<p>Tanzania apples</p>', '<p>apples</p>', '', '<p>Fresh</p>', '<p>No any</p>', 7, 1, 1, 81),
-(122, 'Second hand wheel barrow', 'kapembe@mail.com', '120000', '100000', 9, 'product-featured-122.jpg', '<p>Fairly Used Wheelbarrow</p>', '<p>Second hand</p>', '<p>Some Features here of wheelbarrow</p>', '<p>Second hand</p>', '<p>No return policy</p>', 36, 0, 1, 85),
-(123, 'Farming Truck', 'kapembe@mail.com', '5000000', '4500000', 2, 'product-featured-123.jpg', '<p>Second hand Tractor</p>', '<p>Second hand farming truck</p>', '', '<p>Fairly used</p>', '<p>Available</p>', 18, 1, 1, 86);
+(122, 'Second hand wheel barrow', 'kapembe@mail.com', '120000', '100000', 12, 'product-featured-122.jpg', '<p>Fairly Used Wheelbarrow</p>', '<p>Second hand</p>', '<p>Some Features here of wheelbarrow</p>', '<p>Second hand</p>', '<p>No return policy</p>', 36, 0, 1, 85),
+(123, 'Farming Truck', 'kapembe@mail.com', '5000000', '4500000', 2, 'product-featured-123.jpg', '<p>Second hand Tractor</p>', '<p>Second hand farming truck</p>', '', '<p>Fairly used</p>', '<p>Available</p>', 21, 1, 1, 86),
+(124, 'Local Chicken', 'vendor1@mail.com', '4500', '1300', 22, 'product-featured-124.jpg', '<p>Local chickens</p>', '', '<p>Local chickens</p>', '<p>4 month old chickens</p>', '<p>N/A</p>', 3, 0, 1, 83),
+(125, 'Medium Chicken Eggs', 'vendor1@mail.com', '250', '270', 199, 'product-featured-125.jpg', '<p>Local chicken eggs</p>', '', '', '<p>Medium local chicken eggs</p>', '<p>N/A</p>', 3, 1, 1, 82);
 
 -- --------------------------------------------------------
 
@@ -1038,14 +974,15 @@ CREATE TABLE IF NOT EXISTS `tbl_product_photo` (
   `photo` varchar(255) NOT NULL,
   `p_id` int NOT NULL,
   PRIMARY KEY (`pp_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=138 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=139 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_product_photo`
 --
 
 INSERT INTO `tbl_product_photo` (`pp_id`, `photo`, `p_id`) VALUES
-(137, '137.jpg', 121);
+(137, '137.jpg', 121),
+(138, '138.jpg', 125);
 
 -- --------------------------------------------------------
 
@@ -1526,7 +1463,7 @@ CREATE TABLE IF NOT EXISTS `tbl_user` (
   `role` varchar(30) NOT NULL,
   `status` varchar(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_user`
@@ -1535,7 +1472,10 @@ CREATE TABLE IF NOT EXISTS `tbl_user` (
 INSERT INTO `tbl_user` (`id`, `full_name`, `email`, `phone`, `password`, `photo`, `role`, `status`) VALUES
 (1, 'Administrator', 'admin@mail.com', '7777777777', 'd00f5d5217896fb7fd601412cb890830', 'user-1.png', 'admin', 'Active'),
 (3, 'Kapembe', 'kapembe@mail.com', '0880218905', '202cb962ac59075b964b07152d234b70', 'user-3.jpg', 'vendor', 'Active'),
-(11, 'Admin2', 'admin2@mail.com', '999779174', '81dc9bdb52d04dc20036dbd8313ed055', 'user-3.jpg', 'admin', 'Active');
+(11, 'Admin2', 'admin2@mail.com', '999779174', '81dc9bdb52d04dc20036dbd8313ed055', 'user-3.jpg', 'admin', 'Active'),
+(12, 'Customer 1', 'customer1@mail.com', '0880218905', '202cb962ac59075b964b07152d234b70', 'user-1.png', 'customer', 'Active'),
+(13, 'vendor 1', 'vendor1@mail.com', '0880218905', '202cb962ac59075b964b07152d234b70', 'user-13.jpg', 'vendor', 'Active'),
+(14, 'vendor 2', 'vendor2@mail.com', '0880218905', '202cb962ac59075b964b07152d234b70', 'user-1.png', 'vendor', 'Active');
 
 -- --------------------------------------------------------
 

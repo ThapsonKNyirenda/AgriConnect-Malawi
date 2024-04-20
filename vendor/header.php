@@ -12,7 +12,7 @@ $success_message1 = '';
 
 // Check if the user is logged in or not
 if(!isset($_SESSION['user1'])) {
-	header('location: login.php');
+	header('location: ../login.php');
 	exit;
 }
 ?>
