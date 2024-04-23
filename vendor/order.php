@@ -175,18 +175,10 @@ if($success_message != '') {
 
                     // Check if the count is greater than 2
                     if ($paymentIdCount[$paymentId] > 1) {
-                        ?>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var links = document.querySelectorAll('.mark');
-            links.forEach(function(link) {
-                link.style.display = 'none';
-            });
-        });
-    </script>
-    <?php
-    continue;
+                        
+                        continue;
                     }
+                    
 
                         $i=0;
             	$statement = $pdo->prepare("SELECT * FROM tbl_payment WHERE payment_id='$paymentId' ORDER by id DESC");
@@ -201,50 +193,16 @@ if($success_message != '') {
                             <b>Id:</b> <?php echo $row['customer_id']; ?><br>
                             <b>Name:</b><br> <?php echo $row['customer_name']; ?><br>
                             <b>Email:</b><br> <?php echo $row['customer_email']; ?><br>
-                            <div id="model-<?php echo $i; ?>" class="modal fade" role="dialog">
-								<div class="modal-dialog">
-									<div class="modal-content">
-										<div class="modal-header">
-											<button type="button" class="close" data-dismiss="modal">&times;</button>
-											<h4 class="modal-title" style="font-weight: bold;">Send Message</h4>
-										</div>
-										<div class="modal-body" style="font-size: 14px">
-											<form action="" method="post">
-                                                <input type="hidden" name="cust_id" value="<?php echo $row['customer_id']; ?>">
-                                                <input type="hidden" name="payment_id" value="<?php echo $row['payment_id']; ?>">
-												<table class="table table-bordered">
-													<tr>
-														<td>Subject</td>
-														<td>
-                                                            <input type="text" name="subject_text" class="form-control" style="width: 100%;">
-														</td>
-													</tr>
-                                                    <tr>
-                                                        <td>Message</td>
-                                                        <td>
-                                                            <textarea name="message_text" class="form-control" cols="30" rows="10" style="width:100%;height: 200px;"></textarea>
-                                                        </td>
-                                                    </tr>
-													<tr>
-														<td></td>
-														<td><input type="submit" value="Send Message" name="form1"></td>
-													</tr>
-												</table>
-											</form>
-										</div>
-										<div class="modal-footer">
-											<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-										</div>
-									</div>
-								</div>
-							</div>
+                            
                         </td>
                         <td>
                            <?php
+                           
                            $statement1 = $pdo->prepare("SELECT * FROM tbl_order WHERE payment_id=? AND uploader=?");
                            $statement1->execute(array($paymentId, $_SESSION['user1']['email']));
                            $result1 = $statement1->fetchAll(PDO::FETCH_ASSOC);
                            foreach ($result1 as $row1) {
+                                // print_r($row1['uploader']);
                                 echo '<b>Product:</b> '.$row1['product_name'];
                                 echo '<br>(<b>Quantity:</b> '.$row1['quantity'];
                                 echo ', <b>Unit Price:MWK </b> '.$row1['unit_price'].')';
@@ -278,16 +236,36 @@ if($success_message != '') {
                         <td>
                             <?php echo $row['payment_status']; ?>
                             <br><br>
-                            <?php
-                                if($row['payment_status']=='Pending'){
-                                    ?>
-                                    <?php
-                                        $payment_id=$row['payment_id'];
-                                    ?>
-                                    <a class='mark' href="order-change-status.php?id=<?php echo $row['id']; ?>&task=Completed" class="btn btn-success btn-xs" style="width:100%;margin-bottom:4px;">Mark Complete</a>
-                                    <?php
-                                }
-                            ?>
+                            <?php if($row['payment_status']=='Pending' && $row['shipping_status']=='Pending') {
+
+                                    // print_r($paymentIdCount[$paymentId]);
+                                    // continue;
+
+                                    $statement2 = $pdo->prepare("SELECT * FROM tbl_order WHERE payment_id=?");
+                                    $statement2->execute(array($paymentId));
+                                    $result2 = $statement2->fetchAll(PDO::FETCH_ASSOC);
+
+                                    // Array to store unique 'uploader' values
+                                    $uploaders = array();
+
+                                    foreach($result2 as $row2){
+                                        // Add uploader value to the array
+                                        $uploaders[] = $row2['uploader'];
+                                    }
+
+                                    // Count the number of unique values
+                                    $unique_uploaders = array_unique($uploaders);
+                                    $count_unique_uploaders = count($unique_uploaders);
+
+                                    if ($count_unique_uploaders < 2) { ?>
+                                        <a href="shipping-change-status.php?id=<?php echo $row['id']; ?>&task=Completed" class="btn btn-warning btn-xs" style="width:100%;margin-bottom:4px;">Mark Complete</a>
+                                    <?php } else {
+                                        echo ""; // Only one or zero unique uploaders
+                                    }
+
+
+                             } ?>
+                            
                         </td>
                         <td>
                             <?php echo $row['shipping_status']; ?>

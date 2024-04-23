@@ -167,44 +167,7 @@ if($success_message != '') {
                             <b>Id:</b> <?php echo $row['customer_id']; ?><br>
                             <b>Name:</b><br> <?php echo $row['customer_name']; ?><br>
                             <b>Email:</b><br> <?php echo $row['customer_email']; ?><br><br>
-                            <a href="#" data-toggle="modal" data-target="#model-<?php echo $i; ?>"class="btn btn-warning btn-xs" style="width:100%;margin-bottom:4px;">Send Message</a>
-                            <div id="model-<?php echo $i; ?>" class="modal fade" role="dialog">
-								<div class="modal-dialog">
-									<div class="modal-content">
-										<div class="modal-header">
-											<button type="button" class="close" data-dismiss="modal">&times;</button>
-											<h4 class="modal-title" style="font-weight: bold;">Send Message</h4>
-										</div>
-										<div class="modal-body" style="font-size: 14px">
-											<form action="" method="post">
-                                                <input type="hidden" name="cust_id" value="<?php echo $row['customer_id']; ?>">
-                                                <input type="hidden" name="payment_id" value="<?php echo $row['payment_id']; ?>">
-												<table class="table table-bordered">
-													<tr>
-														<td>Subject</td>
-														<td>
-                                                            <input type="text" name="subject_text" class="form-control" style="width: 100%;">
-														</td>
-													</tr>
-                                                    <tr>
-                                                        <td>Message</td>
-                                                        <td>
-                                                            <textarea name="message_text" class="form-control" cols="30" rows="10" style="width:100%;height: 200px;"></textarea>
-                                                        </td>
-                                                    </tr>
-													<tr>
-														<td></td>
-														<td><input type="submit" value="Send Message" name="form1"></td>
-													</tr>
-												</table>
-											</form>
-										</div>
-										<div class="modal-footer">
-											<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-										</div>
-									</div>
-								</div>
-							</div>
+                            
                         </td>
                         <td>
                            <?php
@@ -247,9 +210,36 @@ if($success_message != '') {
                             <br><br>
                             <?php
                                 if($row['payment_status']=='Pending'){
-                                    ?>
-                                    <a href="order-change-status.php?id=<?php echo $row['id']; ?>&task=Completed" class="btn btn-success btn-xs" style="width:100%;margin-bottom:4px;">Mark Complete</a>
-                                    <?php
+                                    $paymentId= $row['payment_id'];
+
+
+                                    $statement2 = $pdo->prepare("SELECT * FROM tbl_order WHERE payment_id=?");
+                                    $statement2->execute(array($paymentId));
+                                    $result2 = $statement2->fetchAll(PDO::FETCH_ASSOC);
+
+                                    // Array to store unique 'uploader' values
+                                    $uploaders = array();
+
+                                    foreach($result2 as $row2){
+                                        // Add uploader value to the array
+                                        $uploaders[] = $row2['uploader'];
+                                    }
+
+                                    // Count the number of unique values
+                                    $unique_uploaders = array_unique($uploaders);
+                                    $count_unique_uploaders = count($unique_uploaders);
+
+                                    if ($count_unique_uploaders >= 2) { ?>
+                                        <a href="shipping-change-status.php?id=<?php echo $row['id']; ?>&task=Completed" class="btn btn-warning btn-xs" style="width:100%;margin-bottom:4px;">Mark Complete</a>
+                                    <?php } else {
+                                        echo ""; // Only one or zero unique uploaders
+                                    }
+
+                                    // Count the number of unique values
+                                    // $unique_uploaders = array_unique($uploaders);
+                                    // $count_unique_uploaders = count($unique_uploaders);
+
+
                                 }
                             ?>
                         </td>
