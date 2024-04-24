@@ -230,7 +230,7 @@ if($success_message != '') {
                                     $count_unique_uploaders = count($unique_uploaders);
 
                                     if ($count_unique_uploaders >= 2) { ?>
-                                        <a href="shipping-change-status.php?id=<?php echo $row['id']; ?>&task=Completed" class="btn btn-warning btn-xs" style="width:100%;margin-bottom:4px;">Mark Complete</a>
+                                        <a href="order-change-status.php?id=<?php echo $row['id']; ?>&task=Completed" class="btn btn-warning btn-xs" style="width:100%;margin-bottom:4px;">Mark Complete</a>
                                     <?php } else {
                                         echo ""; // Only one or zero unique uploaders
                                     }
