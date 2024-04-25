@@ -125,6 +125,12 @@ if(!isset($_SESSION['user1'])) {
                             <i class="fa fa-sticky-note"></i> <span>Order Management</span>
                         </a>
                     </li>
+
+					<li class="treeview <?php if( ($cur_page == 'payment_details.php' || $cur_page == 'payment_details_add.php' || $cur_page == 'payment_details_edit.php' ||$cur_page == 'payment_details_delete.php') ) {echo 'active';} ?>">
+                        <a href="payment_details.php">
+						<i class="fa fa-credit-card"></i> <span>Payment Details</span>
+                        </a>
+                    </li>
       			</ul>
     		</section>
   		</aside>
