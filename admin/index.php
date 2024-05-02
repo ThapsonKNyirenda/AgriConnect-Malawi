@@ -33,7 +33,7 @@ $statement = $pdo->prepare("SELECT * FROM tbl_subscriber WHERE subs_active='1'")
 $statement->execute();
 $total_subscriber = $statement->rowCount();
 
-$statement = $pdo->prepare("SELECT * FROM tbl_user");
+$statement = $pdo->prepare("SELECT * FROM tbl_user WHERE role='admin'");
 $statement->execute();
 $total_admins = $statement->rowCount();
 
@@ -88,6 +88,21 @@ $total_order_complete_shipping_pending = $statement->rowCount();
 
 			<div class="col-lg-3 col-xs-6">
 				<!-- small box -->
+				<div class="small-box bg-green">
+				  <div class="inner">
+					<h3><?php echo $total_vendors; ?></h3>
+  
+					<p>Active Vendors</p>
+				  </div>
+				  <div class="icon">
+					<i class="ionicons ion-person-stalker"></i>
+				  </div>
+				  
+				</div>
+			  </div>
+
+			<div class="col-lg-3 col-xs-6">
+				<!-- small box -->
 				<div class="small-box bg-orange">
 				  <div class="inner">
 					<h3><?php echo $total_customers; ?></h3>
@@ -101,28 +116,60 @@ $total_order_complete_shipping_pending = $statement->rowCount();
 				</div>
 			</div>
 
-			  <div class="col-lg-3 col-xs-6">
-				<!-- small box -->
-				<div class="small-box bg-green">
-				  <div class="inner">
-					<h3><?php echo $total_vendors; ?></h3>
-  
-					<p>Active Vendors</p>
-				  </div>
-				  <div class="icon">
-					<i class="ionicons ion-person-stalker"></i>
-				  </div>
-				  
-				</div>
-			  </div>
+			  
             <!-- ./col -->
-            <div class="col-lg-3 col-xs-6">
+			<div class="col-lg-3 col-xs-6">
               <!-- small box -->
               <div class="small-box bg-yellow">
                 <div class="inner">
+                  <h3><?php echo $total_order_pending; ?></h3>
+
+                  <p>Pending Payment</p>
+                </div>
+                <div class="icon">
+				<i class="ionicons ion-cash"></i>
+                </div>
+               
+              </div>
+            </div>
+
+			<div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-green">
+                <div class="inner">
+                  <h3><?php echo $total_order_complete_shipping_pending; ?></h3>
+
+                  <p>Pending Shipping</p>
+                </div>
+                <div class="icon">
+                  <i class="ionicons ion-android-checkbox-outline"></i>
+                </div>
+               
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-red">
+                <div class="inner">
                   <h3><?php echo $total_order_completed; ?></h3>
 
-                  <p>Completed Orders</p>
+                  <p>Payment Competed</p>
+                </div>
+                <div class="icon">
+					<i class="ionicons ion-cash"></i>
+                </div>
+               
+              </div>
+            </div>
+
+			<div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-blue">
+                <div class="inner">
+                  <h3><?php echo $total_shipping_completed; ?></h3>
+
+                  <p>Shipping Completed</p>
                 </div>
                 <div class="icon">
                   <i class="ionicons ion-android-checkbox-outline"></i>
@@ -131,23 +178,6 @@ $total_order_complete_shipping_pending = $statement->rowCount();
               </div>
             </div>
             
-			<!-- ./col -->
-
-			  <div class="col-lg-3 col-xs-6">
-				<!-- small box -->
-				<div class="small-box bg-blue">
-				  <div class="inner">
-					<h3><?php echo $total_subscriber; ?></h3>
-  
-					<p>Subscriber</p>
-				  </div>
-				  <div class="icon">
-					<i class="ionicons ion-person-add"></i>
-				  </div>
-				  
-				</div>
-			  </div>
-
 		  </div>
 		  
 </section>

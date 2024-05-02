@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 20, 2024 at 10:42 AM
+-- Generation Time: May 02, 2024 at 08:17 AM
 -- Server version: 8.2.0
 -- PHP Version: 8.2.13
 
@@ -694,16 +694,14 @@ CREATE TABLE IF NOT EXISTS `tbl_order` (
   `unit_price` varchar(50) NOT NULL,
   `payment_id` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_order`
 --
 
 INSERT INTO `tbl_order` (`id`, `product_id`, `product_name`, `uploader`, `size`, `color`, `quantity`, `unit_price`, `payment_id`) VALUES
-(26, 123, 'Farming Truck', 'kapembe@mail.com', '', '', '1', '4500000', '1713598835'),
-(27, 124, 'Local Chicken', 'vendor1@mail.com', '', '', '1', '1300', '1713608671'),
-(28, 125, 'Medium Chicken Eggs', 'vendor1@mail.com', '', '', '11', '270', '1713608789');
+(50, 125, 'Medium Chicken Eggs', 'vendor1@mail.com', '', '', '1', '270', '1714232283');
 
 -- --------------------------------------------------------
 
@@ -782,16 +780,14 @@ CREATE TABLE IF NOT EXISTS `tbl_payment` (
   `customer_address` varchar(100) NOT NULL DEFAULT 'none',
   `product_owner` varchar(100) NOT NULL DEFAULT 'None',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=88 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=99 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_payment`
 --
 
 INSERT INTO `tbl_payment` (`id`, `customer_id`, `customer_name`, `customer_email`, `payment_date`, `txnid`, `paid_amount`, `card_number`, `card_cvv`, `card_month`, `card_year`, `bank_transaction_info`, `payment_method`, `payment_status`, `shipping_status`, `payment_id`, `customer_address`, `product_owner`) VALUES
-(85, 36, 'Customer 1', 'customer1@mail.com', '2024-04-20 00:40:35', '', 4500000, '', '', '', '', 'id=123abc', 'Bank Deposit', 'Completed', 'Pending', '1713598835', 'Kafukule health Centre, box 56, Kafukule mzimba', ''),
-(86, 36, 'Customer 1', 'customer1@mail.com', '2024-04-20 03:24:31', '', 1300, '', '', '', '', 'trans id: 1234abcd', 'Bank Deposit', 'Completed', 'Pending', '1713608671', 'Kafukule health Centre, box 56, Kafukule mzimba', ''),
-(87, 36, 'Customer 1', 'customer1@mail.com', '2024-04-20 03:26:29', '', 2970, '', '', '', '', 'transid:12345abcde', 'Bank Deposit', 'Pending', 'Pending', '1713608789', 'Kafukule health Centre, box 56, Kafukule mzimba', '');
+(97, 36, 'Customer 1', 'customer1@mail.com', '2024-04-27 08:38:03', '', 270, '', '', '', '', 'ID=123', 'Bank Deposit', 'Completed', 'Pending', '1714232283', 'Kafukule health Centre, box 56, Kafukule mzimba', '');
 
 -- --------------------------------------------------------
 
@@ -894,10 +890,10 @@ INSERT INTO `tbl_product` (`p_id`, `p_name`, `uploader`, `p_old_price`, `p_curre
 (118, 'British apples', 'none', '140', '170', 45, 'product-featured-118.jpg', '<p>British apples</p>', '<p>Apples</p>', '', '<p>fresh</p>', '<p>No any</p>', 0, 1, 1, 81),
 (119, 'Kenyan Mangoes', 'none', '60', '85', 37, 'product-featured-119.jpg', '<p>Kenyan mangoes</p>', '<p>Mangoes</p>', '', '<p>fresh</p>', '<p>No any</p>', 4, 1, 1, 80),
 (120, 'Tanzanian apples', 'none', '70', '82', 6, 'product-featured-120.jpg', '<p>Tanzania apples</p>', '<p>apples</p>', '', '<p>Fresh</p>', '<p>No any</p>', 7, 1, 1, 81),
-(122, 'Second hand wheel barrow', 'kapembe@mail.com', '120000', '100000', 12, 'product-featured-122.jpg', '<p>Fairly Used Wheelbarrow</p>', '<p>Second hand</p>', '<p>Some Features here of wheelbarrow</p>', '<p>Second hand</p>', '<p>No return policy</p>', 36, 0, 1, 85),
-(123, 'Farming Truck', 'kapembe@mail.com', '5000000', '4500000', 2, 'product-featured-123.jpg', '<p>Second hand Tractor</p>', '<p>Second hand farming truck</p>', '', '<p>Fairly used</p>', '<p>Available</p>', 21, 1, 1, 86),
-(124, 'Local Chicken', 'vendor1@mail.com', '4500', '1300', 22, 'product-featured-124.jpg', '<p>Local chickens</p>', '', '<p>Local chickens</p>', '<p>4 month old chickens</p>', '<p>N/A</p>', 3, 0, 1, 83),
-(125, 'Medium Chicken Eggs', 'vendor1@mail.com', '250', '270', 199, 'product-featured-125.jpg', '<p>Local chicken eggs</p>', '', '', '<p>Medium local chicken eggs</p>', '<p>N/A</p>', 3, 1, 1, 82);
+(122, 'Second hand wheel barrow', 'kapembe@mail.com', '120000', '100000', 12, 'product-featured-122.jpg', '<p>Fairly Used Wheelbarrow</p>', '<p>Second hand</p>', '<p>Some Features here of wheelbarrow</p>', '<p>Second hand</p>', '<p>No return policy</p>', 54, 0, 1, 85),
+(123, 'Farming Truck', 'kapembe@mail.com', '5000000', '4500000', 3, 'product-featured-123.jpg', '<p>Second hand Tractor</p>', '<p>Second hand farming truck</p>', '', '<p>Fairly used</p>', '<p>Available</p>', 36, 1, 1, 86),
+(124, 'Local Chicken', 'vendor1@mail.com', '4500', '1300', 23, 'product-featured-124.jpg', '<p>Local chickens</p>', '', '<p>Local chickens</p>', '<p>4 month old chickens</p>', '<p>N/A</p>', 21, 0, 1, 83),
+(125, 'Medium Chicken Eggs', 'vendor1@mail.com', '250', '270', 209, 'product-featured-125.jpg', '<p>Local chicken eggs</p>', '', '', '<p>Medium local chicken eggs</p>', '<p>N/A</p>', 24, 1, 1, 82);
 
 -- --------------------------------------------------------
 
@@ -1228,7 +1224,7 @@ CREATE TABLE IF NOT EXISTS `tbl_settings` (
 --
 
 INSERT INTO `tbl_settings` (`id`, `logo`, `favicon`, `footer_about`, `footer_copyright`, `contact_address`, `contact_email`, `contact_phone`, `contact_fax`, `contact_map_iframe`, `receive_email`, `receive_email_subject`, `receive_email_thank_you_message`, `forget_password_message`, `total_recent_post_footer`, `total_popular_post_footer`, `total_recent_post_sidebar`, `total_popular_post_sidebar`, `total_featured_product_home`, `total_latest_product_home`, `total_popular_product_home`, `meta_title_home`, `meta_keyword_home`, `meta_description_home`, `banner_login`, `banner_registration`, `banner_forget_password`, `banner_reset_password`, `banner_search`, `banner_cart`, `banner_checkout`, `banner_product_category`, `banner_blog`, `cta_title`, `cta_content`, `cta_read_more_text`, `cta_read_more_url`, `cta_photo`, `featured_product_title`, `featured_product_subtitle`, `latest_product_title`, `latest_product_subtitle`, `popular_product_title`, `popular_product_subtitle`, `testimonial_title`, `testimonial_subtitle`, `testimonial_photo`, `blog_title`, `blog_subtitle`, `newsletter_text`, `paypal_email`, `stripe_public_key`, `stripe_secret_key`, `bank_detail`, `before_head`, `after_body`, `before_body`, `home_service_on_off`, `home_welcome_on_off`, `home_featured_product_on_off`, `home_latest_product_on_off`, `home_popular_product_on_off`, `home_testimonial_on_off`, `home_blog_on_off`, `newsletter_on_off`, `ads_above_welcome_on_off`, `ads_above_featured_product_on_off`, `ads_above_latest_product_on_off`, `ads_above_popular_product_on_off`, `ads_above_testimonial_on_off`, `ads_category_sidebar_on_off`) VALUES
-(1, 'logo.jpeg', 'favicon.png', '<p>Lorem ipsum dolor sit amet, omnis signiferumque in mei, mei ex enim concludaturque. Senserit salutandi euripidis no per, modus maiestatis scribentur est an.Â Ea suas pertinax has.</p>\r\n', 'Copyright © 2024 - AgriConnect-Malawi', 'Free market \r\nBlantyre', 'support@agriconnect-malawi.com', '+265880218905', '', '<iframe src=\"https://www.google.com/maps/place/6254%2BWX3+Blantyre+Market,+Market+Street,+Blantyre/@-15.7895743,35.004898,17.02z/data=!4m6!3m5!1s0x18d845a7b76ce68d:0x9de528f83fb4b182!8m2!3d-15.7906358!4d35.0073189!16s%2Fg%2F11b8tgs1x2?authuser=0&entry=ttu\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\"></iframe>', 'support@ecommercephp.com', 'Visitor Email Message from Ecommerce Site PHP', 'Thank you for sending email. We will contact you shortly.', 'A confirmation link is sent to your email address. You will get the password reset information in there.', 4, 4, 5, 5, 5, 5, 6, 'AgriConnect-Malawi', 'AgriConnect-Malawi', 'AgriConnect-Malawi', 'banner_login.jpg', 'banner_registration.jpg', 'banner_forget_password.jpg', 'banner_reset_password.jpg', 'banner_search.jpg', 'banner_cart.jpg', 'banner_checkout.jpg', 'banner_product_category.jpg', 'banner_blog.jpg', 'Welcome To Our Ecommerce Website', 'Lorem ipsum dolor sit amet, an labores explicari qui, eu nostrum copiosae argumentum has. Latine propriae quo no, unum ridens expetenda id sit, \r\nat usu eius eligendi singulis. Sea ocurreret principes ne. At nonumy aperiri pri, nam quodsi copiosae intellegebat et, ex deserunt euripidis usu. ', 'Read More', '#', 'cta.jpg', 'Featured Products', 'Our list on Top Featured Products', 'Latest Products', 'Our list of recently added products', 'Popular Products', 'Popular products based on customer\'s choice', 'Testimonials', 'See what our clients tell about us', 'testimonial.jpg', 'Latest Blog', 'See all our latest articles and news from below', 'Sign-up to our newsletter for latest promotions and discounts.', 'admin@ecom.com', 'pk_test_0SwMWadgu8DwmEcPdUPRsZ7b', 'sk_test_TFcsLJ7xxUtpALbDo1L5c1PN', 'Bank Name: National Bank of Malawi\r\nAccount Number: 1002398543\r\nBranch Name: Henderson Street, Blantyre\r\nCountry: Blantyre', '', '<div id=\"fb-root\"></div>\r\n<script>(function(d, s, id) {\r\n  var js, fjs = d.getElementsByTagName(s)[0];\r\n  if (d.getElementById(id)) return;\r\n  js = d.createElement(s); js.id = id;\r\n  js.src = \"//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10&appId=323620764400430\";\r\n  fjs.parentNode.insertBefore(js, fjs);\r\n}(document, \'script\', \'facebook-jssdk\'));</script>', '<!--Start of Tawk.to Script-->\n<script type=\"text/javascript\">\nvar Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();\n(function(){\nvar s1=document.createElement(\"script\"),s0=document.getElementsByTagName(\"script\")[0];\ns1.async=true;\ns1.src=\'https://embed.tawk.to/5ae370d7227d3d7edc24cb96/default\';\ns1.charset=\'UTF-8\';\ns1.setAttribute(\'crossorigin\',\'*\');\ns0.parentNode.insertBefore(s1,s0);\n})();\n</script>\n<!--End of Tawk.to Script-->', 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1);
+(1, 'logo.jpeg', 'favicon.png', '<p>Lorem ipsum dolor sit amet, omnis signiferumque in mei, mei ex enim concludaturque. Senserit salutandi euripidis no per, modus maiestatis scribentur est an.Â Ea suas pertinax has.</p>\r\n', 'Copyright © 2024 - AgriConnect-Malawi', 'Free market \r\nBlantyre', 'support@agriconnect-malawi.com', '+265880218905', '', '<iframe src=\"https://www.google.com/maps/place/6254%2BWX3+Blantyre+Market,+Market+Street,+Blantyre/@-15.7895743,35.004898,17.02z/data=!4m6!3m5!1s0x18d845a7b76ce68d:0x9de528f83fb4b182!8m2!3d-15.7906358!4d35.0073189!16s%2Fg%2F11b8tgs1x2?authuser=0&entry=ttu\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\"></iframe>', 'support@ecommercephp.com', 'Visitor Email Message from Ecommerce Site PHP', 'Thank you for sending email. We will contact you shortly.', 'A confirmation link is sent to your email address. You will get the password reset information in there.', 4, 4, 5, 5, 5, 5, 6, 'AgriConnect-Malawi', 'AgriConnect-Malawi', 'AgriConnect-Malawi', 'banner_login.jpg', 'banner_registration.jpg', 'banner_forget_password.jpg', 'banner_reset_password.jpg', 'banner_search.jpg', 'banner_cart.jpg', 'banner_checkout.jpg', 'banner_product_category.jpg', 'banner_blog.jpg', 'Welcome To Our Ecommerce Website', 'Lorem ipsum dolor sit amet, an labores explicari qui, eu nostrum copiosae argumentum has. Latine propriae quo no, unum ridens expetenda id sit, \r\nat usu eius eligendi singulis. Sea ocurreret principes ne. At nonumy aperiri pri, nam quodsi copiosae intellegebat et, ex deserunt euripidis usu. ', 'Read More', '#', 'cta.jpg', 'Featured Products', 'Our list on Top Featured Products', 'Latest Products', 'Our list of recently added products', 'Popular Products', 'Popular products based on customer\'s choice', 'Testimonials', 'See what our clients tell about us', 'testimonial.jpg', 'Latest Blog', 'See all our latest articles and news from below', 'Sign-up to our newsletter for latest promotions and discounts.', 'admin@ecom.com', 'pk_test_0SwMWadgu8DwmEcPdUPRsZ7b', 'sk_test_TFcsLJ7xxUtpALbDo1L5c1PN', 'Bank Name: National Bank of Malawi\r\nAccount Number: 1002398543\r\nAccount Name: Agri-Connect Collections Account\r\nBranch Name: Henderson Street, Blantyre\r\nCountry: Blantyre', '', '<div id=\"fb-root\"></div>\r\n<script>(function(d, s, id) {\r\n  var js, fjs = d.getElementsByTagName(s)[0];\r\n  if (d.getElementById(id)) return;\r\n  js = d.createElement(s); js.id = id;\r\n  js.src = \"//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10&appId=323620764400430\";\r\n  fjs.parentNode.insertBefore(js, fjs);\r\n}(document, \'script\', \'facebook-jssdk\'));</script>', '<!--Start of Tawk.to Script-->\n<script type=\"text/javascript\">\nvar Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();\n(function(){\nvar s1=document.createElement(\"script\"),s0=document.getElementsByTagName(\"script\")[0];\ns1.async=true;\ns1.src=\'https://embed.tawk.to/5ae370d7227d3d7edc24cb96/default\';\ns1.charset=\'UTF-8\';\ns1.setAttribute(\'crossorigin\',\'*\');\ns0.parentNode.insertBefore(s1,s0);\n})();\n</script>\n<!--End of Tawk.to Script-->', 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -1462,6 +1458,8 @@ CREATE TABLE IF NOT EXISTS `tbl_user` (
   `photo` varchar(255) NOT NULL,
   `role` varchar(30) NOT NULL,
   `status` varchar(10) NOT NULL,
+  `payment_type` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT 'None',
+  `payment_details` varchar(50) NOT NULL DEFAULT 'None',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
@@ -1469,13 +1467,13 @@ CREATE TABLE IF NOT EXISTS `tbl_user` (
 -- Dumping data for table `tbl_user`
 --
 
-INSERT INTO `tbl_user` (`id`, `full_name`, `email`, `phone`, `password`, `photo`, `role`, `status`) VALUES
-(1, 'Administrator', 'admin@mail.com', '7777777777', 'd00f5d5217896fb7fd601412cb890830', 'user-1.png', 'admin', 'Active'),
-(3, 'Kapembe', 'kapembe@mail.com', '0880218905', '202cb962ac59075b964b07152d234b70', 'user-3.jpg', 'vendor', 'Active'),
-(11, 'Admin2', 'admin2@mail.com', '999779174', '81dc9bdb52d04dc20036dbd8313ed055', 'user-3.jpg', 'admin', 'Active'),
-(12, 'Customer 1', 'customer1@mail.com', '0880218905', '202cb962ac59075b964b07152d234b70', 'user-1.png', 'customer', 'Active'),
-(13, 'vendor 1', 'vendor1@mail.com', '0880218905', '202cb962ac59075b964b07152d234b70', 'user-13.jpg', 'vendor', 'Active'),
-(14, 'vendor 2', 'vendor2@mail.com', '0880218905', '202cb962ac59075b964b07152d234b70', 'user-1.png', 'vendor', 'Active');
+INSERT INTO `tbl_user` (`id`, `full_name`, `email`, `phone`, `password`, `photo`, `role`, `status`, `payment_type`, `payment_details`) VALUES
+(1, 'Administrator', 'admin@mail.com', '7777777777', 'd00f5d5217896fb7fd601412cb890830', 'user-1.png', 'admin', 'Active', 'N/A', 'None'),
+(3, 'Kapembe', 'kapembe@mail.com', '0880218905', '202cb962ac59075b964b07152d234b70', 'user-3.jpg', 'vendor', 'Active', 'N/A', 'None'),
+(11, 'Admin2', 'admin2@mail.com', '999779174', '81dc9bdb52d04dc20036dbd8313ed055', 'user-3.jpg', 'admin', 'Active', 'N/A', 'None'),
+(12, 'Customer 1', 'customer1@mail.com', '0880218905', '202cb962ac59075b964b07152d234b70', 'user-1.png', 'customer', 'Active', 'N/A', 'None'),
+(13, 'vendor 1', 'vendor1@mail.com', '0880218905', '202cb962ac59075b964b07152d234b70', 'user-13.jpg', 'vendor', 'Active', 'Mpamba', '0880218905'),
+(14, 'vendor 2', 'vendor2@mail.com', '0880218905', '202cb962ac59075b964b07152d234b70', 'user-1.png', 'vendor', 'Active', 'N/A', 'None');
 
 -- --------------------------------------------------------
 

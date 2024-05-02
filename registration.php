@@ -174,23 +174,23 @@ if (isset($_POST['form1'])) {
                                 ?>
 
                                 <div class="col-md-6 form-group">
-                                    <label for=""><?php echo LANG_VALUE_102; ?> *</label>
+                                    <label for=""><?php echo LANG_VALUE_102; ?> <span style="color:red;">*</span></label>
                                     <input type="text" class="form-control" name="cust_name" value="<?php if(isset($_POST['cust_name'])){echo $_POST['cust_name'];} ?>">
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <label for=""><?php echo LANG_VALUE_94; ?> *</label>
+                                    <label for=""><?php echo LANG_VALUE_94; ?> <span style="color:red;">*</span></label>
                                     <input type="email" class="form-control" name="cust_email" value="<?php if(isset($_POST['cust_email'])){echo $_POST['cust_email'];} ?>">
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <label for=""><?php echo LANG_VALUE_104; ?> *</label>
+                                    <label for=""><?php echo LANG_VALUE_104; ?> <span style="color:red;">*</span></label>
                                     <input type="text" class="form-control" name="cust_phone" value="<?php if(isset($_POST['cust_phone'])){echo $_POST['cust_phone'];} ?>">
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <label for=""><?php echo LANG_VALUE_105; ?> *</label>
+                                    <label for=""><?php echo LANG_VALUE_105; ?> <span style="color:red;">*</span></label>
                                     <textarea name="cust_address" class="form-control" cols="30" rows="10" style="height:70px;"><?php if(isset($_POST['cust_address'])){echo $_POST['cust_address'];} ?></textarea>
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <label for="">Register as *</label>
+                                    <label for="">Register <span style="color:red;">*</span></label>
                                     <select name="acc_type" class="form-control select2">
                                         <option value="customer">Customer</option>
                                         <option value="vendor">Vendor</option>
@@ -198,16 +198,16 @@ if (isset($_POST['form1'])) {
                                 </div>
                                 
                                 <div class="col-md-6 form-group">
-                                    <label for=""><?php echo "District"; ?> *</label>
+                                    <label for=""><?php echo "City/District"; ?> <span style="color:red;">*</span></label>
                                     <input type="text" class="form-control" name="cust_city" value="<?php if(isset($_POST['cust_city'])){echo $_POST['cust_city'];} ?>">
                                 </div>
                                 
                                 <div class="col-md-6 form-group">
-                                    <label for=""><?php echo LANG_VALUE_96; ?> *</label>
+                                    <label for=""><?php echo LANG_VALUE_96; ?> <span style="color:red;">*</span></label>
                                     <input type="password" class="form-control" name="cust_password">
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <label for=""><?php echo LANG_VALUE_98; ?> *</label>
+                                    <label for=""><?php echo LANG_VALUE_98; ?> <span style="color:red;">*</span></label>
                                     <input type="password" class="form-control" name="cust_re_password">
                                 </div>
                                 <div class="col-md-6 form-group">

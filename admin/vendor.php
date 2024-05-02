@@ -2,7 +2,7 @@
 
 <section class="content-header">
 	<div class="content-header-left">
-		<h1>View Customers</h1>
+		<h1>View Vendors</h1>
 	</div>
 </section>
 
@@ -18,7 +18,7 @@
 								<th width="180">Name</th>
 								<th width="150">Email Address</th>
 								<th width="180">District</th>
-								<th width="180">Payment Type</th>
+								<th width="180">Payment Method</th>
 								<th width="180">Payment Details</th>
 								<th>Status</th>
 								<th width="100">Change Status</th>

@@ -190,9 +190,20 @@ if($success_message != '') {
 					<tr class="<?php if($row['payment_status']=='Pending'){echo 'bg-r';}else{echo 'bg-g';} ?>">
 	                    <td><?php echo $i; ?></td>
 	                    <td>
-                            <b>Id:</b> <?php echo $row['customer_id']; ?><br>
-                            <b>Name:</b><br> <?php echo $row['customer_name']; ?><br>
-                            <b>Email:</b><br> <?php echo $row['customer_email']; ?><br>
+                            <?php
+                                $statement2 = $pdo->prepare("SELECT * FROM tbl_customer WHERE cust_email='{$row['customer_email']}'");
+                                $statement2->execute();
+                                $result2 = $statement2->fetchAll(PDO::FETCH_ASSOC);
+                                foreach ($result2 as $row2){
+                                    echo '<b>Name:</b> '.$row2['cust_name'];
+                                    echo '<br><b>Email:</b> '.$row2['cust_email'];
+                                    echo '<br><b>Phone: </b> '.$row2['cust_phone'];
+                                    echo '<br><b>City/District: </b> '.$row2['cust_city'];
+                                    echo '<br><b>Address: </b> '.$row2['cust_address'];
+                                    
+                                }
+                            ?>
+                            
                             
                         </td>
                         <td>
@@ -259,7 +270,7 @@ if($success_message != '') {
 
                                     if ($count_unique_uploaders < 2) { 
                                         echo"";
-;                                     } else {
+                                     } else {
                                         echo ""; // Only one or zero unique uploaders
                                     }
 

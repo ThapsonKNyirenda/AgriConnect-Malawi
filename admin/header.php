@@ -105,13 +105,13 @@ if(!isset($_SESSION['user'])) {
 
 					<li class="treeview <?php if( ($cur_page == 'customer.php') || ($cur_page == 'customer-add.php') || ($cur_page == 'customer-edit.php') ) {echo 'active';} ?>">
 			          <a href="customer.php">
-			            <i class="fa fa-users"></i> <span>Registered Customer</span>
+			            <i class="fa fa-users"></i> <span>Registered Customers</span>
 			          </a>
 			        </li>
 
 					<li class="treeview <?php if( ($cur_page == 'vendor.php') || ($cur_page == 'vendor-add.php') || ($cur_page == 'vendor-edit.php') ) {echo 'active';} ?>">
 			          <a href="vendor.php">
-					  <i class="fa fa-user"></i> <span>Registered Vendor</span>
+					  <i class="fa fa-user"></i> <span>Registered Vendors</span>
 			          </a>
 			        </li>
 
@@ -143,13 +143,7 @@ if(!isset($_SESSION['user'])) {
 			          <a href="service.php">
 			            <i class="fa fa-list-ol"></i> <span>Services</span>
 			          </a>
-			        </li>
-
-			      			        <li class="treeview <?php if( ($cur_page == 'faq.php') ) {echo 'active';} ?>">
-			          <a href="faq.php">
-			            <i class="fa fa-question-circle"></i> <span>FAQ</span>
-			          </a>
-			        </li>
+			        <!--  -->
 
 			        <li class="treeview <?php if( ($cur_page == 'social-media.php') ) {echo 'active';} ?>">
 			          <a href="social-media.php">

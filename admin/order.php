@@ -164,23 +164,53 @@ if($success_message != '') {
 					<tr class="<?php if($row['payment_status']=='Pending'){echo 'bg-r';}else{echo 'bg-g';} ?>">
 	                    <td><?php echo $i; ?></td>
 	                    <td>
-                            <b>Id:</b> <?php echo $row['customer_id']; ?><br>
-                            <b>Name:</b><br> <?php echo $row['customer_name']; ?><br>
-                            <b>Email:</b><br> <?php echo $row['customer_email']; ?><br><br>
+                        <?php
+                                $statement2 = $pdo->prepare("SELECT * FROM tbl_customer WHERE cust_email='{$row['customer_email']}'");
+                                $statement2->execute();
+                                $result2 = $statement2->fetchAll(PDO::FETCH_ASSOC);
+                                foreach ($result2 as $row2){
+                                    echo '<b>Name:</b> '.$row2['cust_name'];
+                                    echo '<br><b>Email:</b> '.$row2['cust_email'];
+                                    echo '<br><b>Phone: </b> '.$row2['cust_phone'];
+                                    echo '<br><b>City/District: </b> '.$row2['cust_city'];
+                                    echo '<br><b>Address: </b> '.$row2['cust_address'];
+                                    
+                                }
+                            ?>
                             
                         </td>
                         <td>
-                           <?php
-                           $statement1 = $pdo->prepare("SELECT * FROM tbl_order WHERE payment_id=?");
-                           $statement1->execute(array($row['payment_id']));
-                           $result1 = $statement1->fetchAll(PDO::FETCH_ASSOC);
-                           foreach ($result1 as $row1) {
-                                echo '<b>Product:</b> '.$row1['product_name'];
-                                echo '<br>(<b>Quantity:</b> '.$row1['quantity'];
-                                echo ', <b>Unit Price:</b> '.$row1['unit_price'].')';
-                                echo '<br><br>';
-                           }
-                           ?>
+                        <?php
+                        $statement1 = $pdo->prepare("SELECT * FROM tbl_order WHERE payment_id=?");
+                        $statement1->execute(array($row['payment_id']));
+                        $result1 = $statement1->fetchAll(PDO::FETCH_ASSOC);
+                        foreach ($result1 as $row1) {
+                            // Fetch user details from tbl_user
+                            $user_statement = $pdo->prepare("SELECT * FROM tbl_user WHERE email=?");
+                            $user_statement->execute(array($row1['uploader']));
+                            $user_result = $user_statement->fetch(PDO::FETCH_ASSOC);
+                            
+                            // Display order details and user details
+                            echo '<b>Product:</b> ' . $row1['product_name'].', ';
+                            echo '<b>Quantity:</b> ' . $row1['quantity'].', ';
+                            echo '<b>Unit Price:</b> ' . $row1['unit_price'] .'<br>';
+                            
+                            // Check if user details are found
+                            if ($user_result) {
+                                
+                                echo '<b>Uploader Name:</b> ' . $user_result['full_name'].'<br>';
+                                echo '<b>Uploader Phone:</b> ' . $user_result['phone'].'<br>';
+                                echo '<b>Uploader Email:</b> ' . $row1['uploader'].'<br>';
+                            } else {
+                                // If user details are not found, display a message
+                                echo ', <b>User details not found for email:</b> ' . $row1['uploader'];
+                            }
+                            
+                            echo '<br>';
+                        }
+                        ?>
+
+
                         </td>
                         <td>
                         	<?php if($row['payment_method'] == 'PayPal'): ?>
