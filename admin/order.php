@@ -172,8 +172,8 @@ if($success_message != '') {
                                     echo '<b>Name:</b> '.$row2['cust_name'];
                                     echo '<br><b>Email:</b> '.$row2['cust_email'];
                                     echo '<br><b>Phone: </b> '.$row2['cust_phone'];
-                                    echo '<br><b>City/District: </b> '.$row2['cust_city'];
-                                    echo '<br><b>Address: </b> '.$row2['cust_address'];
+                                    echo '<br><b>City/District: </b> '.$row2['cust_s_city'];
+                                    echo '<br><b>Address: </b> '.$row2['cust_s_address'];
                                     
                                 }
                             ?>

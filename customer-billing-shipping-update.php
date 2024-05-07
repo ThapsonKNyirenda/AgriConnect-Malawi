@@ -28,8 +28,8 @@ if (isset($_POST['form1'])) {
                             cust_b_phone=?, 
                             cust_b_country=?, 
                             cust_b_address=?, 
-                            cust_b_city=?, 
-                            cust_b_state=?, 
+                            cust_b_city=?,
+                            cust_s_state=?, 
                             cust_b_zip=?,
                             cust_s_name=?, 
                             cust_s_cname=?, 
@@ -48,7 +48,7 @@ if (isset($_POST['form1'])) {
                             "None",
                             strip_tags($_POST['cust_s_address']),
                             strip_tags($_POST['cust_s_city']),
-                            strip_tags($_POST['cust_s_state']),
+                            "None",
                             "None",
                             strip_tags($_POST['cust_s_name']),
                             "None",
@@ -56,7 +56,7 @@ if (isset($_POST['form1'])) {
                             "None",
                             strip_tags($_POST['cust_s_address']),
                             strip_tags($_POST['cust_s_city']),
-                            strip_tags($_POST['cust_s_state']),
+                            "None",
                             "None",
                             $_SESSION['customer']['cust_id']
                         ));  
@@ -67,7 +67,6 @@ if (isset($_POST['form1'])) {
     $_SESSION['customer']['cust_s_phone'] = strip_tags($_POST['cust_s_phone']);
     $_SESSION['customer']['cust_s_address'] = strip_tags($_POST['cust_s_address']);
     $_SESSION['customer']['cust_s_city'] = strip_tags($_POST['cust_s_city']);
-    $_SESSION['customer']['cust_s_state'] = strip_tags($_POST['cust_s_state']);
 
 }
 ?>
@@ -109,13 +108,10 @@ if (isset($_POST['form1'])) {
                                     <textarea name="cust_s_address" class="form-control" cols="30" rows="10" style="height:100px;"><?php echo $_SESSION['customer']['cust_s_address']; ?></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label for=""><?php echo LANG_VALUE_107; ?></label>
+                                    <label for=""><?php echo "City/District"; ?></label>
                                     <input type="text" class="form-control" name="cust_s_city" value="<?php echo $_SESSION['customer']['cust_s_city']; ?>">
                                 </div>
-                                <div class="form-group">
-                                    <label for=""><?php echo "District"; ?></label>
-                                    <input type="text" class="form-control" name="cust_s_state" value="<?php echo $_SESSION['customer']['cust_s_state']; ?>">
-                                </div>
+                                
                             </div>
                         </div>
                         <input type="submit" class="btn btn-primary" value="<?php echo LANG_VALUE_5; ?>" name="form1">
