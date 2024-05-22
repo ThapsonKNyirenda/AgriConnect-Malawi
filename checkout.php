@@ -246,24 +246,22 @@ if(!isset($_SESSION['cart_p_id'])) {
 	                                    <label for=""><?php echo LANG_VALUE_34; ?> *</label>
 	                                    <select name="payment_method" class="form-control select2" id="advFieldsStatus">
 	                                        <option value=""><?php echo LANG_VALUE_35; ?></option>
-                                            <option value="Tnm Mpamba"><?php echo "Tnm Mpamba" ?></option>
 	                                        <option value="Bank Deposit"><?php echo "Bank Deposit"; ?></option>
+	                                        <option value="TNM Mpamba"><?php echo "TNM Mpamba"; ?></option>
+                                            <option value="Airtel Money"><?php echo "Airtel Money"; ?></option>
                                             
 	                                    </select>
 	                                </div>
 
-                                    <form action="payment/bank/init.php" method="post" id="tnm_form">
+                                    <form action="payment/bank/mpamba.php" method="post" id="mpamba_form">
                                         <input type="hidden" name="amount" value="<?php echo $final_total; ?>">
                                         <div class="col-md-12 form-group">
-                                            <label for=""><?php echo "TNM Mpamba"; ?></span></label><br>
-                                            <?php
-                                            $statement = $pdo->prepare("SELECT * FROM tbl_settings WHERE id=1");
-                                            $statement->execute();
-                                            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-                                            foreach ($result as $row) {
-                                                echo nl2br($row['bank_detail']);
-                                            }
-                                            ?>
+                                            <label for=""><?php echo "Mpamba Detials"; ?></span></label><br>
+                                            Send money to the following TNM Mpamba number <br>
+                                            Mpamba Number: 0984529505 <br>
+                                            Name: Agri Connect <br><br>
+
+                                            Note: Please deposit with cashout fee <br>
                                         </div>
                                         <div class="col-md-12 form-group">
                                             <label for=""><?php echo LANG_VALUE_44; ?> <br><span style="font-size:12px;font-weight:normal;">(<?php echo LANG_VALUE_45; ?>)</span></label>
@@ -273,8 +271,26 @@ if(!isset($_SESSION['cart_p_id'])) {
                                             <input type="submit" class="btn btn-primary" value="<?php echo "Pay"; ?>" name="form3">
                                         </div>
                                     </form>
-                                    
-                                    
+
+                                    <form action="payment/bank/airtel.php" method="post" id="airtel_form">
+                                        <input type="hidden" name="amount" value="<?php echo $final_total; ?>">
+                                        <div class="col-md-12 form-group">
+                                            <label for=""><?php echo "Airtel Money Detials"; ?></span></label><br>
+                                            Send money to the following Airtel Money number <br>
+                                            Airtel Money Number: 0880218905 <br>
+                                            Name: Agri Connect <br><br>
+
+                                            Note: Please deposit with cashout fee <br>
+                                        </div>
+                                        <div class="col-md-12 form-group">
+                                            <label for=""><?php echo LANG_VALUE_44; ?> <br><span style="font-size:12px;font-weight:normal;">(<?php echo LANG_VALUE_45; ?>)</span></label>
+                                            <textarea name="transaction_info" class="form-control" cols="30" rows="10"></textarea>
+                                        </div>
+                                        <div class="col-md-12 form-group">
+                                            <input type="submit" class="btn btn-primary" value="<?php echo "Pay"; ?>" name="form3">
+                                        </div>
+                                    </form>
+
                                     <form action="payment/bank/init.php" method="post" id="bank_form">
                                         <input type="hidden" name="amount" value="<?php echo $final_total; ?>">
                                         <div class="col-md-12 form-group">

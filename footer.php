@@ -169,6 +169,8 @@ foreach ($result as $row) {
 		$('#paypal_form').hide();
 		$('#stripe_form').hide();
 		$('#bank_form').hide();
+		$('#mpamba_form').hide();
+		$('#airtel_form').hide();
 
         $('#advFieldsStatus').on('change',function() {
             advFieldsStatus = $('#advFieldsStatus').val();
@@ -176,27 +178,38 @@ foreach ($result as $row) {
             	$('#paypal_form').hide();
 				$('#stripe_form').hide();
 				$('#bank_form').hide();
-				$('#tnm_form').hide();
+				$('#mpamba_form').hide();
+				$('#airtel_form').hide();
             } else if ( advFieldsStatus == 'PayPal' ) {
                	$('#paypal_form').show();
 				$('#stripe_form').hide();
 				$('#bank_form').hide();
-				$('#tnm_form').hide();
+				$('#mpamba_form').hide();
+				$('#airtel_form').hide();
             } else if ( advFieldsStatus == 'Stripe' ) {
                	$('#paypal_form').hide();
 				$('#stripe_form').show();
 				$('#bank_form').hide();
-				$('#tnm_form').hide();
+				$('#mpamba_form').hide();
+				$('#airtel_form').hide();
             } else if ( advFieldsStatus == 'Bank Deposit' ) {
             	$('#paypal_form').hide();
 				$('#stripe_form').hide();
 				$('#bank_form').show();
-				$('#tnm_form').hide();
-            }else if ( advFieldsStatus == 'Tnm Mpamba' ) {
+				$('#mpamba_form').hide();
+				$('#airtel_form').hide();
+            }else if ( advFieldsStatus == 'TNM Mpamba' ) {
             	$('#paypal_form').hide();
 				$('#stripe_form').hide();
 				$('#bank_form').hide();
-				$('#tnm_form').show();
+				$('#mpamba_form').show();
+				$('#airtel_form').hide();
+            }else if ( advFieldsStatus == 'Airtel Money' ) {
+            	$('#paypal_form').hide();
+				$('#stripe_form').hide();
+				$('#bank_form').hide();
+				$('#mpamba_form').hide();
+				$('#airtel_form').show();
             }
         });
 	});
