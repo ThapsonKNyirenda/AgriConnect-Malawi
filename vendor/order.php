@@ -123,38 +123,38 @@ if($success_message != '') {
 ?>
 
 <section class="content-header">
-	<div class="content-header-left">
-		<h1>View Orders</h1>
-	</div>
+    <div class="content-header-left">
+        <h1>View Orders</h1>
+    </div>
 </section>
 
 
 <section class="content">
 
-  <div class="row">
-    <div class="col-md-12">
+    <div class="row">
+        <div class="col-md-12">
 
 
-      <div class="box box-info">
-        
-        <div class="box-body table-responsive">
-          <table id="example1" class="table table-bordered table-hover table-striped">
-			<thead>
-			    <tr>
-			        <th>#</th>
-                    <th>Customer</th>
-			        <th>Product Details</th>
-                    <th>
-                    	Payment Information
-                    </th>
-                    <th>Paid Amount</th>
-                    <th>Payment Status</th>
-                    <th>Shipping Status</th>
-			        <th>Action</th>
-			    </tr>
-			</thead>
-            <tbody>
-            <?php
+            <div class="box box-info">
+
+                <div class="box-body table-responsive">
+                    <table id="example1" class="table table-bordered table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Customer</th>
+                                <th>Product Details</th>
+                                <th>
+                                    Payment Information
+                                </th>
+                                <th>Paid Amount</th>
+                                <th>Payment Status</th>
+                                <th>Shipping Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
                 $paymentIdCount = [];
                 $statement1 = $pdo->prepare("SELECT * FROM tbl_order");
                 $statement1->execute();
@@ -187,10 +187,10 @@ if($success_message != '') {
             	foreach ($result as $row) {
             		$i++;
             		?>
-					<tr class="<?php if($row['payment_status']=='Pending'){echo 'bg-r';}else{echo 'bg-g';} ?>">
-	                    <td><?php echo $i; ?></td>
-	                    <td>
-                            <?php
+                            <tr class="<?php if($row['payment_status']=='Pending'){echo 'bg-r';}else{echo 'bg-g';} ?>">
+                                <td><?php echo $i; ?></td>
+                                <td>
+                                    <?php
                                 $statement2 = $pdo->prepare("SELECT * FROM tbl_customer WHERE cust_email='{$row['customer_email']}'");
                                 $statement2->execute();
                                 $result2 = $statement2->fetchAll(PDO::FETCH_ASSOC);
@@ -203,11 +203,11 @@ if($success_message != '') {
                                     
                                 }
                             ?>
-                            
-                            
-                        </td>
-                        <td>
-                           <?php
+
+
+                                </td>
+                                <td>
+                                    <?php
                            
                            $statement1 = $pdo->prepare("SELECT * FROM tbl_order WHERE payment_id=? AND uploader=?");
                            $statement1->execute(array($paymentId, $_SESSION['user1']['email']));
@@ -220,45 +220,50 @@ if($success_message != '') {
                                 echo '<br><br>';
                            }
                            ?>
-                        </td>
-                        <td>
-                        	<?php if($row['payment_method'] == 'PayPal'): ?>
-                        		<b>Payment Method:</b> <?php echo '<span style="color:red;"><b>'.$row['payment_method'].'</b></span>'; ?><br>
-                        		<b>Payment Id:</b> <?php echo $row['payment_id']; ?><br>
-                        		<b>Date:</b> <?php echo $row['payment_date']; ?><br>
-                        		<b>Transaction Id:</b> <?php echo $row['txnid']; ?><br>
-                        	<?php elseif($row['payment_method'] == 'Stripe'): ?>
-                        		<b>Payment Method:</b> <?php echo '<span style="color:red;"><b>'.$row['payment_method'].'</b></span>'; ?><br>
-                        		<b>Payment Id:</b> <?php echo $row['payment_id']; ?><br>
-								<b>Date:</b> <?php echo $row['payment_date']; ?><br>
-                        		<b>Transaction Id:</b> <?php echo $row['txnid']; ?><br>
-                        		<b>Card Number:</b> <?php echo $row['card_number']; ?><br>
-                        		<b>Card CVV:</b> <?php echo $row['card_cvv']; ?><br>
-                        		<b>Expire Month:</b> <?php echo $row['card_month']; ?><br>
-                        		<b>Expire Year:</b> <?php echo $row['card_year']; ?><br>
-                        	<?php elseif($row['payment_method'] == 'Bank Deposit'): ?>
-                        		<b>Payment Method:</b> <?php echo '<span style="color:red;"><b>'.$row['payment_method'].'</b></span>'; ?><br>
-                        		<b>Payment Id:</b> <?php echo $row['payment_id']; ?><br>
-								<b>Date:</b> <?php echo $row['payment_date']; ?><br>
-                        		<b>Transaction Information:</b> <br><?php echo $row['bank_transaction_info']; ?><br>
-                            
-                                <?php elseif($row['payment_method'] == 'TNM Mpamba'): ?>
-                        		<b>Payment Method:</b> <?php echo '<span style="color:red;"><b>'.$row['payment_method'].'</b></span>'; ?><br>
-                        		<b>Payment Id:</b> <?php echo $row['payment_id']; ?><br>
-								<b>Date:</b> <?php echo $row['payment_date']; ?><br>
-                        		<b>Transaction Information:</b> <br><?php echo $row['bank_transaction_info']; ?><br> 
-                                <?php elseif($row['payment_method'] == 'Airtel Money'): ?>
-                        		<b>Payment Method:</b> <?php echo '<span style="color:red;"><b>'.$row['payment_method'].'</b></span>'; ?><br>
-                        		<b>Payment Id:</b> <?php echo $row['payment_id']; ?><br>
-								<b>Date:</b> <?php echo $row['payment_date']; ?><br>
-                        		<b>Transaction Information:</b> <br><?php echo $row['bank_transaction_info']; ?><br> 
-                            <?php endif;?>
-                        </td>
-                        <td>MWK<?php echo $row1['unit_price'] * $row1['quantity']; ?></td>
-                        <td>
-                            <?php echo $row['payment_status']; ?>
-                            <br><br>
-                            <?php if($row['payment_status']=='Pending' && $row['shipping_status']=='Pending') {
+                                </td>
+                                <td>
+                                    <?php if($row['payment_method'] == 'PayPal'): ?>
+                                    <b>Payment Method:</b>
+                                    <?php echo '<span style="color:red;"><b>'.$row['payment_method'].'</b></span>'; ?><br>
+                                    <b>Payment Id:</b> <?php echo $row['payment_id']; ?><br>
+                                    <b>Date:</b> <?php echo $row['payment_date']; ?><br>
+                                    <b>Transaction Id:</b> <?php echo $row['txnid']; ?><br>
+                                    <?php elseif($row['payment_method'] == 'Stripe'): ?>
+                                    <b>Payment Method:</b>
+                                    <?php echo '<span style="color:red;"><b>'.$row['payment_method'].'</b></span>'; ?><br>
+                                    <b>Payment Id:</b> <?php echo $row['payment_id']; ?><br>
+                                    <b>Date:</b> <?php echo $row['payment_date']; ?><br>
+                                    <b>Transaction Id:</b> <?php echo $row['txnid']; ?><br>
+                                    <b>Card Number:</b> <?php echo $row['card_number']; ?><br>
+                                    <b>Card CVV:</b> <?php echo $row['card_cvv']; ?><br>
+                                    <b>Expire Month:</b> <?php echo $row['card_month']; ?><br>
+                                    <b>Expire Year:</b> <?php echo $row['card_year']; ?><br>
+                                    <?php elseif($row['payment_method'] == 'Bank Deposit'): ?>
+                                    <b>Payment Method:</b>
+                                    <?php echo '<span style="color:red;"><b>'.$row['payment_method'].'</b></span>'; ?><br>
+                                    <b>Payment Id:</b> <?php echo $row['payment_id']; ?><br>
+                                    <b>Date:</b> <?php echo $row['payment_date']; ?><br>
+                                    <b>Transaction Information:</b> <br><?php echo $row['bank_transaction_info']; ?><br>
+
+                                    <?php elseif($row['payment_method'] == 'TNM Mpamba'): ?>
+                                    <b>Payment Method:</b>
+                                    <?php echo '<span style="color:red;"><b>'.$row['payment_method'].'</b></span>'; ?><br>
+                                    <b>Payment Id:</b> <?php echo $row['payment_id']; ?><br>
+                                    <b>Date:</b> <?php echo $row['payment_date']; ?><br>
+                                    <b>Transaction Information:</b> <br><?php echo $row['bank_transaction_info']; ?><br>
+                                    <?php elseif($row['payment_method'] == 'Airtel Money'): ?>
+                                    <b>Payment Method:</b>
+                                    <?php echo '<span style="color:red;"><b>'.$row['payment_method'].'</b></span>'; ?><br>
+                                    <b>Payment Id:</b> <?php echo $row['payment_id']; ?><br>
+                                    <b>Date:</b> <?php echo $row['payment_date']; ?><br>
+                                    <b>Transaction Information:</b> <br><?php echo $row['bank_transaction_info']; ?><br>
+                                    <?php endif;?>
+                                </td>
+                                <td>MWK<?php echo $row['paid_amount'];?></td>
+                                <td>
+                                    <?php echo $row['payment_status']; ?>
+                                    <br><br>
+                                    <?php if($row['payment_status']=='Pending' && $row['shipping_status']=='Pending') {
 
                                     // print_r($paymentIdCount[$paymentId]);
                                     // continue;
@@ -287,26 +292,30 @@ if($success_message != '') {
 
 
                              } ?>
-                            
-                        </td>
-                        <td>
-                            <?php echo $row['shipping_status']; ?>
-                            <br><br>
-                            <?php
+
+                                </td>
+                                <td>
+                                    <?php echo $row['shipping_status']; ?>
+                                    <br><br>
+                                    <?php
                             if($row['payment_status']=='Completed') {
                                 if($row['shipping_status']=='Pending'){
                                     ?>
-                                    <a href="shipping-change-status.php?id=<?php echo $row['id']; ?>&task=Completed" class="btn btn-warning btn-xs" style="width:100%;margin-bottom:4px;">Mark Complete</a>
+                                    <a href="shipping-change-status.php?id=<?php echo $row['id']; ?>&task=Completed"
+                                        class="btn btn-warning btn-xs" style="width:100%;margin-bottom:4px;">Mark
+                                        Complete</a>
                                     <?php
                                 }
                             }
                             ?>
-                        </td>
-	                    <td>
-                            <a href="#" class="btn btn-danger btn-xs" data-href="order-delete.php?id=<?php echo $row['id']; ?>" data-toggle="modal" data-target="#confirm-delete" style="width:100%;">Delete</a>
-	                    </td>
-	                </tr>
-            		<?php
+                                </td>
+                                <td>
+                                    <a href="#" class="btn btn-danger btn-xs"
+                                        data-href="order-delete.php?id=<?php echo $row['id']; ?>" data-toggle="modal"
+                                        data-target="#confirm-delete" style="width:100%;">Delete</a>
+                                </td>
+                            </tr>
+                            <?php
             	}
                         
                    }else{
@@ -314,19 +323,20 @@ if($success_message != '') {
                    }
                 }
                 ?>
-            <?php
+                            <?php
             	
             	?>
-            </tbody>
-          </table>
-        </div>
-      </div>
-  
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
 
 </section>
 
 
-<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
